@@ -8,38 +8,51 @@ namespace lab1_calculator
 {
     internal class CalculatorData
     {
+        BLogic _bLogic = new BLogic();
+
         //Хранит строку, которая сейчас на дисплее
-        string onDisplay = "";
+        string _onDisplay = "0";
 
         //Текущее суммарное значение
-        string inSum = "";
+        string _inSum = "0,0";
 
         //Енамы, которые запоминаю арифм действия и действия в целом
-        Actions action = Actions.None;
-        Moves move = Moves.None; 
+        Actions _action = Actions.None;
+        Moves _move = Moves.None; 
 
         public string DisplayText
         {
-            get { return onDisplay; }
-            set { onDisplay = value; }
+            get { return _onDisplay; }
+            set { _onDisplay = value; }
         }
 
         public string SumText
         {
-            get { return inSum; }  
-            set { inSum = value; }
+            get { return _inSum; }  
+            set { _inSum = value; }
         }
 
         public Actions Action
         {
-            get { return action; }
-            set { action = value; }
+            get { return _action; }
+            set { _action = value; }
         }
 
         public Moves Move
         {
-            get { return move; }
-            set { move = value; }
+            get { return _move; }
+            set { _move = value; }
+        }
+
+        public BLogic BLogic
+        {
+            get { return _bLogic; }
+        }
+
+        public void StartBLogicAndTakeResult()
+        {
+            //ref?
+            SumText = BLogic.SetupAndActivateBLogic(SumText, DisplayText, Action);
         }
 
     }

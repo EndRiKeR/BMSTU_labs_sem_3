@@ -15,13 +15,15 @@ namespace lab1_calculator
 
         //тут должна быть библиотека <Actions, Action>
 
-        public double SetupAndActivateBLogic(double sum, double num, Actions act)
+        public string SetupAndActivateBLogic(string sum, string num, Actions act)
         {
-            _sum = sum;
-            _num = num;
+            //Что лучше: Parse or ToDouble?
+            //_sum = Convert.ToDouble(sum);
+            _sum = double.Parse(sum);
+            _num = double.Parse(num);
             _act = act;
             Do();
-            return _total;
+            return _total.ToString();
         }
 
         private void Do()
@@ -39,6 +41,9 @@ namespace lab1_calculator
                     break;
                 case Actions.Divide:
                     DivideSum();
+                    break;
+                default:
+                    _total = _num;
                     break;
 
             }

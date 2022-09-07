@@ -13,6 +13,21 @@ namespace lab1_calculator
     public partial class Калькулятор : Form
     {
         private CalculatorData _data = new CalculatorData();
+        private Dictionary<string, Actions> _strToAct = new Dictionary<string, Actions>()
+        {
+            { "+", Actions.Plus },
+            { "-", Actions.Minus },
+            { "*", Actions.Mult },
+            { "/", Actions.Divide }
+        };
+
+        private Dictionary<string, Moves> _strToMove = new Dictionary<string, Moves>()
+        {
+            { "+", Moves.Plus },
+            { "-", Moves.Minus },
+            { "*", Moves.Mult },
+            { "/", Moves.Divide },
+        };
 
         public Калькулятор()
         {
@@ -27,46 +42,63 @@ namespace lab1_calculator
         private void numericBtnClick(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            if (txtbox_display.Text == "0") {
-                txtbox_display.Text = "";
+            if (_data.DisplayText == "0") {
+                _data.DisplayText = "";
             }
-            txtbox_display.Text = txtbox_display.Text + btn.Text;
+            _data.DisplayText += btn.Text;
+            UpdateUI(_data.DisplayText);
         }
 
         private void pointBtnClick(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            txtbox_display.Text = txtbox_display.Text + ",";
+            _data.DisplayText = _data.DisplayText + ",";
+            UpdateUI(_data.DisplayText);
         }
 
         private void equalityBtnClick(object sender, EventArgs e)
         {
-            
+            _data.Move = Moves.Equale;
+            _data.StartBLogicAndTakeResult();
+            _data.Action = Actions.None;
+            UpdateUI(_data.SumText);
         }
 
         private void actionsBtnClick(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            _data.Move = _strToMove[btn.Text];
+            _data.StartBLogicAndTakeResult();
+            _data.Action = _strToAct[btn.Text];
+            UpdateUI(_data.DisplayText = "0");
         }
 
         private void additActionsBtnClick(object sender, EventArgs e)
         {
-
+            //work in progress
         }
 
         private void memoryActionsBtnClick(object sender, EventArgs e)
         {
-
+            //work in progress
         }
 
         private void clearBtnClick(object sender, EventArgs e)
         {
-            txtbox_display.Text = "0";
+            _data.DisplayText = "0";
+            _data.SumText = "0";
+            _data.Move = Moves.None;
+            _data.Action = Actions.None;
+            UpdateUI(_data.DisplayText);
         }
 
         private void backspaceBtn(object sender, EventArgs e)
         {
-            //txtbox_display.Text = new String(txtbox_display.Text, txtbox_display.Text.Length - 1);
+            if (_data.DisplayText.Length != 1)
+                _data.DisplayText = _data.DisplayText.Substring(0, _data.DisplayText.Length - 1);
+            else
+                _data.DisplayText = "0";
+            UpdateUI(_data.DisplayText);
         }
     }
 }
