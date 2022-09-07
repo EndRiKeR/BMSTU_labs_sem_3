@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace lab1_calculator
 {
-    internal class BuisnesL
+    internal class BLogic
     {
-        Number summary = ;
+        Number summary;
     }
 }
