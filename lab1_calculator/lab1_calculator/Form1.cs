@@ -21,6 +21,8 @@ namespace lab1_calculator
         {
             Button btn = (Button)sender;
             btn.Enabled = false;
+
+
         }
 
         private void pointBtnClick(object sender, EventArgs e)
