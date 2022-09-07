@@ -8,6 +8,17 @@ namespace lab1_calculator
 {
     internal class BLogic
     {
-        Number summary;
+        private Number _sum = new Number("0");
+
+        public string Summary
+        {
+            get => _sum.RealNum.ToString();
+        }
+
+        public void AddToSum(string )
+        {
+
+        }
+
     }
 }

@@ -10,6 +10,7 @@ namespace lab1_calculator
     {
         private double _num = 0.0;
         private bool _hasPoint = false;
+        private bool _hasMinus = false;
 
         public Number(string strNum)
         {
@@ -21,9 +22,9 @@ namespace lab1_calculator
             fromStringToNumber(doublNum.ToString());
         }
 
-        public double RealNum
+        public string RealNum
         {
-            get => _num;
+            get => _num.ToString();
             set
             {
                 string str = value.ToString();
@@ -35,6 +36,7 @@ namespace lab1_calculator
         {
             _num = double.Parse(strNum);
             _hasPoint = strNum.Contains(".");
+            _hasMinus = strNum.Contains("-");
         }
 
 

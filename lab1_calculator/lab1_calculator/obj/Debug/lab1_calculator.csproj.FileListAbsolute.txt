@@ -9,3 +9,13 @@ D:\myProgects\repLab\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\bin\Debug\
 D:\myProgects\repLab\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\bin\Debug\lab1_calculator.pdb
 D:\myProgects\repLab\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.exe
 D:\myProgects\repLab\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.pdb
+D:\ForBMSTU\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\bin\Debug\lab1_calculator.exe.config
+D:\ForBMSTU\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\bin\Debug\lab1_calculator.exe
+D:\ForBMSTU\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\bin\Debug\lab1_calculator.pdb
+D:\ForBMSTU\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.csproj.AssemblyReference.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.Калькулятор.resources
+D:\ForBMSTU\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.Properties.Resources.resources
+D:\ForBMSTU\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.csproj.GenerateResource.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.csproj.CoreCompileInputs.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.exe
+D:\ForBMSTU\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.pdb
