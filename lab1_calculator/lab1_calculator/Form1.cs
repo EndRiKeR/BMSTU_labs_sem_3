@@ -12,26 +12,21 @@ namespace lab1_calculator
 {
     public partial class Калькулятор : Form
     {
-        private CalculatorData Data;
+        private CalculatorData _data = new CalculatorData();
 
         public Калькулятор()
         {
             InitializeComponent();
         }
 
-        private void updateActionsState(Moves move, Actions act = Actions.None)
+        public void UpdateUI(string outputStr)
         {
-            Data.nowMove = move;
-            if(act != Actions.None)
-            {
-                Data.nowAction = act;
-            }
+            txtbox_display.Text = outputStr;
         }
 
         private void numericBtnClick(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            updateActionsState(Moves.Add);
             if (txtbox_display.Text == "0") {
                 txtbox_display.Text = "";
             }
