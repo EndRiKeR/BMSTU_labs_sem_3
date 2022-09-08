@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab1_calculator
 {
+    //сюда докинуть static
     internal class BLogic
     {
         private double _sum;
