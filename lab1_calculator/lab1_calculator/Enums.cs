@@ -9,10 +9,11 @@ namespace lab1_calculator
     enum Actions
     {
         None = 0,
+        Equale,
         Plus,
         Minus,
         Mult,
-        Divide
+        Divide,
     }
 
     enum Moves
@@ -26,6 +27,8 @@ namespace lab1_calculator
         Clear,
         Add,
         Delete,
-        Equale
+        Equale,
+        Sqrt2,
+        Pow2
     }
 }

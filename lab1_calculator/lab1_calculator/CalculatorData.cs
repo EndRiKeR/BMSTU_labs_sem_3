@@ -8,8 +8,6 @@ namespace lab1_calculator
 {
     internal class CalculatorData
     {
-        BLogic _bLogic = new BLogic();
-
         //Хранит строку, которая сейчас на дисплее
         string _onDisplay = "0";
 
@@ -44,15 +42,10 @@ namespace lab1_calculator
             set { _move = value; }
         }
 
-        public BLogic BLogic
-        {
-            get { return _bLogic; }
-        }
 
-        public void StartBLogicAndTakeResult()
+        public void DoBLogic()
         {
-            //ref?
-            SumText = BLogic.SetupAndActivateBLogic(SumText, DisplayText, Action);
+            BLogic.Do(ref _inSum, ref _onDisplay, Action, Move);
         }
 
     }

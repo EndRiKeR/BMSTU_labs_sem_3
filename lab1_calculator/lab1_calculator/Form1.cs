@@ -18,8 +18,13 @@ namespace lab1_calculator
             { "+", Actions.Plus },
             { "-", Actions.Minus },
             { "*", Actions.Mult },
-            { "/", Actions.Divide }
+            { "/", Actions.Divide },
         };
+
+        Action<string> act;
+
+        Dictionary<Actions, Action<string>> a;
+
 
         private Dictionary<string, Moves> _strToMove = new Dictionary<string, Moves>()
         {
@@ -27,11 +32,19 @@ namespace lab1_calculator
             { "-", Moves.Minus },
             { "*", Moves.Mult },
             { "/", Moves.Divide },
+            { "sqrt(x)", Moves.Sqrt2},
+            { "X^2", Moves.Pow2}
         };
 
         public Калькулятор()
         {
             InitializeComponent();
+            act += UpdateUI;
+
+            a = new Dictionary<Actions, Action<string>>()
+        {
+            { Actions.Divide, UpdateUI }
+        };
         }
 
         public void UpdateUI(string outputStr)
@@ -59,8 +72,8 @@ namespace lab1_calculator
         private void equalityBtnClick(object sender, EventArgs e)
         {
             _data.Move = Moves.Equale;
-            _data.StartBLogicAndTakeResult();
-            _data.Action = Actions.None;
+            _data.DoBLogic();
+            _data.Action = Actions.Equale;
             UpdateUI(_data.SumText);
         }
 
@@ -68,14 +81,17 @@ namespace lab1_calculator
         {
             Button btn = (Button)sender;
             _data.Move = _strToMove[btn.Text];
-            _data.StartBLogicAndTakeResult();
+            _data.DoBLogic();
             _data.Action = _strToAct[btn.Text];
             UpdateUI(_data.DisplayText = "0");
         }
 
         private void additActionsBtnClick(object sender, EventArgs e)
         {
-            //work in progress
+            Button btn = (Button)sender;
+            _data.Move = _strToMove[btn.Text];
+            _data.DoBLogic();
+            UpdateUI(_data.DisplayText);
         }
 
         private void memoryActionsBtnClick(object sender, EventArgs e)

@@ -7,73 +7,93 @@ using System.Threading.Tasks;
 namespace lab1_calculator
 {
     //сюда докинуть static
-    internal class BLogic
+    static class BLogic
     {
-        private double _sum;
-        private double _num;
-        private double _total;
-        private Actions _act;
-
         //тут должна быть библиотека <Actions, Action>
-
-        public string SetupAndActivateBLogic(string sum, string num, Actions act)
+        static public void Do(ref string sumStr, ref string numStr, Actions act, Moves move)
         {
-            //Что лучше: Parse or ToDouble?
-            //_sum = Convert.ToDouble(sum);
-            _sum = double.Parse(sum);
-            _num = double.Parse(num);
-            _act = act;
-            Do();
-            return _total.ToString();
-        }
+            double sum = double.Parse(sumStr);
+            double num = double.Parse(numStr);
 
-        private void Do()
-        {
-            switch (_act)
+            switch (act)
             {
                 case Actions.Plus:
-                    AddToSum();
+                    AddToSum(ref sum, ref num);
                     break;
                 case Actions.Minus:
-                    MinusToSum();
+                    MinusToSum(ref sum, ref num);
                     break;
                 case Actions.Mult:
-                    MultSum();
+                    MultSum(ref sum, ref num);
                     break;
                 case Actions.Divide:
-                    DivideSum();
+                    DivideSum(ref sum, ref num);
+                    break;
+                case Actions.Equale:
+                    EqualeMove(ref sum, ref num);
+                    break;
+                case Actions.None:
+                    NoneMove(ref sum, ref num);
                     break;
                 default:
-                    _total = _num;
+                    DoMove(ref sumStr, ref numStr, move);
                     break;
 
             }
+
+            sumStr = sum.ToString();
+            numStr = num.ToString();
         }
 
-        private void AddToSum()
+        static public void DoMove(ref string sumStr, ref string numStr, Moves move)
         {
-            _total = _sum + _num;
         }
 
-        private void MinusToSum()
+        static private void AddToSum(ref double n1, ref double n2)
         {
-            _total = _sum - _num;
+            n1 += n2;
         }
 
-        private void MultSum()
+        static private void MinusToSum(ref double n1, ref double n2)
         {
-            _total = _sum * _num;
+            n1 -= n2;
         }
 
-        private void DivideSum()
+        static private void MultSum(ref double n1, ref double n2)
         {
-            if (_num != 0)
+            n1 *= n2;
+        }
+
+        static private void DivideSum(ref double n1, ref double n2)
+        {
+            if (n2 != 0)
             {
-                _total = _sum / _num;
+                n1 /= n2;
             }
-            
         }
 
+        static private void NoneMove(ref double n1, ref double n2)
+        {
+            if (n1 == 0.0)
+                n1 = n2;
+        }
 
+        static private void Pow2Move(ref double num)
+        {
+            num = Math.Pow(num, 2);
+        }
+
+        static private void Sqrt2Move(ref double num)
+        {
+            if (num >= 0)
+            {
+                num = Math.Sqrt(num);
+            }
+        }
+
+        static private void EqualeMove(ref double sum, ref double num)
+        {
+            num = sum;
+        }
     }
 }
