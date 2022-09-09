@@ -8,40 +8,28 @@ namespace lab1_calculator
 {
     internal class CalculatorData
     {
-        //Хранит строку, которая сейчас на дисплее
-        string _onDisplay = "0";
+        //Все самое нужное, но уже в double
+        private double _dDisplay;
+        private double _dSummary;
+        private double _dMemory;
 
-        //Текущее суммарное значение
-        string _inSum = "0,0";
-
-        //Енамы, которые запоминаю арифм действия и действия в целом
-        Actions _action = Actions.None;
-        Moves _move = Moves.None; 
-
-        public string DisplayText
+        public double DisplayText
         {
-            get { return _onDisplay; }
-            set { _onDisplay = value; }
+            get { return _dDisplay; }
+            set { _dDisplay = value; }
         }
 
-        public string SumText
+        public double SumText
         {
-            get { return _inSum; }  
-            set { _inSum = value; }
+            get { return _dSummary; }  
+            set { _dSummary = value; }
         }
 
-        public Actions Action
+        public double Memory
         {
-            get { return _action; }
-            set { _action = value; }
+            get { return _dMemory; }
+            set { _dMemory = value; }
         }
-
-        public Moves Move
-        {
-            get { return _move; }
-            set { _move = value; }
-        }
-
 
         public void DoBLogic()
         {

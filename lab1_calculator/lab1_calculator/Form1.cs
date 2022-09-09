@@ -13,6 +13,17 @@ namespace lab1_calculator
     public partial class Калькулятор : Form
     {
         private CalculatorData _data = new CalculatorData();
+
+        //Данные с формы в строках
+        private string _onDisplay;
+        private string _inSummary;
+        private string _inMemory;
+
+        //Енамы, которые запоминаю арифм действия и действия в целом
+        Actions _action = Actions.None;
+        Moves _move = Moves.None;
+
+        //Словари для Actions и Moves
         private Dictionary<string, Actions> _strToAct = new Dictionary<string, Actions>()
         {
             { "+", Actions.Plus },
@@ -20,11 +31,6 @@ namespace lab1_calculator
             { "*", Actions.Mult },
             { "/", Actions.Divide },
         };
-
-        Action<string> act;
-
-        Dictionary<Actions, Action<string>> a;
-
 
         private Dictionary<string, Moves> _strToMove = new Dictionary<string, Moves>()
         {
@@ -36,15 +42,19 @@ namespace lab1_calculator
             { "X^2", Moves.Pow2}
         };
 
+        Action<string> act;
+
+        Dictionary<Actions, Action<string>> a;
+
         public Калькулятор()
         {
             InitializeComponent();
             act += UpdateUI;
 
             a = new Dictionary<Actions, Action<string>>()
-        {
-            { Actions.Divide, UpdateUI }
-        };
+            {
+                { Actions.Divide, UpdateUI }
+            };
         }
 
         public void UpdateUI(string outputStr)

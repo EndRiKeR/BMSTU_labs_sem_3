@@ -7,64 +7,78 @@ using System.Threading.Tasks;
 namespace lab1_calculator
 {
     //сюда докинуть static
-    static class BLogic
+    class BLogic
     {
-        //тут должна быть библиотека <Actions, Action>
-        static public void Do(ref string sumStr, ref string numStr, Actions act, Moves move)
-        {
-            double sum = double.Parse(sumStr);
-            double num = double.Parse(numStr);
+        private Dictionary<Actions, MyAction> _fromActToFunc;
+        private Dictionary<Moves, Action<double, double>> _fromMovesToFunc;
 
-            switch (act)
+        delegate void MyAction(ref double sum, ref double num);
+
+        public void SetupDict()
+        {
+            _fromActToFunc = new Dictionary<Actions, MyAction>()
+            {
+                { Actions.None, noneAct },
+                { Actions.Plus, plusAct },
+                { Actions.Minus, minusAct },
+                { Actions.Mult, multAct },
+                { Actions.Divide, divideAct },
+                { Actions.Equale, equaleAct },
+            };
+        }
+
+        public void DoAct(ref double sum, ref double num, Actions act)
+        {
+
+            _fromActToFunc[act].Invoke(ref sum, ref num);
+            /*switch (act)
             {
                 case Actions.Plus:
-                    AddToSum(ref sum, ref num);
+                    plusAct(ref sum, ref num);
                     break;
                 case Actions.Minus:
-                    MinusToSum(ref sum, ref num);
+                    minusAct(ref sum, ref num);
                     break;
                 case Actions.Mult:
-                    MultSum(ref sum, ref num);
+                    multAct(ref sum, ref num);
                     break;
                 case Actions.Divide:
-                    DivideSum(ref sum, ref num);
+                    divideAct(ref sum, ref num);
                     break;
                 case Actions.Equale:
-                    EqualeMove(ref sum, ref num);
+                    equaleAct(ref sum, ref num);
                     break;
                 case Actions.None:
-                    NoneMove(ref sum, ref num);
+                    noneAct(ref sum, ref num);
                     break;
                 default:
-                    DoMove(ref sumStr, ref numStr, move);
+                    //do nothing :)
                     break;
+            }*/
 
-            }
-
-            sumStr = sum.ToString();
-            numStr = num.ToString();
         }
 
-        static public void DoMove(ref string sumStr, ref string numStr, Moves move)
+        public void DoMove(ref double sum, ref double num, ref double mem, Actions act, Moves mov)
         {
+
         }
 
-        static private void AddToSum(ref double n1, ref double n2)
+        private void plusAct(ref double n1, ref double n2)
         {
             n1 += n2;
         }
 
-        static private void MinusToSum(ref double n1, ref double n2)
+        private void minusAct(ref double n1, ref double n2)
         {
             n1 -= n2;
         }
 
-        static private void MultSum(ref double n1, ref double n2)
+        private void multAct(ref double n1, ref double n2)
         {
             n1 *= n2;
         }
 
-        static private void DivideSum(ref double n1, ref double n2)
+        private void divideAct(ref double n1, ref double n2)
         {
             if (n2 != 0)
             {
@@ -72,26 +86,13 @@ namespace lab1_calculator
             }
         }
 
-        static private void NoneMove(ref double n1, ref double n2)
+        private void noneAct(ref double n1, ref double n2)
         {
             if (n1 == 0.0)
                 n1 = n2;
         }
 
-        static private void Pow2Move(ref double num)
-        {
-            num = Math.Pow(num, 2);
-        }
-
-        static private void Sqrt2Move(ref double num)
-        {
-            if (num >= 0)
-            {
-                num = Math.Sqrt(num);
-            }
-        }
-
-        static private void EqualeMove(ref double sum, ref double num)
+        private void equaleAct(ref double sum, ref double num)
         {
             num = sum;
         }
