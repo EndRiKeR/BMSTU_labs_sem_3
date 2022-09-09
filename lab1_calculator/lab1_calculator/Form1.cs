@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace lab1_calculator
 {
-    public partial class Калькулятор : Form
+    public partial class Calculator : Form
     {
         private CalculatorData _data = new CalculatorData();
 
@@ -46,15 +46,9 @@ namespace lab1_calculator
 
         Dictionary<Actions, Action<string>> a;
 
-        public Калькулятор()
+        public Calculator()
         {
             InitializeComponent();
-            act += UpdateUI;
-
-            a = new Dictionary<Actions, Action<string>>()
-            {
-                { Actions.Divide, UpdateUI }
-            };
         }
 
         public void UpdateUI(string outputStr)
@@ -62,46 +56,60 @@ namespace lab1_calculator
             txtbox_display.Text = outputStr;
         }
 
+        private void setupData()
+        {
+            _data.DDisplay = Convert.ToDouble(_onDisplay);
+            _data.DSummary = Convert.ToDouble(_inSummary);
+            _data.DMemory = Convert.ToDouble(_inMemory);
+        }
+
         private void numericBtnClick(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            if (_data.DisplayText == "0") {
-                _data.DisplayText = "";
+            if (_onDisplay == "0") {
+                _onDisplay = "";
             }
-            _data.DisplayText += btn.Text;
-            UpdateUI(_data.DisplayText);
+            _onDisplay += btn.Text;
+            UpdateUI(_onDisplay);
         }
 
         private void pointBtnClick(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            _data.DisplayText = _data.DisplayText + ",";
-            UpdateUI(_data.DisplayText);
+            if (!_onDisplay.Contains(","))
+            {
+                _onDisplay = _onDisplay + ",";
+            }
+            UpdateUI(_onDisplay);
         }
 
         private void equalityBtnClick(object sender, EventArgs e)
         {
-            _data.Move = Moves.Equale;
-            _data.DoBLogic();
-            _data.Action = Actions.Equale;
-            UpdateUI(_data.SumText);
+            _move = Moves.Equale;
+            setupData();
+            _data.DoBLogic(_action, _move, out _inSummary, out _onDisplay, out _inMemory);
+            _action = Actions.Equale;
+            _onDisplay = "0";
+            UpdateUI(_inSummary);
         }
 
         private void actionsBtnClick(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            _data.Move = _strToMove[btn.Text];
-            _data.DoBLogic();
-            _data.Action = _strToAct[btn.Text];
-            UpdateUI(_data.DisplayText = "0");
+            _move = _strToMove[btn.Text];
+            setupData();
+            _data.DoBLogic(_action, _move, out _inSummary, out _onDisplay, out _inMemory);
+            _action = _strToAct[btn.Text];
+            UpdateUI(_onDisplay = "0");
         }
 
         private void additActionsBtnClick(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            _data.Move = _strToMove[btn.Text];
-            _data.DoBLogic();
-            UpdateUI(_data.DisplayText);
+            _move = _strToMove[btn.Text];
+            setupData();
+            _data.DoBLogic(_action, _move, out _inSummary, out _onDisplay, out _inMemory);
+            UpdateUI(_onDisplay);
         }
 
         private void memoryActionsBtnClick(object sender, EventArgs e)
@@ -111,20 +119,20 @@ namespace lab1_calculator
 
         private void clearBtnClick(object sender, EventArgs e)
         {
-            _data.DisplayText = "0";
-            _data.SumText = "0";
-            _data.Move = Moves.None;
-            _data.Action = Actions.None;
-            UpdateUI(_data.DisplayText);
+            _onDisplay = "0";
+            _inSummary = "0";
+            _move = Moves.None;
+            _action = Actions.None;
+            UpdateUI(_onDisplay);
         }
 
         private void backspaceBtn(object sender, EventArgs e)
         {
-            if (_data.DisplayText.Length != 1)
-                _data.DisplayText = _data.DisplayText.Substring(0, _data.DisplayText.Length - 1);
+            if (_onDisplay.Length != 1)
+                _onDisplay = _onDisplay.Substring(0, _onDisplay.Length - 1);
             else
-                _data.DisplayText = "0";
-            UpdateUI(_data.DisplayText);
+                _onDisplay = "0";
+            UpdateUI(_onDisplay);
         }
     }
 }

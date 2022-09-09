@@ -10,9 +10,13 @@ namespace lab1_calculator
     class BLogic
     {
         private Dictionary<Actions, MyAction> _fromActToFunc;
-        private Dictionary<Moves, Action<double, double>> _fromMovesToFunc;
 
         delegate void MyAction(ref double sum, ref double num);
+
+        public BLogic()
+        {
+            SetupDict();
+        }
 
         public void SetupDict()
         {
@@ -60,7 +64,28 @@ namespace lab1_calculator
 
         public void DoMove(ref double sum, ref double num, ref double mem, Actions act, Moves mov)
         {
-
+            switch (mov)
+            {
+                case Moves.Plus:
+                case Moves.Minus:
+                case Moves.Mult:
+                case Moves.Divide:
+                case Moves.Equale:
+                    DoAct(ref sum, ref num, act);
+                    break;
+                case Moves.Clear:
+                    clearMove(ref sum, ref num, ref mem);
+                    break;
+                case Moves.Pow2:
+                    pow2Move(ref num);
+                    break;
+                case Moves.Sqrt2:
+                    sqrt2Move(ref num);
+                    break;
+                case Moves.None:
+                default:
+                    break;
+            }
         }
 
         private void plusAct(ref double n1, ref double n2)
@@ -95,6 +120,23 @@ namespace lab1_calculator
         private void equaleAct(ref double sum, ref double num)
         {
             num = sum;
+        }
+
+        private void sqrt2Move(ref double num)
+        {
+            num = Math.Sqrt(num);
+        }
+
+        private void pow2Move(ref double num)
+        {
+            num = Math.Pow(num, 2);
+        }
+
+        private void clearMove(ref double sum, ref double num, ref double mem)
+        {
+            sum = 0.0;
+            num = 0;
+            mem = 0;
         }
     }
 }
