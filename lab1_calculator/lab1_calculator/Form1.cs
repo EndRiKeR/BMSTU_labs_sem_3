@@ -42,10 +42,6 @@ namespace lab1_calculator
             { "X^2", Moves.Pow2}
         };
 
-        Action<string> act;
-
-        Dictionary<Actions, Action<string>> a;
-
         public Calculator()
         {
             InitializeComponent();
