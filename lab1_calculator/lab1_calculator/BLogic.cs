@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace lab1_calculator
 {
-    //сюда докинуть static
     class BLogic
     {
-        private Dictionary<Actions, MyAction> _fromActToFunc;
+        private Dictionary<Moves, MyAction> _fromActToFunc;
 
         delegate void MyAction(ref double sum, ref double num);
+
+        private bool _error = false;
 
         public BLogic()
         {
@@ -20,50 +21,23 @@ namespace lab1_calculator
 
         public void SetupDict()
         {
-            _fromActToFunc = new Dictionary<Actions, MyAction>()
+            _fromActToFunc = new Dictionary<Moves, MyAction>()
             {
-                { Actions.None, noneAct },
-                { Actions.Plus, plusAct },
-                { Actions.Minus, minusAct },
-                { Actions.Mult, multAct },
-                { Actions.Divide, divideAct },
-                { Actions.Equale, equaleAct },
+                { Moves.None, noneAct },
+                { Moves.Plus, plusAct },
+                { Moves.Minus, minusAct },
+                { Moves.Mult, multAct },
+                { Moves.Divide, divideAct },
+                { Moves.Equale, equaleAct },
+                { Moves.MPlus, plusAct },
+                { Moves.MMinus, minusAct }
             };
         }
 
-        public void DoAct(ref double sum, ref double num, Actions act)
+        public bool DoMove(ref double sum, ref double num, ref double mem, Moves act, Moves mov)
         {
+            _error = false;
 
-            _fromActToFunc[act].Invoke(ref sum, ref num);
-            /*switch (act)
-            {
-                case Actions.Plus:
-                    plusAct(ref sum, ref num);
-                    break;
-                case Actions.Minus:
-                    minusAct(ref sum, ref num);
-                    break;
-                case Actions.Mult:
-                    multAct(ref sum, ref num);
-                    break;
-                case Actions.Divide:
-                    divideAct(ref sum, ref num);
-                    break;
-                case Actions.Equale:
-                    equaleAct(ref sum, ref num);
-                    break;
-                case Actions.None:
-                    noneAct(ref sum, ref num);
-                    break;
-                default:
-                    //do nothing :)
-                    break;
-            }*/
-
-        }
-
-        public void DoMove(ref double sum, ref double num, ref double mem, Actions act, Moves mov)
-        {
             switch (mov)
             {
                 case Moves.Plus:
@@ -71,7 +45,11 @@ namespace lab1_calculator
                 case Moves.Mult:
                 case Moves.Divide:
                 case Moves.Equale:
-                    DoAct(ref sum, ref num, act);
+                    _fromActToFunc[act].Invoke(ref sum, ref num);
+                    break;
+                case Moves.MMinus:
+                case Moves.MPlus:
+                    _fromActToFunc[act].Invoke(ref mem, ref num);
                     break;
                 case Moves.Clear:
                     clearMove(ref sum, ref num, ref mem);
@@ -82,10 +60,19 @@ namespace lab1_calculator
                 case Moves.Sqrt2:
                     sqrt2Move(ref num);
                     break;
+                case Moves.MR:
+                    memResultMove(ref mem, ref num);
+                    break;
+                case Moves.MC:
+                    memClearMove(ref mem);
+                    break;
+
                 case Moves.None:
                 default:
                     break;
             }
+
+            return _error;
         }
 
         private void plusAct(ref double n1, ref double n2)
@@ -108,23 +95,32 @@ namespace lab1_calculator
             if (n2 != 0)
             {
                 n1 /= n2;
+            } else
+            {
+                _error = true;
             }
         }
 
-        private void noneAct(ref double n1, ref double n2)
+        private void noneAct(ref double sum, ref double num)
         {
-            if (n1 == 0.0)
-                n1 = n2;
+            if (sum == 0.0)
+                sum = num;
         }
 
         private void equaleAct(ref double sum, ref double num)
         {
             num = sum;
+            sum = 0;
         }
 
         private void sqrt2Move(ref double num)
         {
-            num = Math.Sqrt(num);
+            if (num >= 0) {
+                num = Math.Sqrt(num);
+            } else {
+                _error = true;
+            }
+            
         }
 
         private void pow2Move(ref double num)
@@ -137,6 +133,16 @@ namespace lab1_calculator
             sum = 0.0;
             num = 0;
             mem = 0;
+        }
+
+        private void memClearMove(ref double mem)
+        {
+            mem = 0;
+        }
+
+        private void memResultMove(ref double mem, ref double num)
+        {
+            num = mem;
         }
     }
 }

@@ -33,12 +33,13 @@ namespace lab1_calculator
             set { _dMemory = value; }
         }
 
-        public void DoBLogic(Actions act, Moves mov, out string _summaryText, out string _displayText, out string _memoryText)
+        public bool DoBLogic(Moves act, Moves mov, out string _summaryText, out string _displayText, out string _memoryText)
         {
-            _bLogic.DoMove(ref _dSummary, ref _dDisplay, ref _dMemory, act, mov);
+            bool error = _bLogic.DoMove(ref _dSummary, ref _dDisplay, ref _dMemory, act, mov);
             _summaryText = _dSummary.ToString();
             _displayText = _dDisplay.ToString();
             _memoryText = _dMemory.ToString();
+            return error;
         }
 
     }

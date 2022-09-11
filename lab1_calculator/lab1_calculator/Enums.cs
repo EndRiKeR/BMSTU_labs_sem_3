@@ -6,16 +6,6 @@ using System.Threading.Tasks;
 
 namespace lab1_calculator
 {
-    enum Actions
-    {
-        None = 0,
-        Equale,
-        Plus,
-        Minus,
-        Mult,
-        Divide,
-    }
-
     enum Moves
     {
         None = 0,
@@ -29,6 +19,10 @@ namespace lab1_calculator
         Delete,
         Equale,
         Sqrt2,
-        Pow2
+        Pow2,
+        MC,
+        MR,
+        MPlus,
+        MMinus
     }
 }

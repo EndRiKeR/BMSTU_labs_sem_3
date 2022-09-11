@@ -1,6 +1,5 @@
 D:\myProgects\repLab\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.csproj.AssemblyReference.cache
 D:\myProgects\repLab\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.csproj.SuggestedBindingRedirects.cache
-D:\myProgects\repLab\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.Калькулятор.resources
 D:\myProgects\repLab\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.Properties.Resources.resources
 D:\myProgects\repLab\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.csproj.GenerateResource.cache
 D:\myProgects\repLab\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.csproj.CoreCompileInputs.cache
@@ -19,3 +18,4 @@ D:\ForBMSTU\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calc
 D:\ForBMSTU\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.exe
 D:\ForBMSTU\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.pdb
 D:\ForBMSTU\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.Calculator.resources
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab1_calculator\lab1_calculator\obj\Debug\lab1_calculator.Calculator.resources
