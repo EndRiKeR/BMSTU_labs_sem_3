@@ -8,16 +8,23 @@ namespace lab1_calculator
 {
     internal class Number
     {
-        private double _beforeP = 0.0;
-        private double _afterP = 0.0;
-        private bool _hasPoint;
+        private double _num = 0.0;
+        private bool _hasPoint = false;
+        private bool _hasMinus = false;
 
-        public double RealNum
+        public Number(string strNum)
         {
-            get
-            {
-                return createNumber();
-            }
+            fromStringToNumber(strNum);
+        }
+
+        public Number(double doublNum)
+        {
+            fromStringToNumber(doublNum.ToString());
+        }
+
+        public string RealNum
+        {
+            get => _num.ToString();
             set
             {
                 string str = value.ToString();
@@ -25,14 +32,11 @@ namespace lab1_calculator
             }
         }
 
-        private double createNumber()
-        {
-            return _beforeP + (1 / _afterP);
-        }
-
         private void fromStringToNumber(string strNum)
         {
-            _beforeP = double.Parse(strNum);
+            _num = double.Parse(strNum);
+            _hasPoint = strNum.Contains(".");
+            _hasMinus = strNum.Contains("-");
         }
 
 

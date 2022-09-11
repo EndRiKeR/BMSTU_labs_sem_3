@@ -10,54 +10,164 @@ using System.Windows.Forms;
 
 namespace lab1_calculator
 {
-    public partial class Калькулятор : Form
+    public partial class Calculator : Form
     {
-        public Калькулятор()
+        private CalculatorData _data = new CalculatorData();
+
+        //Данные с формы в строках
+        private string _onDisplay;
+        private string _inSummary;
+        private string _inMemory;
+
+        //Енамы, которые запоминаю арифм действия и действия в целом
+        Moves _action = Moves.None;
+        Moves _move = Moves.None;
+
+        //Словарь для Moves
+        private Dictionary<string, Moves> _strToMove = new Dictionary<string, Moves>()
+        {
+            { "+", Moves.Plus },
+            { "-", Moves.Minus },
+            { "*", Moves.Mult },
+            { "/", Moves.Divide },
+            { "sqrt(x)", Moves.Sqrt2 },
+            { "X^2", Moves.Pow2 },
+            { "MC", Moves.MC },
+            { "MR", Moves.MR },
+            { "M+", Moves.MPlus },
+            { "M-", Moves.MMinus }
+        };
+
+        public Calculator()
         {
             InitializeComponent();
         }
 
+        //Функция-сборник из базисных действий большинства триггер-функций
+        private void startMath(Moves move)
+        {
+            _move = move;
+            setupData();
+            bool error = _data.DoBLogic(_action, _move, out _inSummary, out _onDisplay, out _inMemory);
+            if (error) {
+                secureUp();
+            }
+        }
+
+        //Реакция на ошибки
+        private void secureUp()
+        {
+            resetStat();
+            //Как заставить его появиться перед окном, а не просто по цетнру экрана?
+            MessageBox.Show("You can't do this!", "Error", MessageBoxButtons.OK);
+        }
+
+        //Очистка всего
+        private void resetStat()
+        {
+            _onDisplay = "0";
+            _inSummary = "0";
+            _move = Moves.None;
+            _action = Moves.None;
+            UpdateUI(_onDisplay);
+        }
+
+        //Обновление дисплея
+        public void UpdateUI(string outputStr)
+        {
+            double tmp = Convert.ToDouble(outputStr);
+            if (outputStr.Length >= 7 && tmp > 0)
+            {
+                //проблема с ооооочень маленькими числами?
+                tmp = Math.Round(tmp, 5);
+                outputStr = tmp.ToString();
+            }
+            txtbox_display.Text = outputStr;
+        }
+
+        //Перекидывание строк в CalculatorData
+        private void setupData()
+        {
+            _data.DDisplay = Convert.ToDouble(_onDisplay);
+            _data.DSummary = Convert.ToDouble(_inSummary);
+            _data.DMemory = Convert.ToDouble(_inMemory);
+        }
+
+        // 0 - 9
         private void numericBtnClick(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            btn.Enabled = false;
-
-
+            if ((_onDisplay == "0") || (_move == Moves.Equale)) {
+                _onDisplay = "";
+            }
+            _move = Moves.Add;
+            _onDisplay += btn.Text;
+            UpdateUI(_onDisplay);
         }
 
+        // Точка .
         private void pointBtnClick(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            if ((!_onDisplay.Contains(",")) && (_move != Moves.Equale))
+            {
+                _onDisplay = _onDisplay + ",";
+            }
+            UpdateUI(_onDisplay);
         }
 
+        // Равно =
         private void equalityBtnClick(object sender, EventArgs e)
         {
-
+            if ((_move != Moves.None) || (_move != Moves.Equale))
+            {
+                startMath(Moves.Equale);
+                _action = Moves.Equale;
+                startMath(Moves.Equale);
+                _action = Moves.None;
+            }
+            UpdateUI(_onDisplay);
         }
 
+        // "+ - * /"
         private void actionsBtnClick(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            startMath(_strToMove[btn.Text]);
+            _action = _strToMove[btn.Text];
+            UpdateUI(_onDisplay = "0");
         }
 
+        // "sqrt(x), pow(x, 2)"
         private void additActionsBtnClick(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            startMath(_strToMove[btn.Text]);
+            UpdateUI(_onDisplay);
         }
 
+        // "MR, MC, M+, M-"
         private void memoryActionsBtnClick(object sender, EventArgs e)
         {
-
+            Button btn = (Button)sender;
+            startMath(_strToMove[btn.Text]);
+            UpdateUI(_onDisplay);
         }
 
+        // Clear
         private void clearBtnClick(object sender, EventArgs e)
         {
-
+            resetStat();
         }
 
+        // Delete
         private void backspaceBtn(object sender, EventArgs e)
         {
-
+            if (_onDisplay.Length != 1)
+                _onDisplay = _onDisplay.Substring(0, _onDisplay.Length - 1);
+            else
+                _onDisplay = "0";
+            UpdateUI(_onDisplay);
         }
     }
 }

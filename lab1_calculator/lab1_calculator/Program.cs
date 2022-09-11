@@ -16,7 +16,7 @@ namespace lab1_calculator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Калькулятор());
+            Application.Run(new Calculator());
         }
     }
 }
