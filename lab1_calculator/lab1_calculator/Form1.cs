@@ -73,17 +73,16 @@ namespace lab1_calculator
         }
 
         //Обновление дисплея
-        public void UpdateUI(string outputStr)
+        public void UpdateUI(string outStr)
         {
-            double tmp = Convert.ToDouble(outputStr);
-            if (outputStr.Length >= 7 && tmp > 0)
+            if (outStr.Length >= 12)
             {
-                //проблема с ооооочень маленькими числами?
-                tmp = Math.Round(tmp, 5);
-                outputStr = tmp.ToString();
+                outStr = String.Format("{0:#.###e+00}", Convert.ToDouble(outStr));
             }
-            txtbox_display.Text = outputStr;
-        }
+
+            txtbox_display.Text = outStr;
+            
+         }
 
         //Перекидывание строк в CalculatorData
         private void setupData()
@@ -93,6 +92,8 @@ namespace lab1_calculator
             _data.DMemory = Convert.ToDouble(_inMemory);
         }
 
+
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // 0 - 9
         private void numericBtnClick(object sender, EventArgs e)
         {
