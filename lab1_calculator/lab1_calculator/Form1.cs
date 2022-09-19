@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace lab1_calculator
 {
+    /// <summary>
+    /// inf
+    /// </summary>
     public partial class Calculator : Form
     {
         private CalculatorData _data = new CalculatorData();
