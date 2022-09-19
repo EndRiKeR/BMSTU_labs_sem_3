@@ -15,9 +15,9 @@ namespace lab1_calculator
         private CalculatorData _data = new CalculatorData();
 
         //Данные с формы в строках
-        private string _onDisplay;
-        private string _inSummary;
-        private string _inMemory;
+        private string _onDisplay = "0";
+        private string _inSummary = "0";
+        private string _inMemory = "0";
 
         //Енамы, которые запоминаю арифм действия и действия в целом
         Moves _action = Moves.None;
@@ -100,6 +100,9 @@ namespace lab1_calculator
             Button btn = (Button)sender;
             if ((_onDisplay == "0") || (_move == Moves.Equale)) {
                 _onDisplay = "";
+            } else if (_onDisplay == "-0")
+            {
+                _onDisplay = "-";
             }
             _move = Moves.Add;
             _onDisplay += btn.Text;
@@ -164,10 +167,31 @@ namespace lab1_calculator
         // Delete
         private void backspaceBtn(object sender, EventArgs e)
         {
-            if (_onDisplay.Length != 1)
+            if (_onDisplay.Length != 1 && _onDisplay != "-0")
+            {
                 _onDisplay = _onDisplay.Substring(0, _onDisplay.Length - 1);
-            else
+            } else
+            {
                 _onDisplay = "0";
+            }
+
+            if (_onDisplay == "-")
+            {
+                _onDisplay = "0";
+            }
+
+            UpdateUI(_onDisplay);
+        }
+
+        // "+/-"
+        private void revertBtn(object sender, EventArgs e)
+        {
+            if (_onDisplay.StartsWith("-")) {
+                //_onDisplay.TrimStart(new char[] {'-'});
+                _onDisplay = _onDisplay.Substring(1);
+            } else {
+                _onDisplay = $"-{_onDisplay}";
+            }
             UpdateUI(_onDisplay);
         }
     }

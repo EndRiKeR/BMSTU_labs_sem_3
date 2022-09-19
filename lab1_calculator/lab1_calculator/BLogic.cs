@@ -49,7 +49,7 @@ namespace lab1_calculator
                     break;
                 case Moves.MMinus:
                 case Moves.MPlus:
-                    _fromActToFunc[act].Invoke(ref mem, ref num);
+                    _fromActToFunc[mov].Invoke(ref mem, ref num);
                     break;
                 case Moves.Clear:
                     clearMove(ref sum, ref num, ref mem);
