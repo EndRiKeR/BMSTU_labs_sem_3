@@ -10,8 +10,6 @@ namespace lab1_calculator
     {
         private Dictionary<Moves, Action> _fromActToFunc;
 
-        private bool _error = false;
-
         private Moves _move;
         private Moves _action;
 
@@ -76,17 +74,19 @@ namespace lab1_calculator
 
         private dataTransport setupDataTransport()
         {
-            dataTransport dt = new dataTransport();
+            dataTransport dt = new dataTransport(_move,
+                                                    _action,
+                                                    _dDisplay.ToString(),
+                                                    _dSummary.ToString(),
+                                                    _dMemory.ToString());
 
-            dt.Number = _dDisplay.ToString();
+            /*dt.Number = _dDisplay.ToString();
             dt.Summary = _dSummary.ToString();
             dt.Memory = _dMemory.ToString();
             dt.Move = _move;
             dt.Action = _action;
 
-            dt.Error = _error;
-            dt.ErrorMessage = "";
-
+            */
             return dt;
         }
 

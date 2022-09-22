@@ -28,34 +28,29 @@ namespace lab1_calculator
 
     struct dataTransport
     {
-        Moves _move;
-        Moves _action;
-        string _num;
-        string _sum;
-        string _mem;
+        //Moves _move;
+        //Moves _action;
+        //string _num;
+        //string _sum;
+        //string _mem;
 
-        bool _error;
-        string _erMes;
+        public Moves Move { get; set; }
+        public Moves Action { get; set; }
+        public string Number { get; set; }
+        public string Summary { get; set; }
+        public string Memory { get; set; }
 
-        public string ErrorMessage
+        public dataTransport(Moves move, Moves act, string num, string sum, string mem)
         {
-            get => _erMes;
-            set => _erMes = value;
+            Move = move;
+            Action = act;
+            Number = num;
+            Summary = sum;
+            Memory = mem;
         }
 
-        public bool Error
-        {
-            get => _error;
-            set => _error = value;
-        }
 
-        public Moves Move
-        {
-            get => _move;
-            set => _move = value;
-        }
-
-        public Moves Action
+        /*public Moves Action
         {
             get => _action;
             set => _action = value;
@@ -77,6 +72,6 @@ namespace lab1_calculator
         {
             get { return _mem; }
             set { _mem = value; }
-        }
+        }*/
     }
 }

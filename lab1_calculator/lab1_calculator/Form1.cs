@@ -73,7 +73,7 @@ namespace lab1_calculator
             }
             catch (Exception)
             {
-                secureUp("OOOOPS! ER PROBLEM");
+                secureUp("OOOOPS! UNEXPECTED PROBLEM");
             }
         }
 
