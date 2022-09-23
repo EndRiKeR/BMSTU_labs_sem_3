@@ -38,7 +38,7 @@ namespace lab1_calculator
         public Moves Action { get; set; }
         public string Number { get; set; }
         public string Summary { get; set; }
-        public string Memory { get; set; }
+        public string Memory { get; }
 
         public dataTransport(Moves move, Moves act, string num, string sum, string mem)
         {

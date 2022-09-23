@@ -10,42 +10,22 @@ namespace lab1_calculator
     {
         private Dictionary<Moves, Action> _fromActToFunc;
 
-        private Moves _move;
+        /*private Moves _move;
         private Moves _action;
 
         private double _dDisplay;
         private double _dSummary;
-        private double _dMemory;
+        private double _dMemory; */
 
-        public Moves Move
-        {
-            get => _move;
-            set => _move = value;
-        }
+        public Moves Move { get; set; }
 
-        public Moves Action
-        {
-            get => _action;
-            set => _action = value;
-        }
+        public Moves Action { get; set; }
 
-        public double DDisplay
-        {
-            get { return _dDisplay; }
-            set { _dDisplay = value; }
-        }
+        public double DDisplay { get; set; }
 
-        public double DSummary
-        {
-            get { return _dSummary; }
-            set { _dSummary = value; }
-        }
+        public double DSummary { get; set; }
 
-        public double DMemory
-        {
-            get { return _dMemory; }
-            set { _dMemory = value; }
-        }
+        public double DMemory { get; set; }
 
         public BLogic()
         {
@@ -74,11 +54,11 @@ namespace lab1_calculator
 
         private dataTransport setupDataTransport()
         {
-            dataTransport dt = new dataTransport(_move,
-                                                    _action,
-                                                    _dDisplay.ToString(),
-                                                    _dSummary.ToString(),
-                                                    _dMemory.ToString());
+            dataTransport dt = new dataTransport(Move,
+                                                    Action,
+                                                    DDisplay.ToString(),
+                                                    DSummary.ToString(),
+                                                    DMemory.ToString());
 
             /*dt.Number = _dDisplay.ToString();
             dt.Summary = _dSummary.ToString();
@@ -94,17 +74,17 @@ namespace lab1_calculator
         {
             try
             {
-                switch (_move)
+                switch (Move)
                 {
                     case Moves.Plus:
                     case Moves.Minus:
                     case Moves.Mult:
                     case Moves.Divide:
                     case Moves.Equale:
-                        _fromActToFunc[_action].Invoke();
+                        _fromActToFunc[Action].Invoke();
                         break;
                     default:
-                        _fromActToFunc[_move].Invoke();
+                        _fromActToFunc[Move].Invoke();
                         break;
                 }
 
@@ -118,77 +98,77 @@ namespace lab1_calculator
 
         private void plusAct()
         {
-            _dSummary += _dDisplay;
+            DSummary += DDisplay;
         }
 
         private void minusAct()
         {
-            _dSummary -= _dDisplay;
+            DSummary -= DDisplay;
         }
 
         private void multAct()
         {
-            _dSummary *= _dDisplay;
+            DSummary *= DDisplay;
         }
 
         private void divideAct()
         {
-            if (_dDisplay == 0)
+            if (DDisplay == 0)
                 throw new DivideByZeroException();
 
-            _dSummary /= _dDisplay;
+            DSummary /= DDisplay;
         }
 
         private void noneAct()
         {
-            if (_dSummary == 0.0)
-                _dSummary = _dDisplay;
+            if (DSummary == 0.0)
+                DSummary = DDisplay;
         }
 
         private void equaleAct()
         {
-            _dDisplay = _dSummary;
-            _dSummary = 0;
+            DDisplay = DSummary;
+            DSummary = 0;
         }
 
         private void sqrt2Move()
         {
-            if (_dDisplay < 0)
+            if (DDisplay < 0)
                 throw new InvalidOperationException();
 
-            _dDisplay = Math.Sqrt(_dDisplay);   
+            DDisplay = Math.Sqrt(DDisplay);   
         }
 
         private void pow2Move()
         {
-            _dDisplay = Math.Pow(_dDisplay, 2);
+            DDisplay = Math.Pow(DDisplay, 2);
         }
 
         private void clearMove()
         {
-            _dDisplay = 0;
-            _dSummary = 0;
-            _dMemory = 0;
+            DDisplay = 0;
+            DSummary = 0;
+            DMemory = 0;
         }
 
         private void memPlus()
         {
-            _dMemory += _dDisplay;
+            DMemory += DDisplay;
         }
 
         private void memMinus()
         {
-            _dMemory -= _dDisplay;
+            DMemory -= DDisplay;
         }
 
         private void memClearMove()
         {
-            _dMemory = 0;
+            DMemory = 0;
         }
 
         private void memResultMove()
         {
-            _dDisplay = _dMemory;
+            DDisplay = DMemory;
         }
     }
 }
