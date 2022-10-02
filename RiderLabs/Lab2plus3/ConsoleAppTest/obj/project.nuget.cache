@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "1S4ky1AxC+NKsvGp/0sMrtKJHrQkPgCGY7M9136+irdVG5fINsaPGWy+SxEnKmz+CwOmFT+8JHw1podf+fEyjQ==",
+  "success": true,
+  "projectFilePath": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\RiderLabs\\Lab2plus3\\ConsoleAppTest\\ConsoleAppTest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\solom\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
+    "C:\\Users\\solom\\.nuget\\packages\\moq\\4.18.2\\moq.4.18.2.nupkg.sha512",
+    "C:\\Users\\solom\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
