@@ -1,7 +1,0 @@
-﻿
-Console.WriteLine("Hello, World!");
-
-
-
-
-

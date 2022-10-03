@@ -1,0 +1,5 @@
+D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\MathVector\obj\Debug\netcoreapp3.1\MathVector.csproj.AssemblyReference.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\MathVector\obj\Debug\netcoreapp3.1\MathVector.GeneratedMSBuildEditorConfig.editorconfig
+D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\MathVector\obj\Debug\netcoreapp3.1\MathVector.AssemblyInfoInputs.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\MathVector\obj\Debug\netcoreapp3.1\MathVector.AssemblyInfo.cs
+D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\MathVector\obj\Debug\netcoreapp3.1\MathVector.csproj.CoreCompileInputs.cache
