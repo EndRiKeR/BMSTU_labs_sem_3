@@ -1,68 +1,46 @@
 ﻿using System.Collections;
 using System.Numerics;
+using System.Math;
 
-namespace Lab2plus3;
+//namespace Lab2plus3;
 
-public class GeoVector : IMathVector
+public class GeoVector : Object, IMathVector
 {
-    public struct Point
-    {
-        public double X { get; set; }
-        public double Y { get; set; }
-
-        public Point(double x, double y)
-        {
-            X = x;
-            Y = y;
-        }
-    }
-
-    private Point _start;
-    private Point _end;
+    private List<double> _osi = new List<double>();
     
-    public Point Start => _start;
-    public Point End => _end;
-
-    public int Dimensions { get; }
+    public int Dimensions { get => _osi.Length(); }
 
     public double this[int i] {
         get
         {
-            double result;
-            switch (i)
-            {
-                case 0: result = _start.X;
-                    break;
-                case 1: result = _start.Y;
-                    break;
-                case 2: result = _end.X;
-                    break;
-                case 3: result = _end.Y;
-                    break;
-                default:
-                    throw new Exception();
-            }
-            return result;
+            if (i < 0 || i >= _osi.Length())
+                throw new Exception();
+
+            return _osi[i];
         }
         set
         {
-            switch (i)
-            {
-                case 0: _start.X = value;
-                    break;
-                case 1: _start.Y = value;
-                    break;
-                case 2: _end.X = value;
-                    break;
-                case 3: _end.Y = value;
-                    break;
-                default:
-                    throw new Exception();
-            }
+            if (i < 0 || i >= _osi.Length())
+                throw new Exception();
+
+            _osi[i] = value;
         }
+        
     }
 
-    public double Length { get => Math.Sqrt(Math.Pow((_end.X - _start.X), 2) + Math.Pow((_end.Y - _start.Y), 2)); }
+    public double Length
+    {
+        get
+        {
+            double sum = 0;
+            foreach (var pos in _osi)
+            {
+                sum += Math.Pow(pos, 2);
+            }
+            return Math.Sqrt(sum);
+        }
+        
+    }
     
     public IMathVector SumNumber(double number) 
     {
@@ -113,30 +91,23 @@ public class GeoVector : IMathVector
         return vecResult;
     }
 
-    public double ScalarMultiply(IMathVector vector, double angle)
+    public double ScalarMultiply(IMathVector vector)
     {
-        return this.Length * vector.Length * Math.Cos(angle);
+        //Я либо дурак, либо слепой. Я не понимаю, как тут угл без угла найти
+        return this.Length * vector.Length;
     }
-
-    //Я буду находить среднее меджу расстояниями крайними векторами 
+ 
     public double CalcDistance(IMathVector vector)
     {
-        Point vecStart = new Point(vector[0], vector[1]);
-        Point vecEnd = new Point(vector[2], vector[3]);
-        double distFirst = distanceCalculate(this.Start, vecStart);
-        double distSecond = distanceCalculate(this.End, vecEnd);
-        return (distFirst + distSecond) / 2;
+        double result = 0;
+        for (int i =0; i < _osi.Length(); ++i)
+        {
+            result += (Math.Pow(this[i], 2) - Math.Pow(vector[i], 2));
+        }
+        return Math.Sqrt(result);
     }
 
-    public IEnumerator GetEnumerator()
-    {
-        throw new NotImplementedException();
-    }
-
-    private double distanceCalculate(Point start, Point end)
-    {
-        return Math.Sqrt(Math.Pow((end.X - start.X), 2) + Math.Pow((end.Y - start.Y), 2));
-    }
+    public IEnumerator GetEnumerator() => _osi.GetEnumerator();
     
     public static IMathVector operator+ (GeoVector vector, double number)
     {
@@ -194,9 +165,7 @@ public class GeoVector : IMathVector
 
     public static double operator% (GeoVector vector, GeoVector secondVec)
     {
-        //УГЛЫ В ВЕКТОРАХ?
-        double angle = 45;
-        return vector.ScalarMultiply(secondVec, angle);
+        return vector.ScalarMultiply(secondVec);
     }
     
 
