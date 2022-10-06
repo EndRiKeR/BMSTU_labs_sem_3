@@ -7,3 +7,4 @@ D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\MathVectorLib\obj\Debug\netcore
 D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\MathVectorLib\obj\Debug\netcoreapp3.1\MathVectorLib.csproj.CoreCompileInputs.cache
 D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\MathVectorLib\obj\Debug\netcoreapp3.1\MathVectorLib.dll
 D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\MathVectorLib\obj\Debug\netcoreapp3.1\MathVectorLib.pdb
+D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\MathVectorLib\obj\Debug\netcoreapp3.1\MathVectorLib.csproj.AssemblyReference.cache

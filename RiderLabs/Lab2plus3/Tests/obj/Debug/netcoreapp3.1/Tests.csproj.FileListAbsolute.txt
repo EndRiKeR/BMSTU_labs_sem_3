@@ -1,5 +1,0 @@
-D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\Tests\obj\Debug\netcoreapp3.1\Tests.csproj.AssemblyReference.cache
-D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\Tests\obj\Debug\netcoreapp3.1\Tests.GeneratedMSBuildEditorConfig.editorconfig
-D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\Tests\obj\Debug\netcoreapp3.1\Tests.AssemblyInfoInputs.cache
-D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\Tests\obj\Debug\netcoreapp3.1\Tests.AssemblyInfo.cs
-D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\Tests\obj\Debug\netcoreapp3.1\Tests.csproj.CoreCompileInputs.cache
