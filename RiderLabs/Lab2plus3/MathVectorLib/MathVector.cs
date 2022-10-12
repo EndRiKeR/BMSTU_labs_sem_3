@@ -5,16 +5,29 @@ using System.Numerics;
 
 namespace MathVectorSpace
 {
+    /// <summary>
+    /// Класс, представляющий математический вектор.
+    /// Наследуется от Object и IMathVector
+    /// </summary>
     public class MathVector : Object, IMathVector
     {
         private double[] _axis;
 
-        //Немножко конструкторов))))
+        /// <summary>
+        /// Конструктор по умолчанию.
+        /// Создает нулевой вектор в плоскости Oxy.
+        /// </summary>
         public MathVector()
         {
-            _axis = new double[1] { 0 };
+            _axis = new double[2] { 0, 0 };
         }
 
+        /// <summary>
+        /// Конструтор с параметром.
+        /// Создает вестор в size-мерной плоскости.
+        /// </summary>
+        /// <exception cref="UncorrectValue_Riker">Неверное значение</exception>
+        /// <param name="size">Количество осей плоскости</param>
         public MathVector(int size)
         {
             if (size <= 0)
@@ -23,17 +36,31 @@ namespace MathVectorSpace
             _axis = new double[size];
         }
 
-        //params?
+        /// <summary>
+        /// Конструктор с параметром.
+        /// Создает вектор по данному массиву координат.
+        /// </summary>
+        /// <param name="values">Массив координат</param>
         public MathVector(double[] values)
         {
             _axis = values;
         }
 
+        /// <summary>
+        /// Конструктор копирования.
+        /// Создает копию данного вектора.
+        /// </summary>
+        /// <param name="mvec">Копируемый вектор</param>
         public MathVector(MathVector mvec)
         {
             _axis = mvec._axis;
         }
 
+        /// <summary>
+        /// Конструктор с параметром.
+        /// Создает копию вектора, реализующего IMathVector.
+        /// </summary>
+        /// <param name="imvec">Копируемый вектор</param>
         public MathVector(IMathVector imvec)
         {
             _axis = new double[imvec.Dimensions];
@@ -44,8 +71,18 @@ namespace MathVectorSpace
             }
         }
 
+        /// <summary>
+        /// Получить размерность вектора (количество координат).
+        /// </summary>
         public int Dimensions { get => _axis.Length; }
 
+        /// <summary>
+        /// Доступ к координатам вектора по средством индекса.
+        /// При некорректном индексе выкидывает IncorrectIndex_Riker().
+        /// </summary>
+        /// <exception cref="IncorrectIndex_Riker">Некорректный индекс</exception>
+        /// <param name="i">Индекс</param>
+        /// <returns>Доступ к значению координаты с возможностью чтения и изменения</returns>
         public double this[int i]
         {
             get
@@ -58,7 +95,6 @@ namespace MathVectorSpace
             set
             {
                 if (i < 0 || i >= _axis.Length)
-                    //_axis.Add(value);
                     throw new IncorrectIndex_Riker();
 
                 _axis[i] = value;
@@ -66,6 +102,9 @@ namespace MathVectorSpace
 
         }
 
+        /// <summary>
+        /// Возвращаем длину данного вектора.
+        /// </summary>
         public double Length
         {
             get
@@ -80,6 +119,12 @@ namespace MathVectorSpace
 
         }
 
+        /// <summary>
+        /// Создает новый вектор, относительно данного.
+        /// Координаты нового вектора увеличены на значение number.
+        /// </summary>
+        /// <param name="number">Значение прироста координат</param>
+        /// <returns>Новый вектор с измененными значениями</returns>
         public IMathVector SumNumber(double number)
         {
             var vecResult = new MathVector(Dimensions);
@@ -92,7 +137,12 @@ namespace MathVectorSpace
             return vecResult;
         }
 
-
+        /// <summary>
+        /// Создает новый вектор, относительно данного.
+        /// Координаты нового вектора увеличены в number раз.
+        /// </summary>
+        /// <param name="number">Множиетли координат</param>
+        /// <returns>Новый вектор с измененными значениями</returns>
         public IMathVector MultiplyNumber(double number)
         {
             var vecResult = new MathVector(Dimensions);
@@ -105,6 +155,13 @@ namespace MathVectorSpace
             return vecResult;
         }
 
+        /// <summary>
+        /// Создает новый вектор, относительно данного.
+        /// Координаты нового вектора равны сумме соответствующих координат 2-х данных векторов.
+        /// </summary>
+        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <param name="vector">Второй вектор</param>
+        /// <returns>Новый вектор с координатами, равными сумме 2-х данных</returns>
         public IMathVector Sum(IMathVector vector)
         {
             if (this.Dimensions != vector.Dimensions)
@@ -120,6 +177,13 @@ namespace MathVectorSpace
             return vecResult;
         }
 
+        /// <summary>
+        /// Создает новый вектор, относительно данного.
+        /// Координаты нового вектора равен произведению соответствующих координат 2-х данных векторов.
+        /// </summary>
+        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <param name="vector">Второй вектор</param>
+        /// <returns>Новый вектор с координатами, равными произведению 2-х данных</returns>
         public IMathVector Multiply(IMathVector vector)
         {
             if (this.Dimensions != vector.Dimensions)
@@ -135,12 +199,23 @@ namespace MathVectorSpace
             return vecResult;
         }
 
+        /// <summary>
+        /// Находит скалярное произведение двух данных векторов.
+        /// </summary>
+        /// <param name="vector">Второй вектор</param>
+        /// <returns>Скалярное произведение</returns>
         public double ScalarMultiply(IMathVector vector)
         {
             //Я либо дурак, либо слепой. Я не понимаю, как тут угл без угла найти
             return this.Length * vector.Length;
         }
 
+        /// <summary>
+        /// Вычисляет расстояние между 2-мя данными векторами.
+        /// </summary>
+        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <param name="vector">Второй вектор</param>
+        /// <returns>Возвращает расстояние</returns>
         public double CalcDistance(IMathVector vector)
         {
             if (this.Dimensions != vector.Dimensions)
@@ -154,8 +229,16 @@ namespace MathVectorSpace
             return Math.Sqrt(result);
         }
 
+        /// <summary>
+        /// Возвращает Enumerator.
+        /// </summary>
+        /// <returns>Возвращает Enumerator</returns>
         public IEnumerator GetEnumerator() => _axis.GetEnumerator();
 
+        /// <summary>
+        /// Преобращает вектор в строку
+        /// </summary>
+        /// <returns>Строка - вектор</returns>
         public override string? ToString()
         {
             var str = "[";
@@ -168,70 +251,5 @@ namespace MathVectorSpace
             str += "]";
             return str;
         }
-
-        /*public static IMathVector operator +(IMathVector vector, double number)
-        {
-            return vector.SumNumber(number);
-        }
-
-        public static IMathVector operator -(IMathVector vector, double number)
-        {
-            return vector.SumNumber(-number);
-        }
-
-        public static IMathVector operator *(IMathVector vector, double number)
-        {
-            return vector.MultiplyNumber(number);
-        }
-
-        public static IMathVector operator /(IMathVector vector, double number)
-        {
-            if (number == 0)
-                throw new DivideByZero_Riker();
-
-            return vector.MultiplyNumber(1 / number);
-        }
-
-        public static IMathVector operator +(IMathVector vector, IMathVector secondVec)
-        {
-            return vector.Sum(secondVec);
-        }
-
-        public static IMathVector operator -(IMathVector vector, IMathVector secondVec)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                secondVec[i] = -secondVec[i];
-            }
-            return vector.Sum(secondVec);
-        }
-
-        public static IMathVector operator *(IMathVector vector, IMathVector secondVec)
-        {
-            return vector.Multiply(secondVec);
-        }
-
-        public static IMathVector operator /(IMathVector vector, IMathVector secondVec)
-        {
-            if (vector.Length != secondVec.Length)
-                throw new WrongVecSizes_Riker();
-
-            for (int i = 0; i < _axis.Length; i++)
-            {
-                if (secondVec[i] == 0)
-                    throw new DivideByZero_Riker();
-
-                secondVec[i] = 1 / secondVec[i];
-            }
-
-            return vector.Multiply(secondVec);
-        }
-
-        public static double operator %(IMathVector vector, IMathVector secondVec)
-        {
-            if (vector.Length != secondVec.Length)
-                throw new WrongVecSizes_Riker();
-            return vector.ScalarMultiply(secondVec);
-        }*/
     }
 }
