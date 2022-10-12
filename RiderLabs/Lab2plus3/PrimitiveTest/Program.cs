@@ -19,6 +19,11 @@ namespace TestsPrimitiveTest
             MathVector trueMVec = new MathVector(new double[3] { 1, 2, 3 });
             IMathVector copyVec = new MathVector(trueMVec);
 
+            foreach (var point in doubVec)
+            {
+                Console.WriteLine($"vec axis: {point}");
+            }
+
             Console.WriteLine($"Default Constructor: {defVec}");
             Console.WriteLine($"Size Constructor: {sizeVec}");
             Console.WriteLine($"Double[]  Constructor: {doubVec}");
@@ -283,6 +288,32 @@ namespace TestsPrimitiveTest
                 Console.WriteLine(e.Message);
             }
 
+            try
+            {
+                Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nVector != Vector\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                Console.WriteLine("tmp = testVec % secondVec;\n");
+
+                //Инициализация
+                IMathVector testVec = new MathVector(new double[3] { 3, 10, 5 });
+                IMathVector secondVec = new MathVector(new double[2] { 1, 2 });
+
+                Console.WriteLine($"TestVec: {testVec}");
+                Console.WriteLine($"SecondVec: {secondVec}");
+
+                //Действия
+                IMathVector tmp = testVec / secondVec;
+                Console.WriteLine($"Result: {tmp}");
+
+            }
+            catch (Exception_Riker e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+
+
+
+
         }
     }
 }
@@ -298,6 +329,9 @@ namespace TestsPrimitiveTest
  * +) Конструктор
  * +) Лист в массив
  * -) IMathVector(MathVector)
+ * 
+ * 10) for each
+ * 11) bp b
  * 
  * 
  */
