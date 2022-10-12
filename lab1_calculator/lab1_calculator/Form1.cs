@@ -10,14 +10,23 @@ using System.Windows.Forms;
 
 namespace lab1_calculator
 {
+    /// <summary>
+    /// Вопросы:
+    /// 
+    /// 1) Надо ли блокировать изменения значения после результата?
+    /// 2) Как выводить MessageBox относительно приложения, а не экрана
+    /// 
+    /// 
+    /// </summary>
     public partial class Calculator : Form
     {
-        private CalculatorData _data = new CalculatorData();
+        //private CalculatorData _data = new CalculatorData();
+        private BLogic _bl = new BLogic();
 
         //Данные с формы в строках
-        private string _onDisplay;
-        private string _inSummary;
-        private string _inMemory;
+        private string _onDisplay = "0";
+        private string _inSummary = "0";
+        private string _inMemory = "0";
 
         //Енамы, которые запоминаю арифм действия и действия в целом
         Moves _action = Moves.None;
@@ -48,18 +57,31 @@ namespace lab1_calculator
         {
             _move = move;
             setupData();
-            bool error = _data.DoBLogic(_action, _move, out _inSummary, out _onDisplay, out _inMemory);
-            if (error) {
-                secureUp();
+            dataTransport dt;
+            try
+            {
+                dt = _bl.DoMove();
+                acceptDataTransfer(dt);
+            }
+            catch (DivideByZeroException er)
+            {
+                secureUp(er.Message);
+            }
+            catch (InvalidOperationException)
+            {
+                secureUp("Попытка взятия корня от отрицательного числа");
+            }
+            catch (Exception)
+            {
+                secureUp("OOOOPS! UNEXPECTED PROBLEM");
             }
         }
 
         //Реакция на ошибки
-        private void secureUp()
+        private void secureUp(string erStr)
         {
             resetStat();
-            //Как заставить его появиться перед окном, а не просто по цетнру экрана?
-            MessageBox.Show("You can't do this!", "Error", MessageBoxButtons.OK);
+            MessageBox.Show(erStr, "ERROR!", MessageBoxButtons.OK);
         }
 
         //Очистка всего
@@ -67,38 +89,58 @@ namespace lab1_calculator
         {
             _onDisplay = "0";
             _inSummary = "0";
+            _inMemory = "0";
             _move = Moves.None;
             _action = Moves.None;
-            UpdateUI(_onDisplay);
+            txtbox_display.Text = "0";
         }
 
         //Обновление дисплея
-        public void UpdateUI(string outputStr)
+        public void UpdateUI(string outStr)
         {
-            double tmp = Convert.ToDouble(outputStr);
-            if (outputStr.Length >= 7 && tmp > 0)
+            if (outStr.Length >= 12)
             {
-                //проблема с ооооочень маленькими числами?
-                tmp = Math.Round(tmp, 5);
-                outputStr = tmp.ToString();
+                outStr = String.Format("{0:#.###e+00}", Convert.ToDouble(outStr));
             }
-            txtbox_display.Text = outputStr;
-        }
 
-        //Перекидывание строк в CalculatorData
+            if (outStr == "∞")
+            {
+                secureUp("U reach infinity! WoW. Stop, pls!");
+                outStr = "0";
+            }
+
+            txtbox_display.Text = outStr;
+            
+         }
+
         private void setupData()
         {
-            _data.DDisplay = Convert.ToDouble(_onDisplay);
-            _data.DSummary = Convert.ToDouble(_inSummary);
-            _data.DMemory = Convert.ToDouble(_inMemory);
+            _bl.DDisplay = Convert.ToDouble(_onDisplay);
+            _bl.DSummary = Convert.ToDouble(_inSummary);
+            _bl.DMemory = Convert.ToDouble(_inMemory);
+
+            _bl.Move = _move;
+            _bl.Action = _action;
         }
 
+        private void acceptDataTransfer(dataTransport dt)
+        {
+            _onDisplay = dt.Number;
+            _inSummary = dt.Summary;
+            _inMemory = dt.Memory;
+        }
+
+
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // 0 - 9
         private void numericBtnClick(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             if ((_onDisplay == "0") || (_move == Moves.Equale)) {
                 _onDisplay = "";
+            } else if (_onDisplay == "-0")
+            {
+                _onDisplay = "-";
             }
             _move = Moves.Add;
             _onDisplay += btn.Text;
@@ -163,10 +205,32 @@ namespace lab1_calculator
         // Delete
         private void backspaceBtn(object sender, EventArgs e)
         {
-            if (_onDisplay.Length != 1)
+            if (_onDisplay.Length != 1 && _onDisplay != "-0")
+            {
                 _onDisplay = _onDisplay.Substring(0, _onDisplay.Length - 1);
-            else
+            } else
+            {
                 _onDisplay = "0";
+            }
+
+            if (_onDisplay == "-")
+            {
+                _onDisplay = "0";
+            }
+
+            UpdateUI(_onDisplay);
+        }
+
+        // "+/-"
+        private void revertBtn(object sender, EventArgs e)
+        {
+            //if (_move != Moves.Equale)
+            if (_onDisplay.StartsWith("-")) {
+                //_onDisplay.TrimStart(new char[] {'-'});
+                _onDisplay = _onDisplay.Substring(1);
+            } else {
+                _onDisplay = $"-{_onDisplay}";
+            }
             UpdateUI(_onDisplay);
         }
     }

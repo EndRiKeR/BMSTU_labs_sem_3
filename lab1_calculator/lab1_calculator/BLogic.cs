@@ -8,11 +8,24 @@ namespace lab1_calculator
 {
     class BLogic
     {
-        private Dictionary<Moves, MyAction> _fromActToFunc;
+        private Dictionary<Moves, Action> _fromActToFunc;
 
-        delegate void MyAction(ref double sum, ref double num);
+        /*private Moves _move;
+        private Moves _action;
 
-        private bool _error = false;
+        private double _dDisplay;
+        private double _dSummary;
+        private double _dMemory; */
+
+        public Moves Move { get; set; }
+
+        public Moves Action { get; set; }
+
+        public double DDisplay { get; set; }
+
+        public double DSummary { get; set; }
+
+        public double DMemory { get; set; }
 
         public BLogic()
         {
@@ -21,7 +34,7 @@ namespace lab1_calculator
 
         public void SetupDict()
         {
-            _fromActToFunc = new Dictionary<Moves, MyAction>()
+            _fromActToFunc = new Dictionary<Moves, Action>()
             {
                 { Moves.None, noneAct },
                 { Moves.Plus, plusAct },
@@ -29,120 +42,133 @@ namespace lab1_calculator
                 { Moves.Mult, multAct },
                 { Moves.Divide, divideAct },
                 { Moves.Equale, equaleAct },
-                { Moves.MPlus, plusAct },
-                { Moves.MMinus, minusAct }
+                { Moves.MPlus, memPlus },
+                { Moves.MMinus, memMinus },
+                { Moves.Clear, clearMove},
+                { Moves.Pow2, pow2Move},
+                { Moves.Sqrt2, sqrt2Move},
+                { Moves.MR, memResultMove},
+                { Moves.MC, memClearMove}
             };
         }
 
-        public bool DoMove(ref double sum, ref double num, ref double mem, Moves act, Moves mov)
+        private dataTransport setupDataTransport()
         {
-            _error = false;
+            dataTransport dt = new dataTransport(Move,
+                                                    Action,
+                                                    DDisplay.ToString(),
+                                                    DSummary.ToString(),
+                                                    DMemory.ToString());
 
-            switch (mov)
+            /*dt.Number = _dDisplay.ToString();
+            dt.Summary = _dSummary.ToString();
+            dt.Memory = _dMemory.ToString();
+            dt.Move = _move;
+            dt.Action = _action;
+
+            */
+            return dt;
+        }
+
+        public dataTransport DoMove()
+        {
+            try
             {
-                case Moves.Plus:
-                case Moves.Minus:
-                case Moves.Mult:
-                case Moves.Divide:
-                case Moves.Equale:
-                    _fromActToFunc[act].Invoke(ref sum, ref num);
-                    break;
-                case Moves.MMinus:
-                case Moves.MPlus:
-                    _fromActToFunc[act].Invoke(ref mem, ref num);
-                    break;
-                case Moves.Clear:
-                    clearMove(ref sum, ref num, ref mem);
-                    break;
-                case Moves.Pow2:
-                    pow2Move(ref num);
-                    break;
-                case Moves.Sqrt2:
-                    sqrt2Move(ref num);
-                    break;
-                case Moves.MR:
-                    memResultMove(ref mem, ref num);
-                    break;
-                case Moves.MC:
-                    memClearMove(ref mem);
-                    break;
+                switch (Move)
+                {
+                    case Moves.Plus:
+                    case Moves.Minus:
+                    case Moves.Mult:
+                    case Moves.Divide:
+                    case Moves.Equale:
+                        _fromActToFunc[Action].Invoke();
+                        break;
+                    default:
+                        _fromActToFunc[Move].Invoke();
+                        break;
+                }
 
-                case Moves.None:
-                default:
-                    break;
-            }
+                return setupDataTransport();
 
-            return _error;
-        }
-
-        private void plusAct(ref double n1, ref double n2)
-        {
-            n1 += n2;
-        }
-
-        private void minusAct(ref double n1, ref double n2)
-        {
-            n1 -= n2;
-        }
-
-        private void multAct(ref double n1, ref double n2)
-        {
-            n1 *= n2;
-        }
-
-        private void divideAct(ref double n1, ref double n2)
-        {
-            if (n2 != 0)
+            } catch (Exception ex)
             {
-                n1 /= n2;
-            } else
-            {
-                _error = true;
+                throw ex;
             }
         }
 
-        private void noneAct(ref double sum, ref double num)
+        private void plusAct()
         {
-            if (sum == 0.0)
-                sum = num;
+            DSummary += DDisplay;
         }
 
-        private void equaleAct(ref double sum, ref double num)
+        private void minusAct()
         {
-            num = sum;
-            sum = 0;
+            DSummary -= DDisplay;
         }
 
-        private void sqrt2Move(ref double num)
+        private void multAct()
         {
-            if (num >= 0) {
-                num = Math.Sqrt(num);
-            } else {
-                _error = true;
-            }
-            
+            DSummary *= DDisplay;
         }
 
-        private void pow2Move(ref double num)
+        private void divideAct()
         {
-            num = Math.Pow(num, 2);
+            if (DDisplay == 0)
+                throw new DivideByZeroException();
+
+            DSummary /= DDisplay;
         }
 
-        private void clearMove(ref double sum, ref double num, ref double mem)
+        private void noneAct()
         {
-            sum = 0.0;
-            num = 0;
-            mem = 0;
+            if (DSummary == 0.0)
+                DSummary = DDisplay;
         }
 
-        private void memClearMove(ref double mem)
+        private void equaleAct()
         {
-            mem = 0;
+            DDisplay = DSummary;
+            DSummary = 0;
         }
 
-        private void memResultMove(ref double mem, ref double num)
+        private void sqrt2Move()
         {
-            num = mem;
+            if (DDisplay < 0)
+                throw new InvalidOperationException();
+
+            DDisplay = Math.Sqrt(DDisplay);   
+        }
+
+        private void pow2Move()
+        {
+            DDisplay = Math.Pow(DDisplay, 2);
+        }
+
+        private void clearMove()
+        {
+            DDisplay = 0;
+            DSummary = 0;
+            DMemory = 0;
+        }
+
+        private void memPlus()
+        {
+            DMemory += DDisplay;
+        }
+
+        private void memMinus()
+        {
+            DMemory -= DDisplay;
+        }
+
+        private void memClearMove()
+        {
+            DMemory = 0;
+        }
+
+        private void memResultMove()
+        {
+            DDisplay = DMemory;
         }
     }
 }
