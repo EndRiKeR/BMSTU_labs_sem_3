@@ -11,24 +11,24 @@ namespace MathVectorSpace
 
     }
 
-    class IncorrectIndex_Riker : Exception_Riker
+    public class IncorrectIndex_Riker : Exception_Riker
     {
         public IncorrectIndex_Riker() : base("Incorrect Index in []!") { }
 
     }
 
-    class DivideByZero_Riker : Exception_Riker
+    public class DivideByZero_Riker : Exception_Riker
     {
         public DivideByZero_Riker() : base("U divide by zero!") { }
 
     }
 
-    class WrongVecSizes_Riker : Exception_Riker
+    public class WrongVecSizes_Riker : Exception_Riker
     {
         public WrongVecSizes_Riker() : base("Vectors sizes is differnt!") { }
     }
 
-    class UncorrectValue_Riker : Exception_Riker
+    public class UncorrectValue_Riker : Exception_Riker
     {
         public UncorrectValue_Riker() : base("Uncorrect Value!") { }
     }

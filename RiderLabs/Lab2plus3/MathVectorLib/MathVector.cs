@@ -221,12 +221,12 @@ namespace MathVectorSpace
             if (this.Dimensions != vector.Dimensions)
                 throw new WrongVecSizes_Riker();
 
-            double result = 0;
+            double practicalResult = 0;
             for (int i = 0; i < Dimensions; ++i)
             {
-                result += (Math.Pow(this[i], 2) - Math.Pow(vector[i], 2));
+                practicalResult += Math.Pow(this[i] - vector[i], 2);
             }
-            return Math.Sqrt(result);
+            return Math.Sqrt(practicalResult);
         }
 
         /// <summary>
@@ -250,6 +250,66 @@ namespace MathVectorSpace
             }
             str += "]";
             return str;
+        }
+
+        /// <summary>
+        /// Сравнение двух MathVector.
+        /// </summary>
+        /// <param name="vec">Первый вектор</param>
+        /// <param name="second">Второй вектор</param>
+        /// <returns>Возвращает true, если все соответствующие координаты равны</returns>
+        /// <exception cref="WrongVecSizes_Riker">При неравенстве длин векторов.<exception>
+        public static bool operator ==(MathVector vec, MathVector second)
+        {
+            if (vec.Dimensions != second.Dimensions)
+                throw new WrongVecSizes_Riker();
+
+            bool practicalResult = true;
+
+            for (int i = 0; i < vec.Dimensions; ++i)
+            {
+                if (vec[i] != second[i])
+                {
+                    practicalResult = false;
+                    break;
+                }
+            }
+            return practicalResult;
+        }
+
+        /// <summary>
+        /// Сравнение двух MathVector.
+        /// </summary>
+        /// <param name="vec">Первый вектор</param>
+        /// <param name="second">Второй вектор</param>
+        /// <returns>Возвращает true, если хотя бы одни координаты не равны.</returns>
+        /// <exception cref="WrongVecSizes_Riker">При неравенстве длин векторов.<exception>
+        public static bool operator !=(MathVector vec, MathVector second)
+        {
+            if (vec.Dimensions != second.Dimensions)
+                throw new WrongVecSizes_Riker();
+
+            bool practicalResult = true;
+
+            for (int i = 0; i < vec.Dimensions; ++i)
+            {
+                if (vec[i] != second[i])
+                {
+                    practicalResult = false;
+                    break;
+                }
+            }
+            return !practicalResult;
+        }
+
+        /// <summary>
+        /// Переопределение метода Equales для MathVector.
+        /// </summary>
+        /// <param name="obj">Объект для сравнения</param>
+        /// <returns>Результат сравнения.</returns>
+        public override bool Equals(Object? obj)
+        {
+            return this == (MathVector)obj;
         }
     }
 }

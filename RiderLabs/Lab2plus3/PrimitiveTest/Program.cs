@@ -126,7 +126,7 @@ namespace TestsPrimitiveTest
 
                 //Действия
                 IMathVector tmp = testVec / secondVec;
-                Console.WriteLine($"Result: {tmp}");
+                Console.WriteLine($"practicalResult: {tmp}");
 
             }
             catch (Exception_Riker e)
@@ -150,7 +150,7 @@ namespace TestsPrimitiveTest
                 //Действия
                 Console.WriteLine("Итого: ");
                 IMathVector tmp = testVec / secondVec;
-                Console.WriteLine($"Result: {tmp}");
+                Console.WriteLine($"practicalResult: {tmp}");
 
             }
             catch (Exception_Riker e)
@@ -171,7 +171,7 @@ namespace TestsPrimitiveTest
                 //Действия
                 Console.WriteLine("Итого: ");
                 IMathVector tmp = testVec + 5;
-                Console.WriteLine($"Result: {tmp}");
+                Console.WriteLine($"practicalResult: {tmp}");
 
             }
             catch (Exception_Riker e)
@@ -192,7 +192,7 @@ namespace TestsPrimitiveTest
                 //Действия
                 Console.WriteLine("Итого: ");
                 IMathVector tmp = testVec - 5;
-                Console.WriteLine($"Result: {tmp}");
+                Console.WriteLine($"practicalResult: {tmp}");
 
             }
             catch (Exception_Riker e)
@@ -213,7 +213,7 @@ namespace TestsPrimitiveTest
                 //Действия
                 Console.WriteLine("Итого: ");
                 IMathVector tmp = testVec * 5;
-                Console.WriteLine($"Result: {tmp}");
+                Console.WriteLine($"practicalResult: {tmp}");
 
             }
             catch (Exception_Riker e)
@@ -234,7 +234,7 @@ namespace TestsPrimitiveTest
                 //Действия
                 Console.WriteLine("Итого: ");
                 IMathVector tmp = testVec / 5;
-                Console.WriteLine($"Result: {tmp}");
+                Console.WriteLine($"practicalResult: {tmp}");
 
             }
             catch (Exception_Riker e)
@@ -257,7 +257,7 @@ namespace TestsPrimitiveTest
 
                 //Действия
                 IMathVector tmp = testVec * secondVec;
-                Console.WriteLine($"Result: {tmp}");
+                Console.WriteLine($"practicalResult: {tmp}");
 
             }
             catch (Exception_Riker e)
@@ -280,7 +280,7 @@ namespace TestsPrimitiveTest
 
                 //Действия
                 double tmp = testVec % secondVec;
-                Console.WriteLine($"Result: {tmp}");
+                Console.WriteLine($"practicalResult: {tmp}");
 
             }
             catch (Exception_Riker e)
@@ -302,7 +302,7 @@ namespace TestsPrimitiveTest
 
                 //Действия
                 IMathVector tmp = testVec / secondVec;
-                Console.WriteLine($"Result: {tmp}");
+                Console.WriteLine($"practicalResult: {tmp}");
 
             }
             catch (Exception_Riker e)
