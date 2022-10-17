@@ -41,8 +41,11 @@ namespace MathVectorSpace
         /// Создает вектор по данному массиву координат.
         /// </summary>
         /// <param name="values">Массив координат</param>
+        /// <exception cref="UncorrectValue_Riker">Если подан массив = 0</exception>>
         public MathVector(double[] values)
         {
+            if (values.Length <= 0)
+                throw new UncorrectValue_Riker();
             _axis = values;
         }
 

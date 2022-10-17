@@ -6,7 +6,7 @@ namespace TestProject2.Tests
     [TestClass]
     public partial class AllBasicTests
     {
-       
+
         // + num, 1 ситуация (Normal)
 
         [TestMethod]
@@ -46,23 +46,31 @@ namespace TestProject2.Tests
             Assert.AreEqual(practicalResult, theoriticalResult);
         }
 
-        /// <summary>
-        /// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        /// </summary>
+        // /, 2 ситуации (Normal, DivideByZero)
 
         [TestMethod]
-        public void VectorMultiplyNumberTestNormal()
+        public void VectorDivideNumber_Normal_Test()
         {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
+            IMathVector vectorFirst = new MathVector(new double[] { 2, 4, 6 });
             double number = 2;
-            IMathVector theoriticalResult = new MathVector(new double[] { 2, 4, 6 });
+            IMathVector theoriticalResult = new MathVector(new double[] { 1, 2, 3 });
 
-            IMathVector practicalResult = vectorFirst * number;
-            Assert.IsTrue(practicalResult == theoriticalResult);
+            IMathVector practicalResult = vectorFirst / number;
+            Assert.AreEqual(practicalResult, theoriticalResult);
         }
 
         [TestMethod]
-        public void VectorCalculateDistanceVectorTestNormal()
+        public void VectorDivideNumber_DivideByZero_Test()
+        {
+            IMathVector vectorFirst = new MathVector(new double[] { 2, 4, 6 });
+            double number = 0;
+            Assert.ThrowsException<DivideByZero_Riker>(() => vectorFirst / number);
+        }
+
+        // CalculateDistance, 2 ситуация (Normal, DiffSizes)
+
+        [TestMethod]
+        public void VectorCalculateDistance_Normal_Test()
         {
             IMathVector vectorFirst = new MathVector(new double[] { 1, 1 });
             IMathVector vectorSecond = new MathVector(new double[] { 4, 5 });
@@ -73,149 +81,38 @@ namespace TestProject2.Tests
         }
 
         [TestMethod]
-        public void VectorCalculateDistanceVectorTestDifferentDimensions()
+        public void VectorCalculateDistance_DifferentSizes_Test()
         {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { 3, 2, 1, 0 });
-            double practicalResult = 0;
+            IMathVector vectorFirst = new MathVector(new double[] { 1 });
+            IMathVector vectorSecond = new MathVector(new double[] { 4, 5 });
 
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => practicalResult = vectorFirst % vectorSecond);
+            Assert.ThrowsException<WrongVecSizes_Riker>(() => vectorSecond.CalcDistance(vectorFirst));
         }
 
+        // ScalarMult, 2 ситуации (Normal, DiffSizes)
+
         [TestMethod]
-        public void VectorScalarMultiplyVectorTestNormal()
+        public void VectorScalarMultiplyVector_Normal_Test()
         {
             IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
             IMathVector vectorSecond = new MathVector(new double[] { 3, 2, 1 });
 
             double practicalResult = vectorFirst % vectorSecond;
 
-            Assert.IsTrue(practicalResult == 10);
+            Assert.AreEqual(practicalResult, 14);
         }
 
         [TestMethod]
-        public void SomeOfVectorsIsEmtyVectorPlusVectorTest()
+        public void VectorScalarMultiplyVector_DifferentSizes_Test()
         {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { });
-            IMathVector vector3 = new MathVector(new double[] { });
+            IMathVector vectorFirst = new MathVector(new double[] { 1, 2 });
+            IMathVector vectorSecond = new MathVector(new double[] { 3, 2, 1 });
 
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => vector3 = vectorFirst + vectorSecond);
+            Assert.ThrowsException<WrongVecSizes_Riker>(() => vectorFirst % vectorSecond);
         }
 
         [TestMethod]
-        public void SomeOfVectorsIsEmtyVectorMinusVectorTest()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { });
-            IMathVector vector3 = new MathVector(new double[] { });
-
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => vector3 = vectorFirst - vectorSecond);
-        }
-
-        [TestMethod]
-        public void SomeOfVectorsIsEmtyVectorDivideVectorTest()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { });
-            IMathVector vector3 = new MathVector(new double[] { });
-
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => vector3 = vectorFirst / vectorSecond);
-        }
-
-        [TestMethod]
-        public void SomeOfVectorsIsEmtyVectorMultiplyVectorTest()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { });
-            IMathVector vector3 = new MathVector(new double[] { });
-
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => vector3 = vectorFirst * vectorSecond);
-        }
-
-        [TestMethod]
-        public void SomeOfVectorsIsEmtyVectorPlusNumberTest()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { });
-            double number = 1;
-            IMathVector practicalResult = new MathVector(new double[] { });
-
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => practicalResult = vectorFirst + number);
-        }
-
-        [TestMethod]
-        public void SomeOfVectorsIsEmtyVectorMinusNumberTest()
-        {
-                IMathVector vectorFirst = new MathVector(new double[] { });
-                double number = 1;
-                IMathVector practicalResult = new MathVector(new double[] { });
-
-                Assert.ThrowsException<Exception_Riker>(() => practicalResult = vectorFirst - number);
-        }
-
-        [TestMethod]
-        public void SomeOfVectorsIsEmtyVectorDivideNumberTest()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { });
-            double number = 1;
-            IMathVector practicalResult = new MathVector(new double[] { });
-
-            Assert.ThrowsException<UncorrectValue_Riker>(() => practicalResult = vectorFirst / number);
-        }
-
-        [TestMethod]
-        public void SomeOfVectorsIsEmtyVectorMultiplyNumberTest()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { });
-            double number = 1;
-            IMathVector practicalResult = new MathVector(new double[] { });
-
-            Assert.ThrowsException<UncorrectValue_Riker>(() => practicalResult = vectorFirst * number);
-        }
-
-        [TestMethod]
-        public void VectorScalarMultiplyVectorTestDifferentDimensions()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { 3, 2, 1, 0 });
-            double practicalResult = 0;
-
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => practicalResult = vectorFirst % vectorSecond);
-        }
-
-        [TestMethod]
-        public void VectorPlusVectorTestDifferentDimensions()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { 3, 2, 1, 0 });
-            IMathVector vector3 = new MathVector(new double[] { });
-
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => vector3 = vectorFirst + vectorSecond);
-
-        }
-
-        [TestMethod]
-        public void VectorMinusVectorTestDifferentDimensions()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { 3, 2, 1, 0 });
-            IMathVector vector3 = new MathVector(new double[] { });
-
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => vector3 = vectorFirst - vectorSecond);
-        }
-
-        [TestMethod]
-        public void VectorMultiplyVectorTestDifferentDimensions()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { 3, 2, 1, 0 });
-            IMathVector vector3 = new MathVector(new double[] { });
-
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => vector3 = vectorFirst / vectorSecond);
-        }
-
-        [TestMethod]
-        public void ConstantVectorsTest()
+        public void Vector_Equale_Normal_Test()
         {
             double[] arr = new double[3] { 1, 2, 3 };
             double[] arrBack = new double[3] { 3, 2, 1 };
@@ -231,143 +128,70 @@ namespace TestProject2.Tests
         }
 
         [TestMethod]
-        public void PrintTestNormal()
+        public void VectorToString_Normal_Test()
         {
             IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
             string temp = "[1, 2, 3]";
 
             string practicalResult = vectorFirst.ToString();
 
-            Assert.IsTrue(temp == practicalResult);
+            Assert.AreEqual(temp, practicalResult);
         }
 
         [TestMethod]
-        public void SetValueTestNormal()
+        public void VectorSetValue_Normal_Test()
         {
             IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
             IMathVector vectorResult = new MathVector(new double[] { 1, 0, 3 });
 
             vectorFirst[1] = 0;
 
-            Assert.IsTrue(vectorFirst == vectorResult);
+            Assert.AreEqual(vectorFirst, vectorResult);
         }
 
         [TestMethod]
-        public void SetValueTestIndexMoreThanDimensions()
+        public void VectorSetValue_IncorrectIndex_MoreThenZero_Test()
         {
             IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
 
-            Assert.ThrowsException<UncorrectValue_Riker>(() => vectorFirst[1000] = 0);
+            Assert.ThrowsException<IncorrectIndex_Riker>(() => vectorFirst[1000] = 0);
         }
 
         [TestMethod]
-        public void SetValueTestIndexLessThanZero()
+        public void VectorSetValue_IncorrectIndex_ThenZero_Test()
         {
             IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
 
-            Assert.ThrowsException<UncorrectValue_Riker>(() => vectorFirst[-1] = 0);
+            Assert.ThrowsException<IncorrectIndex_Riker>(() => vectorFirst[-1] = 0);
+        }
+
+        //Конструкторы
+        [TestMethod]
+        public void VectorConstructor_DefaultCon_Normal_Test()
+        {
+            IMathVector vectorFirst = new MathVector();
+            IMathVector vectorSecond = new MathVector(new double[2] { 0, 0 });
+
+            Assert.AreEqual(vectorFirst, vectorSecond);
         }
 
         [TestMethod]
-        public void VectorDivideVectorTestDifferentDimensions()
+        public void VectorConsructor_SizeCon_Normal_Test()
         {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { 3, 2, 1, 0 });
-            IMathVector vector3 = new MathVector(new double[] { });
+            IMathVector vectorFirst = new MathVector(3);
+            IMathVector vectorSecond = new MathVector(new double[3] { 0, 0, 0 });
 
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => vector3 = vectorFirst * vectorSecond);
+            Assert.AreEqual(vectorFirst, vectorSecond);
         }
 
         [TestMethod]
-        public void VectorDivideVectorTestZero()
+        public void VectorConsructor_SizeCon_SizeLessOrEqualeZero_Test()
         {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { 0, 0, 0 });
-            IMathVector vector3 = new MathVector(new double[] { });
+            IMathVector vectorFirst = new MathVector(-1);
 
-            Assert.ThrowsException<DivideByZero_Riker>(() => vector3 = vectorFirst / vectorSecond);
+            Assert.ThrowsException<UncorrectValue_Riker>(() => new MathVector(-1));
         }
 
-        [TestMethod]
-        public void EqualsVectorsTestNormalSimilarVectors()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { 1, 2, 3 });
 
-            Assert.IsTrue((MathVector)vectorFirst == (MathVector)vectorSecond);
-        }
-
-        [TestMethod]
-        public void EqualsVectorsTestNormalNotSimilarVectors()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { 0, 0, 0 });
-
-            Assert.IsTrue(!(vectorFirst == vectorSecond));
-        }
-
-        [TestMethod]
-        public void EqualsVectorsTestDifferrentSizes()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { 1, 2, 3, 4 });
-
-            Assert.IsTrue(!(vectorFirst == vectorSecond));
-        }
-
-        [TestMethod]
-        public void NotEqualsVectorsTestNormalSimilarVectors()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { 1, 2, 3 });
-
-            Assert.IsTrue(!((MathVector)vectorFirst != (MathVector)vectorSecond));
-        }
-
-        [TestMethod]
-        public void NotEqualsVectorsTestNormalNotSimilarVectors()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { 0, 0, 0 });
-
-            Assert.IsTrue(vectorFirst != vectorSecond);
-        }
-
-        [TestMethod]
-        public void NotEqualsVectorsTestDifferrentSizes()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            IMathVector vectorSecond = new MathVector(new double[] { 1, 2, 3, 4 });
-
-            Assert.IsTrue(vectorFirst != vectorSecond);
-        }
-
-        [TestMethod]
-        public void VectorDivideNumberTestZero()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            double number = 0;
-            IMathVector vector3 = new MathVector(new double[] { });
-
-            Assert.ThrowsException<DivideByZero_Riker>(() => vector3 = vectorFirst / number);
-        }
-
-        [TestMethod]
-        public void VectorThatIndexLessThanZero()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            double temp = 0;
-
-            Assert.ThrowsException<IncorrectIndex_Riker>(() => temp = vectorFirst[-1]);
-        }
-
-        [TestMethod]
-        public void VectorThatIndexMoreThanDimensions()
-        {
-            IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
-            double temp = 0;
-
-            Assert.ThrowsException<IncorrectIndex_Riker>(() => temp = vectorFirst[1000]);
-        }
     }
 }
