@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "PrimitiveTest/1.0.0": {
+        "dependencies": {
+          "MathVectorLib": "1.0.0"
+        },
+        "runtime": {
+          "PrimitiveTest.dll": {}
+        }
+      },
+      "MathVectorLib/1.0.0": {
+        "runtime": {
+          "MathVectorLib.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PrimitiveTest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MathVectorLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
