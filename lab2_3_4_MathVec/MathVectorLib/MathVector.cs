@@ -26,12 +26,12 @@ namespace MathVectorSpace
         /// Конструтор с параметром.
         /// Создает вестор в size-мерной плоскости.
         /// </summary>
-        /// <exception cref="UncorrectValue_Riker">Неверное значение</exception>
+        /// <exception cref="RikerUncorrectValue">Неверное значение</exception>
         /// <param name="size">Количество осей плоскости</param>
         public MathVector(int size)
         {
             if (size <= 0)
-                throw new UncorrectValue_Riker();
+                throw new RikerUncorrectValue();
 
             _axis = new double[size];
         }
@@ -41,11 +41,11 @@ namespace MathVectorSpace
         /// Создает вектор по данному массиву координат.
         /// </summary>
         /// <param name="values">Массив координат</param>
-        /// <exception cref="UncorrectValue_Riker">Если подан массив = 0</exception>>
+        /// <exception cref="RikerUncorrectValue">Если подан массив = 0</exception>>
         public MathVector(double[] values)
         {
             if (values.Length <= 0)
-                throw new UncorrectValue_Riker();
+                throw new RikerUncorrectValue();
             _axis = values;
         }
 
@@ -81,9 +81,9 @@ namespace MathVectorSpace
 
         /// <summary>
         /// Доступ к координатам вектора по средством индекса.
-        /// При некорректном индексе выкидывает IncorrectIndex_Riker().
+        /// При некорректном индексе выкидывает RikerIncorrectIndex().
         /// </summary>
-        /// <exception cref="IncorrectIndex_Riker">Некорректный индекс</exception>
+        /// <exception cref="RikerIncorrectIndex">Некорректный индекс</exception>
         /// <param name="i">Индекс</param>
         /// <returns>Доступ к значению координаты с возможностью чтения и изменения</returns>
         public double this[int i]
@@ -91,14 +91,14 @@ namespace MathVectorSpace
             get
             {
                 if (i < 0 || i >= _axis.Length)
-                    throw new IncorrectIndex_Riker();
+                    throw new RikerIncorrectIndex();
 
                 return _axis[i];
             }
             set
             {
                 if (i < 0 || i >= _axis.Length)
-                    throw new IncorrectIndex_Riker();
+                    throw new RikerIncorrectIndex();
 
                 _axis[i] = value;
             }
@@ -162,13 +162,13 @@ namespace MathVectorSpace
         /// Создает новый вектор, относительно данного.
         /// Координаты нового вектора равны сумме соответствующих координат 2-х данных векторов.
         /// </summary>
-        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <exception cref="RikerWrongVecSizes">Мерности данных векторов не равны</exception>
         /// <param name="vector">Второй вектор</param>
         /// <returns>Новый вектор с координатами, равными сумме 2-х данных</returns>
         public IMathVector Sum(IMathVector vector)
         {
             if (this.Dimensions != vector.Dimensions)
-                throw new WrongVecSizes_Riker();
+                throw new RikerWrongVecSizes();
 
             var vecResult = new MathVector(Dimensions);
 
@@ -184,13 +184,13 @@ namespace MathVectorSpace
         /// Создает новый вектор, относительно данного.
         /// Координаты нового вектора равен произведению соответствующих координат 2-х данных векторов.
         /// </summary>
-        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <exception cref="RikerWrongVecSizes">Мерности данных векторов не равны</exception>
         /// <param name="vector">Второй вектор</param>
         /// <returns>Новый вектор с координатами, равными произведению 2-х данных</returns>
         public IMathVector Multiply(IMathVector vector)
         {
             if (this.Dimensions != vector.Dimensions)
-                throw new WrongVecSizes_Riker();
+                throw new RikerWrongVecSizes();
 
             var vecResult = new MathVector(Dimensions);
 
@@ -216,20 +216,20 @@ namespace MathVectorSpace
         /// <summary>
         /// Вычисляет расстояние между 2-мя данными векторами.
         /// </summary>
-        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <exception cref="RikerWrongVecSizes">Мерности данных векторов не равны</exception>
         /// <param name="vector">Второй вектор</param>
         /// <returns>Возвращает расстояние</returns>
         public double CalcDistance(IMathVector vector)
         {
             if (this.Dimensions != vector.Dimensions)
-                throw new WrongVecSizes_Riker();
+                throw new RikerWrongVecSizes();
 
             double practicalResult = 0;
             for (int i = 0; i < Dimensions; ++i)
             {
                 practicalResult += Math.Pow(this[i] - vector[i], 2);
             }
-            return Math.Sqrt(practicalResult);
+            return Math.Round(Math.Sqrt(practicalResult), 2);
         }
 
         /// <summary>
@@ -261,11 +261,11 @@ namespace MathVectorSpace
         /// <param name="vec">Первый вектор</param>
         /// <param name="second">Второй вектор</param>
         /// <returns>Возвращает true, если все соответствующие координаты равны</returns>
-        /// <exception cref="WrongVecSizes_Riker">При неравенстве длин векторов.<exception>
+        /// <exception cref="RikerWrongVecSizes">При неравенстве длин векторов.<exception>
         public static bool operator ==(MathVector vec, MathVector second)
         {
             if (vec.Dimensions != second.Dimensions)
-                throw new WrongVecSizes_Riker();
+                throw new RikerWrongVecSizes();
 
             bool practicalResult = true;
 
@@ -286,11 +286,11 @@ namespace MathVectorSpace
         /// <param name="vec">Первый вектор</param>
         /// <param name="second">Второй вектор</param>
         /// <returns>Возвращает true, если хотя бы одни координаты не равны.</returns>
-        /// <exception cref="WrongVecSizes_Riker">При неравенстве длин векторов.<exception>
+        /// <exception cref="RikerWrongVecSizes">При неравенстве длин векторов.<exception>
         public static bool operator !=(MathVector vec, MathVector second)
         {
             if (vec.Dimensions != second.Dimensions)
-                throw new WrongVecSizes_Riker();
+                throw new RikerWrongVecSizes();
 
             bool practicalResult = true;
 
@@ -351,14 +351,14 @@ namespace MathVectorSpace
         /// <summary>
         /// Создает новый вектор, координаты которого равны частному координат данного вектора и данного числа.
         /// </summary>
-        /// <exception cref="DivideByZero_Riker">Один из элементов Второго вектора равен 0</exception>
+        /// <exception cref="RikerDivideByZero">Один из элементов Второго вектора равен 0</exception>
         /// <param name="vector">Вектор</param>
         /// <param name="number">Число</param>
         /// <returns>Новый вектор IMathVector</returns>
         public static IMathVector operator /(MathVector vector, double number)
         {
             if (number == 0)
-                throw new DivideByZero_Riker();
+                throw new RikerDivideByZero();
 
             return vector.MultiplyNumber(1 / number);
         }
@@ -366,7 +366,7 @@ namespace MathVectorSpace
         /// <summary>
         /// Создает новый вектор, координаты которого равны сумме соответствующих координат 2-х данных векторов.
         /// </summary>
-        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <exception cref="RikerWrongVecSizes">Мерности данных векторов не равны</exception>
         /// <param name="vector">Первый вектор</param>
         /// <param name="secondVec">Второй вектор</param>
         /// <returns>Новый вектор IMathVector</returns>
@@ -378,14 +378,14 @@ namespace MathVectorSpace
         /// <summary>
         /// Создает новый вектор, координаты которого равны разности соответствующих координат 2-х данных векторов.
         /// </summary>
-        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <exception cref="RikerWrongVecSizes">Мерности данных векторов не равны</exception>
         /// <param name="vector">Первый вектор</param>
         /// <param name="secondVec">Второй вектор</param>
         /// <returns>Новый вектор IMathVector</returns>
         public static IMathVector operator -(MathVector vector, MathVector secondVec)
         {
             if (vector.Dimensions != secondVec.Dimensions)
-                throw new WrongVecSizes_Riker();
+                throw new RikerWrongVecSizes();
 
             for (int i = 0; i < vector.Dimensions; i++)
             {
@@ -397,7 +397,7 @@ namespace MathVectorSpace
         /// <summary>
         /// Создает новый вектор, координаты которого равны произведению соответствующих координат 2-х данных векторов.
         /// </summary>
-        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <exception cref="RikerWrongVecSizes">Мерности данных векторов не равны</exception>
         /// <param name="vector">Первый вектор</param>
         /// <param name="secondVec">Второй вектор</param>
         /// <returns>Новый вектор IMathVector</returns>
@@ -409,20 +409,20 @@ namespace MathVectorSpace
         /// <summary>
         /// Создает новый вектор, координаты которого равны частному соответствующих координат 2-х данных векторов.
         /// </summary>
-        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
-        /// <exception cref="DivideByZero_Riker">Один из элементов Второго вектора равен 0</exception>
+        /// <exception cref="RikerWrongVecSizes">Мерности данных векторов не равны</exception>
+        /// <exception cref="RikerDivideByZero">Один из элементов Второго вектора равен 0</exception>
         /// <param name="vector">Первый вектор</param>
         /// <param name="secondVec">Второй вектор</param>
         /// <returns>Новый вектор IMathVector</returns>
         public static IMathVector operator /(MathVector vector, MathVector secondVec)
         {
             if (vector.Dimensions != secondVec.Dimensions)
-                throw new WrongVecSizes_Riker();
+                throw new RikerWrongVecSizes();
 
             for (int i = 0; i < vector.Dimensions; i++)
             {
                 if (secondVec[i] == 0)
-                    throw new DivideByZero_Riker();
+                    throw new RikerDivideByZero();
 
                 secondVec[i] = 1 / secondVec[i];
             }
@@ -433,14 +433,14 @@ namespace MathVectorSpace
         /// <summary>
         /// Возвращает скалярное произведение двух векторов.
         /// </summary>
-        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <exception cref="RikerWrongVecSizes">Мерности данных векторов не равны</exception>
         /// <param name="vector">Первый вектор</param>
         /// <param name="secondVec">Второй вектор</param>
         /// <returns>Новый вектор IMathVector</returns>
         public static double operator %(MathVector vector, MathVector secondVec)
         {
             if (vector.Dimensions != secondVec.Dimensions)
-                throw new WrongVecSizes_Riker();
+                throw new RikerWrongVecSizes();
 
             return vector.ScalarMultiply(secondVec);
         }

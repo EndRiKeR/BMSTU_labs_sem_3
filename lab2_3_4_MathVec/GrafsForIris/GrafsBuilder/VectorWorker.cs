@@ -53,7 +53,7 @@ namespace GrafsForIris
             }
 
             foreach (var vec in vecs.Versicolor)
-            {
+            { 
                 versicolorMiddle = (MathVector)(versicolorMiddle + vec);
             }
 
@@ -76,7 +76,7 @@ namespace GrafsForIris
             double distVersicolorAndVerginica = vectors.Versicolor.CalcDistance(vectors.Virginica);
             double distVerginicaAndSetosa = vectors.Virginica.CalcDistance(vectors.Setosa);
 
-            return new DistanceValues(distSetosaAndVersicolor, distVersicolorAndVerginica, distVersicolorAndVerginica);
+            return new DistanceValues(distSetosaAndVersicolor, distVersicolorAndVerginica, distVerginicaAndSetosa);
         }
         
     }

@@ -46,7 +46,7 @@ namespace TestsPrimitiveTest
                 double tmp = testVec[10];
 
             }
-            catch (Exception_Riker e)
+            catch (RikerException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -65,7 +65,7 @@ namespace TestsPrimitiveTest
                 testVec[10] = 1;
 
             }
-            catch (Exception_Riker e)
+            catch (RikerException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -85,7 +85,7 @@ namespace TestsPrimitiveTest
                 Console.WriteLine($"{tmp}");
 
             }
-            catch (Exception_Riker e)
+            catch (RikerException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -105,7 +105,7 @@ namespace TestsPrimitiveTest
                 Console.WriteLine($"{tmp}");
 
             }
-            catch (Exception_Riker e)
+            catch (RikerException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -129,7 +129,7 @@ namespace TestsPrimitiveTest
                 Console.WriteLine($"practicalResult: {tmp}");
 
             }
-            catch (Exception_Riker e)
+            catch (RikerException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -153,7 +153,7 @@ namespace TestsPrimitiveTest
                 Console.WriteLine($"practicalResult: {tmp}");
 
             }
-            catch (Exception_Riker e)
+            catch (RikerException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -174,7 +174,7 @@ namespace TestsPrimitiveTest
                 Console.WriteLine($"practicalResult: {tmp}");
 
             }
-            catch (Exception_Riker e)
+            catch (RikerException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -195,7 +195,7 @@ namespace TestsPrimitiveTest
                 Console.WriteLine($"practicalResult: {tmp}");
 
             }
-            catch (Exception_Riker e)
+            catch (RikerException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -216,7 +216,7 @@ namespace TestsPrimitiveTest
                 Console.WriteLine($"practicalResult: {tmp}");
 
             }
-            catch (Exception_Riker e)
+            catch (RikerException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -237,7 +237,7 @@ namespace TestsPrimitiveTest
                 Console.WriteLine($"practicalResult: {tmp}");
 
             }
-            catch (Exception_Riker e)
+            catch (RikerException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -260,7 +260,7 @@ namespace TestsPrimitiveTest
                 Console.WriteLine($"practicalResult: {tmp}");
 
             }
-            catch (Exception_Riker e)
+            catch (RikerException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -283,7 +283,7 @@ namespace TestsPrimitiveTest
                 Console.WriteLine($"practicalResult: {tmp}");
 
             }
-            catch (Exception_Riker e)
+            catch (RikerException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -305,7 +305,7 @@ namespace TestsPrimitiveTest
                 Console.WriteLine($"practicalResult: {tmp}");
 
             }
-            catch (Exception_Riker e)
+            catch (RikerException e)
             {
                 Console.WriteLine(e.Message);
             }

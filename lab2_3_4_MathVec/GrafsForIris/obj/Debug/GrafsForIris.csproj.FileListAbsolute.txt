@@ -11,3 +11,17 @@ D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\obj\Debug\GrafsForIri
 D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\obj\Debug\GrafsForIris.csproj.AssemblyReference.cache
 D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\bin\Debug\MathVectorLib.dll
 D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\bin\Debug\MathVectorLib.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\bin\Debug\GrafsForIris.exe.config
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\bin\Debug\GrafsForIris.exe
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\bin\Debug\GrafsForIris.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\bin\Debug\MathVectorLib.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\bin\Debug\MathVectorLib.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\obj\Debug\GrafsForIris.csproj.AssemblyReference.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\obj\Debug\GrafsForIris.csproj.SuggestedBindingRedirects.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\obj\Debug\GrafsForIris.Form1.resources
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\obj\Debug\GrafsForIris.Properties.Resources.resources
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\obj\Debug\GrafsForIris.csproj.GenerateResource.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\obj\Debug\GrafsForIris.csproj.CoreCompileInputs.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\obj\Debug\GrafsForIris.csproj.CopyComplete
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\obj\Debug\GrafsForIris.exe
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\GrafsForIris\obj\Debug\GrafsForIris.pdb

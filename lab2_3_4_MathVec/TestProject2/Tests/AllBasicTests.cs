@@ -64,7 +64,7 @@ namespace TestProject2.Tests
         {
             IMathVector vectorFirst = new MathVector(new double[] { 2, 4, 6 });
             double number = 0;
-            Assert.ThrowsException<DivideByZero_Riker>(() => vectorFirst / number);
+            Assert.ThrowsException<RikerDivideByZero>(() => vectorFirst / number);
         }
 
         // CalculateDistance, 2 ситуация (Normal, DiffSizes)
@@ -86,7 +86,7 @@ namespace TestProject2.Tests
             IMathVector vectorFirst = new MathVector(new double[] { 1 });
             IMathVector vectorSecond = new MathVector(new double[] { 4, 5 });
 
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => vectorSecond.CalcDistance(vectorFirst));
+            Assert.ThrowsException<RikerWrongVecSizes>(() => vectorSecond.CalcDistance(vectorFirst));
         }
 
         // ScalarMult, 2 ситуации (Normal, DiffSizes)
@@ -108,7 +108,7 @@ namespace TestProject2.Tests
             IMathVector vectorFirst = new MathVector(new double[] { 1, 2 });
             IMathVector vectorSecond = new MathVector(new double[] { 3, 2, 1 });
 
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => vectorFirst % vectorSecond);
+            Assert.ThrowsException<RikerWrongVecSizes>(() => vectorFirst % vectorSecond);
         }
 
         [TestMethod]
@@ -154,7 +154,7 @@ namespace TestProject2.Tests
         {
             IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
 
-            Assert.ThrowsException<IncorrectIndex_Riker>(() => vectorFirst[1000] = 0);
+            Assert.ThrowsException<RikerIncorrectIndex>(() => vectorFirst[1000] = 0);
         }
 
         [TestMethod]
@@ -162,7 +162,7 @@ namespace TestProject2.Tests
         {
             IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
 
-            Assert.ThrowsException<IncorrectIndex_Riker>(() => vectorFirst[-1] = 0);
+            Assert.ThrowsException<RikerIncorrectIndex>(() => vectorFirst[-1] = 0);
         }
 
         //Конструкторы
@@ -189,7 +189,7 @@ namespace TestProject2.Tests
         {
             IMathVector vectorFirst = new MathVector(-1);
 
-            Assert.ThrowsException<UncorrectValue_Riker>(() => new MathVector(-1));
+            Assert.ThrowsException<RikerUncorrectValue>(() => new MathVector(-1));
         }
 
 

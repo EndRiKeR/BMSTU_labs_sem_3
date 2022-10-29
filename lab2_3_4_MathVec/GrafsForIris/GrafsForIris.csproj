@@ -51,18 +51,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GrafsBuilder\FileReader.cs" />
-    <Compile Include="GrafsBuilder\Form1.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GrafsBuilder\Form1.Designer.cs">
+    <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GrafsBuilder\IrisStruct.cs" />
-    <Compile Include="GrafsBuilder\Program.cs" />
+    <Compile Include="GrafsBuilder\MyFileExceptions.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GrafsBuilder\SortedVectorsStruct.cs" />
     <Compile Include="GrafsBuilder\VectorWorker.cs" />
-    <EmbeddedResource Include="GrafsBuilder\Form1.resx">
+    <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -75,6 +76,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="IrisesFiles\iris_big_size.csv" />
+    <None Include="IrisesFiles\iris_wrong_data_empty_number.csv" />
+    <None Include="IrisesFiles\iris_wrong_data_empty_row.csv" />
+    <None Include="IrisesFiles\iris_wrong_data_new_in_arr.csv" />
+    <None Include="IrisesFiles\iris_wrong_data_new_in_arr_and_empty.csv" />
+    <None Include="IrisesFiles\iris_wrong_iris_type.csv" />
+    <None Include="IrisesFiles\iris_wrong_type.csv" />
+    <None Include="IrisesFiles\iris_zero_size.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -85,6 +94,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="IrisesFiles\_iris_copy_for_test.csv" />
+    <None Include="IrisesFiles\_iris_normal.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

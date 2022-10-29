@@ -4,37 +4,37 @@ using System.Text;
 
 namespace MathVectorSpace
 {
-    public class Exception_Riker : Exception
+    public class RikerException : Exception
     {
-        public Exception_Riker() : base("Error MF!") { }
-        public Exception_Riker(string message) : base(message) { }
+        public RikerException() : base("Error MF!") { }
+        public RikerException(string message) : base(message) { }
 
     }
 
-    public class IncorrectIndex_Riker : Exception_Riker
+    public class RikerIncorrectIndex : RikerException
     {
-        public IncorrectIndex_Riker() : base("Incorrect Index in []!") { }
+        public RikerIncorrectIndex() : base("Incorrect Index in []!") { }
 
     }
 
-    public class DivideByZero_Riker : Exception_Riker
+    public class RikerDivideByZero : RikerException
     {
-        public DivideByZero_Riker() : base("U divide by zero!") { }
+        public RikerDivideByZero() : base("U divide by zero!") { }
 
     }
 
-    public class WrongVecSizes_Riker : Exception_Riker
+    public class RikerWrongVecSizes : RikerException
     {
-        public WrongVecSizes_Riker() : base("Vectors sizes is differnt!") { }
+        public RikerWrongVecSizes() : base("Vectors sizes is differnt!") { }
     }
 
-    public class UncorrectValue_Riker : Exception_Riker
+    public class RikerUncorrectValue : RikerException
     {
-        public UncorrectValue_Riker() : base("Uncorrect Value!") { }
+        public RikerUncorrectValue() : base("Uncorrect Value!") { }
     }
 
-    class ErrorMF_Riker : Exception_Riker
+    public class RikerUnexpectedException : RikerException
     {
-        public ErrorMF_Riker() : base() { }
+        public RikerUnexpectedException() : base() { }
     }
 }

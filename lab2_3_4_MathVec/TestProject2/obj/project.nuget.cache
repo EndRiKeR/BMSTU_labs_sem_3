@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0E52hq6MiOR8dVYt+BiHuaNahIJYmvA929T+DgvdtOft/WbM/0+Amtx4+KpZV/pDidifJtqk2ZXwYRpO5wNBtw==",
+  "dgSpecHash": "7QCNc8wigL1OOyKzICkDxQNxKI0jMLgsmjcYHWq8/FmNZPlEcVnEdu43yYLm0mlC22cp/0u0SH21xSqxJDmtzw==",
   "success": true,
-  "projectFilePath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\lab2_3_4_MathVec\\TestProject2\\TestProject2.csproj",
+  "projectFilePath": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\lab2_3_4_MathVec\\TestProject2\\TestProject2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\solom\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\solom\\.nuget\\packages\\microsoft.codecoverage\\16.9.4\\microsoft.codecoverage.16.9.4.nupkg.sha512",

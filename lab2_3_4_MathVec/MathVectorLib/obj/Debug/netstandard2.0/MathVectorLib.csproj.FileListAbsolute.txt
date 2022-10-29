@@ -8,3 +8,13 @@ D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\bin\Debug\netstandar
 D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\bin\Debug\netstandard2.0\MathVectorLib.pdb
 D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.dll
 D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\bin\Debug\netstandard2.0\MathVectorLib.deps.json
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\bin\Debug\netstandard2.0\MathVectorLib.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\bin\Debug\netstandard2.0\MathVectorLib.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.csproj.AssemblyReference.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.GeneratedMSBuildEditorConfig.editorconfig
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.AssemblyInfoInputs.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.AssemblyInfo.cs
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.csproj.CoreCompileInputs.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.pdb

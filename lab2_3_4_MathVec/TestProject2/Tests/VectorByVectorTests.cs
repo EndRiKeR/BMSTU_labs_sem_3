@@ -26,7 +26,7 @@ namespace TestProject2.Tests
             IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
             IMathVector vectorSecond = new MathVector(new double[] { 3, 2 });
 
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => vectorFirst + vectorSecond);
+            Assert.ThrowsException<RikerWrongVecSizes>(() => vectorFirst + vectorSecond);
             //Лямбда функция для чайников: (аргументы в скобочках) => (одно действие, тк )
         }
 
@@ -50,7 +50,7 @@ namespace TestProject2.Tests
             IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
             IMathVector vectorSecond = new MathVector(new double[] { 3, 2 });
 
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => vectorFirst - vectorSecond);
+            Assert.ThrowsException<RikerWrongVecSizes>(() => vectorFirst - vectorSecond);
         }
 
         // *, 2 ситуации (Normal, DiffSizes)
@@ -72,7 +72,7 @@ namespace TestProject2.Tests
             IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 3 });
             IMathVector vectorSecond = new MathVector(new double[] { 2, 2 });
 
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => vectorFirst * vectorSecond);
+            Assert.ThrowsException<RikerWrongVecSizes>(() => vectorFirst * vectorSecond);
         }
 
         // /, 3 ситуации (Normal, DiffSizes, DivideByZero)
@@ -93,7 +93,7 @@ namespace TestProject2.Tests
             IMathVector vectorFirst = new MathVector(new double[] { 1, 2 });
             IMathVector vectorSecond = new MathVector(new double[] { 2, 2, 1 });
 
-            Assert.ThrowsException<WrongVecSizes_Riker>(() => vectorFirst / vectorSecond);
+            Assert.ThrowsException<RikerWrongVecSizes>(() => vectorFirst / vectorSecond);
         }
 
         [TestMethod]
@@ -102,7 +102,7 @@ namespace TestProject2.Tests
             IMathVector vectorFirst = new MathVector(new double[] { 1, 2, 1 });
             IMathVector vectorSecond = new MathVector(new double[] { 2, 0, 1 });
 
-            Assert.ThrowsException<DivideByZero_Riker>(() => vectorFirst / vectorSecond);
+            Assert.ThrowsException<RikerDivideByZero>(() => vectorFirst / vectorSecond);
         }
     }
 }

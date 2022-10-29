@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0gD9E5DnTkP1lzvQpVKxQYteW3jrcbFHClE5j8SAj4JfnMELP1o9k9pxaVatiXaznkrOguGZo6V6sJxCoRV7nA==",
+  "dgSpecHash": "gng7WrJWjdSoX58G3G6+3/6XtjSuMXlC3ts8GUqhs9WcoYTckDlOSzgT7+QOtYowse3cip7JLXTTiixtdr4QPw==",
   "success": true,
-  "projectFilePath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\lab2_3_4_MathVec\\MathVectorLib\\MathVectorLib.csproj",
+  "projectFilePath": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\lab2_3_4_MathVec\\MathVectorLib\\MathVectorLib.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\solom\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\solom\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
