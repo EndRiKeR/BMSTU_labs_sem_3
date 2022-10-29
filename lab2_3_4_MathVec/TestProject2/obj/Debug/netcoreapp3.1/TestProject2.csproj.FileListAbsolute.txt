@@ -98,3 +98,11 @@ D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\TestProject2\obj\Debug\netcorea
 D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\TestProject2\obj\Debug\netcoreapp3.1\TestProject2.dll
 D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\TestProject2\obj\Debug\netcoreapp3.1\TestProject2.pdb
 D:\ForBMSTU\BMSTU_labs_sem_3\RiderLabs\Lab2plus3\TestProject2\obj\Debug\netcoreapp3.1\TestProject2.genruntimeconfig.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\TestProject2\bin\Debug\netcoreapp3.1\CoverletSourceRootsMapping
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\TestProject2\obj\Debug\netcoreapp3.1\TestProject2.csproj.AssemblyReference.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\TestProject2\obj\Debug\netcoreapp3.1\TestProject2.GeneratedMSBuildEditorConfig.editorconfig
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\TestProject2\obj\Debug\netcoreapp3.1\TestProject2.AssemblyInfoInputs.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\TestProject2\obj\Debug\netcoreapp3.1\TestProject2.AssemblyInfo.cs
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\TestProject2\obj\Debug\netcoreapp3.1\TestProject2.csproj.CoreCompileInputs.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\TestProject2\obj\Debug\netcoreapp3.1\TestProject2.dll
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\TestProject2\obj\Debug\netcoreapp3.1\TestProject2.pdb

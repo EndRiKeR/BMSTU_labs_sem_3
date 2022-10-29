@@ -1,0 +1,10 @@
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.csproj.AssemblyReference.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.GeneratedMSBuildEditorConfig.editorconfig
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.AssemblyInfoInputs.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.AssemblyInfo.cs
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.csproj.CoreCompileInputs.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\bin\Debug\netstandard2.0\MathVectorLib.deps.json
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\bin\Debug\netstandard2.0\MathVectorLib.dll
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\bin\Debug\netstandard2.0\MathVectorLib.pdb
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.dll
+D:\ForBMSTU\BMSTU_labs_sem_3\lab2_3_4_MathVec\MathVectorLib\obj\Debug\netstandard2.0\MathVectorLib.pdb

@@ -242,7 +242,7 @@ namespace MathVectorSpace
         /// Преобращает вектор в строку
         /// </summary>
         /// <returns>Строка - вектор</returns>
-        public override string? ToString()
+        public override string ToString()
         {
             var str = "[";
             for (int i = 0; i < Dimensions; i++)
@@ -310,9 +310,139 @@ namespace MathVectorSpace
         /// </summary>
         /// <param name="obj">Объект для сравнения</param>
         /// <returns>Результат сравнения.</returns>
-        public override bool Equals(Object? obj)
+        public override bool Equals(Object obj)
         {
             return this == (MathVector)obj;
+        }
+
+        /// <summary>
+        /// Создает новый вектор, координаты которого равны сумме координат данного вектора и данного числа.
+        /// </summary>
+        /// <param name="vector">Вектор</param>
+        /// <param name="number">Число</param>
+        /// <returns>Новый вектор IMathVector</returns>
+        public static IMathVector operator +(MathVector vector, double number)
+        {
+            return vector.SumNumber(number);
+        }
+
+        /// <summary>
+        /// Создает новый вектор, координаты которого равны разности координат данного вектора и данного числа.
+        /// </summary>
+        /// <param name="vector">Вектор</param>
+        /// <param name="number">Число</param>
+        /// <returns>Новый вектор IMathVector</returns>
+        public static IMathVector operator -(MathVector vector, double number)
+        {
+            return vector.SumNumber(-number);
+        }
+
+        /// <summary>
+        /// Создает новый вектор, координаты которого равны произведению координат данного вектора и данного числа.
+        /// </summary>
+        /// <param name="vector">Вектор</param>
+        /// <param name="number">Число</param>
+        /// <returns>Новый вектор IMathVector</returns>
+        public static IMathVector operator *(MathVector vector, double number)
+        {
+            return vector.MultiplyNumber(number);
+        }
+
+        /// <summary>
+        /// Создает новый вектор, координаты которого равны частному координат данного вектора и данного числа.
+        /// </summary>
+        /// <exception cref="DivideByZero_Riker">Один из элементов Второго вектора равен 0</exception>
+        /// <param name="vector">Вектор</param>
+        /// <param name="number">Число</param>
+        /// <returns>Новый вектор IMathVector</returns>
+        public static IMathVector operator /(MathVector vector, double number)
+        {
+            if (number == 0)
+                throw new DivideByZero_Riker();
+
+            return vector.MultiplyNumber(1 / number);
+        }
+
+        /// <summary>
+        /// Создает новый вектор, координаты которого равны сумме соответствующих координат 2-х данных векторов.
+        /// </summary>
+        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <param name="vector">Первый вектор</param>
+        /// <param name="secondVec">Второй вектор</param>
+        /// <returns>Новый вектор IMathVector</returns>
+        public static IMathVector operator +(MathVector vector, MathVector secondVec)
+        {
+            return vector.Sum(secondVec);
+        }
+
+        /// <summary>
+        /// Создает новый вектор, координаты которого равны разности соответствующих координат 2-х данных векторов.
+        /// </summary>
+        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <param name="vector">Первый вектор</param>
+        /// <param name="secondVec">Второй вектор</param>
+        /// <returns>Новый вектор IMathVector</returns>
+        public static IMathVector operator -(MathVector vector, MathVector secondVec)
+        {
+            if (vector.Dimensions != secondVec.Dimensions)
+                throw new WrongVecSizes_Riker();
+
+            for (int i = 0; i < vector.Dimensions; i++)
+            {
+                secondVec[i] = -secondVec[i];
+            }
+            return vector.Sum(secondVec);
+        }
+
+        /// <summary>
+        /// Создает новый вектор, координаты которого равны произведению соответствующих координат 2-х данных векторов.
+        /// </summary>
+        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <param name="vector">Первый вектор</param>
+        /// <param name="secondVec">Второй вектор</param>
+        /// <returns>Новый вектор IMathVector</returns>
+        public static IMathVector operator *(MathVector vector, MathVector secondVec)
+        {
+            return vector.Multiply(secondVec);
+        }
+
+        /// <summary>
+        /// Создает новый вектор, координаты которого равны частному соответствующих координат 2-х данных векторов.
+        /// </summary>
+        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <exception cref="DivideByZero_Riker">Один из элементов Второго вектора равен 0</exception>
+        /// <param name="vector">Первый вектор</param>
+        /// <param name="secondVec">Второй вектор</param>
+        /// <returns>Новый вектор IMathVector</returns>
+        public static IMathVector operator /(MathVector vector, MathVector secondVec)
+        {
+            if (vector.Dimensions != secondVec.Dimensions)
+                throw new WrongVecSizes_Riker();
+
+            for (int i = 0; i < vector.Dimensions; i++)
+            {
+                if (secondVec[i] == 0)
+                    throw new DivideByZero_Riker();
+
+                secondVec[i] = 1 / secondVec[i];
+            }
+
+            return vector.Multiply(secondVec);
+        }
+
+        /// <summary>
+        /// Возвращает скалярное произведение двух векторов.
+        /// </summary>
+        /// <exception cref="WrongVecSizes_Riker">Мерности данных векторов не равны</exception>
+        /// <param name="vector">Первый вектор</param>
+        /// <param name="secondVec">Второй вектор</param>
+        /// <returns>Новый вектор IMathVector</returns>
+        public static double operator %(MathVector vector, MathVector secondVec)
+        {
+            if (vector.Dimensions != secondVec.Dimensions)
+                throw new WrongVecSizes_Riker();
+
+            return vector.ScalarMultiply(secondVec);
         }
     }
 }

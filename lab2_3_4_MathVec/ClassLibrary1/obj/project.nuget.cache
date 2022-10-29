@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "NXBEGsZB4YYjWazQMnEinvfaUa6vna+dLS/BuG9V85H2NGz6tfifuzfLxLhuUUtTYgBvBIfVaojkIcvGYmKnVQ==",
+  "success": true,
+  "projectFilePath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\lab2_3_4_MathVec\\ClassLibrary1\\ClassLibrary1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\solom\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\solom\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

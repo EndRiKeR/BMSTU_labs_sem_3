@@ -7,7 +7,7 @@ namespace MathVectorSpace
     public class Exception_Riker : Exception
     {
         public Exception_Riker() : base("Error MF!") { }
-        public Exception_Riker(string? message) : base(message) { }
+        public Exception_Riker(string message) : base(message) { }
 
     }
 
