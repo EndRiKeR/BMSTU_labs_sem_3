@@ -19,6 +19,7 @@ namespace GrafsForIris
         }
 
         private void LoadButtonClick(object sender, EventArgs e)
+
         {
             FileReader fr = new FileReader();
             VectorWorker vw = new VectorWorker();

@@ -39,7 +39,7 @@ namespace GrafsForIris.GrafsBuilder
 
     public class RikerFileUnexpectedExceptions : RikerBaseFileExceptions
     {
-        public RikerFileUnexpectedExceptions() : base("Wrong Data in File!") { }
+        public RikerFileUnexpectedExceptions() : base("Unexpected File Exception!") { }
 
     }
 

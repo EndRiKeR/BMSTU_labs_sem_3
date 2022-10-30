@@ -1,0 +1,5 @@
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\obj\Debug\netstandard2.0\DemograqpicEngine.csproj.AssemblyReference.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\obj\Debug\netstandard2.0\DemograqpicEngine.GeneratedMSBuildEditorConfig.editorconfig
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\obj\Debug\netstandard2.0\DemograqpicEngine.AssemblyInfoInputs.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\obj\Debug\netstandard2.0\DemograqpicEngine.AssemblyInfo.cs
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\obj\Debug\netstandard2.0\DemograqpicEngine.csproj.CoreCompileInputs.cache

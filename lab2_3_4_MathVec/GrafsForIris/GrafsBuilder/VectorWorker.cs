@@ -56,7 +56,7 @@ namespace GrafsForIris
             { 
                 versicolorMiddle = (MathVector)(versicolorMiddle + vec);
             }
-
+              
             foreach (var vec in vecs.Virginica)
             {
                 verginicaMiddle = (MathVector)(verginicaMiddle + vec);
