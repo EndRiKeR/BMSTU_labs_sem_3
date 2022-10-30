@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DemograqpicEngine
+namespace DemographicEngine
 {
     public class Engine : IEngine
     {

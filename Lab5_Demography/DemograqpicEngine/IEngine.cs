@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DemograqpicEngine
+namespace DemographicEngine
 {
     public interface IEngine
     {

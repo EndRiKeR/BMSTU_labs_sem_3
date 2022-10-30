@@ -16,6 +16,13 @@ namespace GrafsForIris
         public Form1()
         {
             InitializeComponent();
+
+            SL_chart.Titles.Add("Sepal Length");
+            SW_chart.Titles.Add("Sepal Width");
+            PL_chart.Titles.Add("Petal Length");
+            PW_chart.Titles.Add("Petal Width");
+            Pie_chart.Titles.Add("Distances");
+
         }
 
         private void LoadButtonClick(object sender, EventArgs e)
@@ -51,7 +58,33 @@ namespace GrafsForIris
         private void UpdateUI(MiddleVectors vectors, DistanceValues value)
         {
 
-            SL_chart.Titles.Add("Sepal Length");
+            //В теории... это можно оптимизировать, но это архитектуру менять
+
+            SL_chart.Series.Clear();
+            SW_chart.Series.Clear();
+            PL_chart.Series.Clear();
+            PW_chart.Series.Clear();
+            Pie_chart.Series.Clear();
+
+            SL_chart.Series.Add("Setosa");
+            SL_chart.Series.Add("Versicolor");
+            SL_chart.Series.Add("Virginica");
+
+            SW_chart.Series.Add("Setosa");
+            SW_chart.Series.Add("Versicolor");
+            SW_chart.Series.Add("Virginica");
+
+            PL_chart.Series.Add("Setosa");
+            PL_chart.Series.Add("Versicolor");
+            PL_chart.Series.Add("Virginica");
+
+            PW_chart.Series.Add("Setosa");
+            PW_chart.Series.Add("Versicolor");
+            PW_chart.Series.Add("Virginica");
+
+            Pie_chart.Series.Add("Iris");
+            Pie_chart.Series["Iris"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+
             SL_chart.Series["Setosa"].IsValueShownAsLabel = true;
             SL_chart.Series["Versicolor"].IsValueShownAsLabel = true;
             SL_chart.Series["Virginica"].IsValueShownAsLabel = true;
@@ -59,7 +92,6 @@ namespace GrafsForIris
             SL_chart.Series["Versicolor"].Points.AddXY("Versicolor", vectors.Versicolor[0].ToString());
             SL_chart.Series["Virginica"].Points.AddXY("Virginica", vectors.Virginica[0].ToString());
 
-            SW_chart.Titles.Add("Sepal Width");
             SW_chart.Series["Setosa"].IsValueShownAsLabel = true;
             SW_chart.Series["Versicolor"].IsValueShownAsLabel = true;
             SW_chart.Series["Virginica"].IsValueShownAsLabel = true;
@@ -67,7 +99,6 @@ namespace GrafsForIris
             SW_chart.Series["Versicolor"].Points.AddXY("Versicolor", vectors.Versicolor[1].ToString());
             SW_chart.Series["Virginica"].Points.AddXY("Virginica", vectors.Virginica[1].ToString());
 
-            PL_chart.Titles.Add("Petal Length");
             PL_chart.Series["Setosa"].IsValueShownAsLabel = true;
             PL_chart.Series["Versicolor"].IsValueShownAsLabel = true;
             PL_chart.Series["Virginica"].IsValueShownAsLabel = true;
@@ -75,15 +106,13 @@ namespace GrafsForIris
             PL_chart.Series["Versicolor"].Points.AddXY("Versicolor", vectors.Versicolor[2].ToString());
             PL_chart.Series["Virginica"].Points.AddXY("Virginica", vectors.Virginica[2].ToString());
 
-            PW_chart.Titles.Add("Petal Width");
             PW_chart.Series["Setosa"].IsValueShownAsLabel = true;
             PW_chart.Series["Versicolor"].IsValueShownAsLabel = true;
             PW_chart.Series["Virginica"].IsValueShownAsLabel = true;
             PW_chart.Series["Setosa"].Points.AddXY("Setosa", vectors.Setosa[3].ToString());
             PW_chart.Series["Versicolor"].Points.AddXY("Versicolor", vectors.Versicolor[3].ToString());
             PW_chart.Series["Virginica"].Points.AddXY("Virginica", vectors.Virginica[3].ToString());
-
-            Pie_chart.Titles.Add("Distances");
+ 
             Pie_chart.Series["Iris"].IsValueShownAsLabel = true;
             Pie_chart.Series["Iris"].Points.AddXY("Setosa - Versicolor", value.Setosa);
             Pie_chart.Series["Iris"].Points.AddXY("Versicolor - Verginica", value.Versicolor);

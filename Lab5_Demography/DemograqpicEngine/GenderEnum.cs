@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DemograqpicEngine
+namespace DemographicEngine
 {
     public enum Gender
     {
-        Women = 0,
-        Men,
+        Woman = 0,
+        Man,
     }
 }

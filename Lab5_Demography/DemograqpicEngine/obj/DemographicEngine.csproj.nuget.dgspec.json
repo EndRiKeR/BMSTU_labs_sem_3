@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Lab5_Demography\\FileReader\\FileReader.csproj": {}
+    "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Lab5_Demography\\DemograqpicEngine\\DemographicEngine.csproj": {}
   },
   "projects": {
-    "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Lab5_Demography\\FileReader\\FileReader.csproj": {
+    "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Lab5_Demography\\DemograqpicEngine\\DemographicEngine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Lab5_Demography\\FileReader\\FileReader.csproj",
-        "projectName": "FileReader",
-        "projectPath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Lab5_Demography\\FileReader\\FileReader.csproj",
+        "projectUniqueName": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Lab5_Demography\\DemograqpicEngine\\DemographicEngine.csproj",
+        "projectName": "DemographicEngine",
+        "projectPath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Lab5_Demography\\DemograqpicEngine\\DemographicEngine.csproj",
         "packagesPath": "C:\\Users\\solom\\.nuget\\packages\\",
-        "outputPath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Lab5_Demography\\FileReader\\obj\\",
+        "outputPath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Lab5_Demography\\DemograqpicEngine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

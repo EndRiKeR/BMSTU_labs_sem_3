@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.2.32616.157
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab5_Demography", "Lab5_Demography\Lab5_Demography.csproj", "{DA8238D2-079B-4F68-8379-A4AB7AA1E4D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileReader", "FileReader\FileReader.csproj", "{0B8208FF-5128-4AAE-9F6E-968495E0B3B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileReader", "FileReader\FileReader.csproj", "{0B8208FF-5128-4AAE-9F6E-968495E0B3B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemograqpicEngine", "DemograqpicEngine\DemograqpicEngine.csproj", "{50DB4BCE-1C6C-49B2-BDC5-ACEA4B84E088}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemographicEngine", "DemograqpicEngine\DemographicEngine.csproj", "{50DB4BCE-1C6C-49B2-BDC5-ACEA4B84E088}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

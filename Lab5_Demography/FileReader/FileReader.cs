@@ -23,7 +23,7 @@ namespace FileReader
             return File.ReadAllLines(filePath);
         }
 
-        public void ParceData(string[] strings)
+        public Dictionary<int, double> ParceDataInitialAgeData(string[] strings)
         {
             try
             {
@@ -55,6 +55,8 @@ namespace FileReader
                 throw;
             }
         }
+
+        private
 
 
     }
