@@ -128,7 +128,7 @@ namespace GrafsForIris.GrafsBuilder
                     }
                 }
 
-                ListsOfIris listsOfIris = new ListsOfIris(setosaPoint, verginicaPoint, versicolorPoint);
+                ListsOfIris listsOfIris = new ListsOfIris(setosaPoint, versicolorPoint, verginicaPoint);
 
                 return listsOfIris;
             }

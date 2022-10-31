@@ -37,7 +37,7 @@ namespace GrafsForIris
             {
                 var irises = fr.ReadReformAndResortIrisPoints();
 
-                //Console.WriteLine(irises.ToString());
+                Console.WriteLine(irises.ToString());
 
                 var sortedVectots = vw.FromIrisesToVectors(irises);
 
@@ -88,30 +88,30 @@ namespace GrafsForIris
             SL_chart.Series["Setosa"].IsValueShownAsLabel = true;
             SL_chart.Series["Versicolor"].IsValueShownAsLabel = true;
             SL_chart.Series["Virginica"].IsValueShownAsLabel = true;
-            SL_chart.Series["Setosa"].Points.AddXY("Setosa", vectors.Setosa[0].ToString());
-            SL_chart.Series["Versicolor"].Points.AddXY("Versicolor", vectors.Versicolor[0].ToString());
-            SL_chart.Series["Virginica"].Points.AddXY("Virginica", vectors.Virginica[0].ToString());
+            SL_chart.Series["Setosa"].Points.AddXY("Setosa", vectors.Setosa[0]);
+            SL_chart.Series["Versicolor"].Points.AddXY("Versicolor", vectors.Versicolor[0]);
+            SL_chart.Series["Virginica"].Points.AddXY("Virginica", vectors.Virginica[0]);
 
             SW_chart.Series["Setosa"].IsValueShownAsLabel = true;
             SW_chart.Series["Versicolor"].IsValueShownAsLabel = true;
             SW_chart.Series["Virginica"].IsValueShownAsLabel = true;
-            SW_chart.Series["Setosa"].Points.AddXY("Setosa", vectors.Setosa[1].ToString());
-            SW_chart.Series["Versicolor"].Points.AddXY("Versicolor", vectors.Versicolor[1].ToString());
-            SW_chart.Series["Virginica"].Points.AddXY("Virginica", vectors.Virginica[1].ToString());
+            SW_chart.Series["Setosa"].Points.AddXY("Setosa", vectors.Setosa[1]);
+            SW_chart.Series["Versicolor"].Points.AddXY("Versicolor", vectors.Versicolor[1]);
+            SW_chart.Series["Virginica"].Points.AddXY("Virginica", vectors.Virginica[1]);
 
             PL_chart.Series["Setosa"].IsValueShownAsLabel = true;
             PL_chart.Series["Versicolor"].IsValueShownAsLabel = true;
             PL_chart.Series["Virginica"].IsValueShownAsLabel = true;
-            PL_chart.Series["Setosa"].Points.AddXY("Setosa", vectors.Setosa[2].ToString());
-            PL_chart.Series["Versicolor"].Points.AddXY("Versicolor", vectors.Versicolor[2].ToString());
-            PL_chart.Series["Virginica"].Points.AddXY("Virginica", vectors.Virginica[2].ToString());
+            PL_chart.Series["Setosa"].Points.AddXY("Setosa", vectors.Setosa[2]);
+            PL_chart.Series["Versicolor"].Points.AddXY("Versicolor", vectors.Versicolor[2]);
+            PL_chart.Series["Virginica"].Points.AddXY("Virginica", vectors.Virginica[2]);
 
             PW_chart.Series["Setosa"].IsValueShownAsLabel = true;
             PW_chart.Series["Versicolor"].IsValueShownAsLabel = true;
             PW_chart.Series["Virginica"].IsValueShownAsLabel = true;
-            PW_chart.Series["Setosa"].Points.AddXY("Setosa", vectors.Setosa[3].ToString());
-            PW_chart.Series["Versicolor"].Points.AddXY("Versicolor", vectors.Versicolor[3].ToString());
-            PW_chart.Series["Virginica"].Points.AddXY("Virginica", vectors.Virginica[3].ToString());
+            PW_chart.Series["Setosa"].Points.AddXY("Setosa", vectors.Setosa[3]);
+            PW_chart.Series["Versicolor"].Points.AddXY("Versicolor", vectors.Versicolor[3]);
+            PW_chart.Series["Virginica"].Points.AddXY("Virginica", vectors.Virginica[3]);
  
             Pie_chart.Series["Iris"].IsValueShownAsLabel = true;
             Pie_chart.Series["Iris"].Points.AddXY("Setosa - Versicolor", value.Setosa);
