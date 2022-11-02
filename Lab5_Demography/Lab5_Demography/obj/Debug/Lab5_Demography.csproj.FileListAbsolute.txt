@@ -1,0 +1,15 @@
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\obj\Debug\Lab5_Demography.csproj.AssemblyReference.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\obj\Debug\Lab5_Demography.Form1.resources
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\obj\Debug\Lab5_Demography.Properties.Resources.resources
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\obj\Debug\Lab5_Demography.csproj.GenerateResource.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\obj\Debug\Lab5_Demography.csproj.CoreCompileInputs.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\bin\Debug\Lab5_Demography.exe.config
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\bin\Debug\Lab5_Demography.exe
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\bin\Debug\Lab5_Demography.pdb
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\bin\Debug\DemographicEngine.dll
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\bin\Debug\FileReader.dll
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\bin\Debug\DemographicEngine.pdb
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\bin\Debug\FileReader.pdb
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\obj\Debug\Lab5_Demography.csproj.CopyComplete
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\obj\Debug\Lab5_Demography.exe
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\Lab5_Demography\obj\Debug\Lab5_Demography.pdb

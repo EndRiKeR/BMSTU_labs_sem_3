@@ -12,8 +12,6 @@ namespace DemographicEngine
         public bool IsAlive { get; private set; } = true;
         public int Age { get; private set; }
 
-        private Dictionary<int, double> _changeToDie;
-
         //Задается возраст и пол
         public Person(int nowYear, int age)
         {
@@ -22,9 +20,22 @@ namespace DemographicEngine
             Age = age;
         }
 
-        public void OnYearTick()
+        public void OnYearTick(Dictionary<int[], double[]> chanceToDie)
         {
-            if (ProbabilityCalculator.IsEventHappened(1)) ;
+            int[] nowAgePer = new int[1]();
+
+            foreach(int[] agesPeriod in chanceToDie.Keys)
+            {
+                if (Age >= agesPeriod[0] && Age <= agesPeriod[1])
+                {
+
+                }
+            }
+
+            double[] changes = chanceToDie[];
+
+            if (ProbabilityCalculator.IsEventHappened(chanceToDie[][Gender == Gender.Man ? 0 : 1]))
+                return;
         }
 
 

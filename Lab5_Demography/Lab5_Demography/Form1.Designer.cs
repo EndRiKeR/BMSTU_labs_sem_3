@@ -28,25 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.LoadAges_btn = new System.Windows.Forms.Button();
+            this.LoadDeath_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // LoadAges_btn
             // 
-            this.button1.Location = new System.Drawing.Point(306, 200);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 96);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Load";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.LoadAges_btn.Location = new System.Drawing.Point(300, 242);
+            this.LoadAges_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LoadAges_btn.Name = "LoadAges_btn";
+            this.LoadAges_btn.Size = new System.Drawing.Size(163, 118);
+            this.LoadAges_btn.TabIndex = 0;
+            this.LoadAges_btn.Text = "LoadInitialAges";
+            this.LoadAges_btn.UseVisualStyleBackColor = true;
+            this.LoadAges_btn.Click += new System.EventHandler(this.LoadAges_btn_Click);
+            // 
+            // LoadDeath_btn
+            // 
+            this.LoadDeath_btn.Location = new System.Drawing.Point(544, 242);
+            this.LoadDeath_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.LoadDeath_btn.Name = "LoadDeath_btn";
+            this.LoadDeath_btn.Size = new System.Drawing.Size(163, 118);
+            this.LoadDeath_btn.TabIndex = 1;
+            this.LoadDeath_btn.Text = "LoadDeathRule";
+            this.LoadDeath_btn.UseVisualStyleBackColor = true;
+            this.LoadDeath_btn.Click += new System.EventHandler(this.LoadDeath_btn_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.LoadDeath_btn);
+            this.Controls.Add(this.LoadAges_btn);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -55,7 +70,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button LoadAges_btn;
+        private System.Windows.Forms.Button LoadDeath_btn;
     }
 }
 

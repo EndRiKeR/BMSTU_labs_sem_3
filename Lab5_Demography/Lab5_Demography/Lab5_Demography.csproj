@@ -81,5 +81,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DemograqpicEngine\DemographicEngine.csproj">
+      <Project>{50db4bce-1c6c-49b2-bdc5-acea4b84e088}</Project>
+      <Name>DemographicEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileReader\FileReader.csproj">
+      <Project>{0b8208ff-5128-4aae-9f6e-968495e0b3b9}</Project>
+      <Name>FileReader</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

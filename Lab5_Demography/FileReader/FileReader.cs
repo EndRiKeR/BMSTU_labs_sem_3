@@ -9,7 +9,6 @@ namespace FileReader
         private string _initalAgeDataType = "Age, CountOn1000";
         private string _deathRule = "StartAge, EndAge, ChangeDeathMan, ChangeDeathWoman";
 
-
         public string[] ReadFromFile(string filePath)
         {
             if (!File.Exists(filePath))
@@ -23,40 +22,84 @@ namespace FileReader
             return File.ReadAllLines(filePath);
         }
 
-        public Dictionary<int, double> ParceDataInitialAgeData(string[] strings)
+        public Dictionary<int, double> ParceInitialAgeData(string[] strings)
         {
             try
             {
-                if (strings[0] != _initalAgeDataType && strings[0] != _deathRule)
-                    throw new RikerFileWrongTypeException(strings[0] == _initalAgeDataType ? _initalAgeDataType : _deathRule);
+                if (strings[0] != _initalAgeDataType)
+                    throw new RikerFileWrongTypeException(_initalAgeDataType);
 
                 Dictionary<int, double> demographySplit = new Dictionary<int, double>();
 
-                for (int i = 1; i < strings.Length; ++i)
+                foreach (var row in strings)
                 {
-                    string row = strings[i];
+                    if (row == _initalAgeDataType)
+                        continue;
+
                     string[] words = row.Split(',');
 
-                    if (words.Length != 5)
+                    if (words.Length != 2)
                         throw new RikerFileWrongDataException();
 
-                    for (int j = 0; j < 4; ++j)
-                    {
-                        if (String.IsNullOrWhiteSpace(words[j]))
-                            throw new RikerFileWrongDataException();
+                    if (String.IsNullOrWhiteSpace(words[0]) ||
+                        String.IsNullOrWhiteSpace(words[1]))
+                        throw new RikerFileWrongDataException();
 
-                        words[j] = words[j].Replace(".", ",");
-                    }
-
+                    words[1] = words[1].Replace(".", ",");
+                    //Console.WriteLine($"{words[0]}, {words[1]}");
+                    demographySplit.Add(Convert.ToInt32(words[0]), Convert.ToDouble(words[1]));
                 }
+
+                return demographySplit;
             }
-            catch (RikerBaseFileExceptions)
+            catch (RikerBaseFileException)
             {
                 throw;
             }
         }
 
-        private
+        public Dictionary<int[], double[]> ParceDeathRulesData(string[] strings)
+        {
+            try
+            {
+                if (strings[0] != _deathRule)
+                    throw new RikerFileWrongTypeException(_deathRule);
+
+                Dictionary<int[], double[]> deathRule = new Dictionary<int[], double[]>();
+
+                foreach (var row in strings)
+                {
+                    if (row == _deathRule)
+                        continue;
+
+                    string[] words = row.Split(',');
+
+                    if (words.Length != 4)
+                        throw new RikerFileWrongDataException();
+
+                    for (int i = 0; i < 4; i ++)
+                    {
+                        if (String.IsNullOrWhiteSpace(words[i]))
+                            throw new RikerFileWrongDataException();
+
+                        words[i] = words[i].Replace(".", ",");
+                    }
+
+                    deathRule.Add(new int[] { Convert.ToInt32(words[0]),
+                                                Convert.ToInt32(words[1]) },
+                                  new double[] { Convert.ToDouble(words[2]),
+                                                    Convert.ToDouble(words[3]) });
+}
+
+                return deathRule;
+            }
+            catch (RikerBaseFileException)
+            {
+                throw;
+            }
+        }
+
+
 
 
     }

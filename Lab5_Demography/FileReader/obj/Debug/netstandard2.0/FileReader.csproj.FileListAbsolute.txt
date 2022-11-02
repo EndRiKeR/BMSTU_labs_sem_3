@@ -1,0 +1,10 @@
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\bin\Debug\netstandard2.0\FileReader.deps.json
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\bin\Debug\netstandard2.0\FileReader.dll
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\bin\Debug\netstandard2.0\FileReader.pdb
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.csproj.AssemblyReference.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.GeneratedMSBuildEditorConfig.editorconfig
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.AssemblyInfoInputs.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.AssemblyInfo.cs
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.csproj.CoreCompileInputs.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.dll
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.pdb
