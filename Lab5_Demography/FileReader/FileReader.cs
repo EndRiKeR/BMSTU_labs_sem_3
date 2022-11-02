@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using DemographicEngine.StructsAndEnums;
 
 namespace FileReader
 {
@@ -58,14 +59,14 @@ namespace FileReader
             }
         }
 
-        public Dictionary<int[], double[]> ParceDeathRulesData(string[] strings)
+        public List<AgesPeriod> ParceDeathRulesData(string[] strings)
         {
             try
             {
                 if (strings[0] != _deathRule)
                     throw new RikerFileWrongTypeException(_deathRule);
 
-                Dictionary<int[], double[]> deathRule = new Dictionary<int[], double[]>();
+                List<AgesPeriod> deathRule = new List<AgesPeriod>();
 
                 foreach (var row in strings)
                 {
@@ -85,11 +86,15 @@ namespace FileReader
                         words[i] = words[i].Replace(".", ",");
                     }
 
-                    deathRule.Add(new int[] { Convert.ToInt32(words[0]),
-                                                Convert.ToInt32(words[1]) },
-                                  new double[] { Convert.ToDouble(words[2]),
-                                                    Convert.ToDouble(words[3]) });
-}
+                    AgesPeriod ages = new AgesPeriod(Convert.ToInt32(words[0]),
+                                                        Convert.ToInt32(words[1]),
+                                                        Convert.ToDouble(words[2]),
+                                                        Convert.ToDouble(words[3]));
+                    //TODO: Проверка AgesPeriod
+
+
+                    deathRule.Add(ages);
+                }
 
                 return deathRule;
             }

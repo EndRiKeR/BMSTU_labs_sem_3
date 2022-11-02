@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DemographicEngine
+namespace DemographicEngine.StructsAndEnums
 {
     public enum Gender
     {

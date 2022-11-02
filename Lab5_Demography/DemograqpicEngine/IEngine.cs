@@ -6,8 +6,9 @@ namespace DemographicEngine
 {
     public interface IEngine
     {
-        event Action YearTick;
+        event YearEvent YearTick;
         void SetupWorld();
+        void StartEngine();
         void NewYearTick();
 
     }

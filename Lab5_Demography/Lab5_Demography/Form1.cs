@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FileReader;
+using DemographicEngine.StructsAndEnums;
+using DemographicEngine;
 
 namespace Lab5_Demography
 {
     public partial class Form1 : Form
     {
         private Dictionary<int, double> _initialAges;
-        private Dictionary<int[], double[]> _deathRules;
+        private List<AgesPeriod> _deathRules;
 
         public Form1()
         {
@@ -66,6 +68,15 @@ namespace Lab5_Demography
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private void start_btn_Click(object sender, EventArgs e)
+        {
+            Engine engine = new Engine(_initialAges, _deathRules, Convert.ToInt32(start_age_txt.Text), Convert.ToInt32(end_age_txt.Text));
+
+            engine.StartEngine();
+
+
         }
     }
 }

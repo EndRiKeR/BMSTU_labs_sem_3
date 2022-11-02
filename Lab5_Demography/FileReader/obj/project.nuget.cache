@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IUHjckP3iZlFGBp/mX0raxSJEmobRL/HSiS3YK+exH8QAiqpQjjQnQg8QDKRhDRdMaybBYmjzJOT5a6GM8rnaw==",
+  "dgSpecHash": "LxquF7qwMVjLX1fqOfktCF6m3FSPtwuW2m6ctVnFRQzhjI9j1Z9UZirGhEoF5UiDUdcO5FDFWtQlneJqZSp3+w==",
   "success": true,
-  "projectFilePath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Lab5_Demography\\FileReader\\FileReader.csproj",
+  "projectFilePath": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\Lab5_Demography\\FileReader\\FileReader.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\solom\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\solom\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
