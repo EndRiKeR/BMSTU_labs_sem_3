@@ -8,3 +8,16 @@ D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0
 D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.csproj.CoreCompileInputs.cache
 D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.dll
 D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\bin\Debug\netstandard2.0\FileReader.deps.json
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\bin\Debug\netstandard2.0\FileReader.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\bin\Debug\netstandard2.0\FileReader.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\bin\Debug\netstandard2.0\DemographicEngine.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\bin\Debug\netstandard2.0\DemographicEngine.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.csproj.AssemblyReference.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.GeneratedMSBuildEditorConfig.editorconfig
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.AssemblyInfoInputs.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.AssemblyInfo.cs
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.csproj.CoreCompileInputs.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.csproj.CopyComplete
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.pdb

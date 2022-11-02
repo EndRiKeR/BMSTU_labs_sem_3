@@ -8,3 +8,13 @@ D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\bin\Debug\netstan
 D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\bin\Debug\netstandard2.0\DemographicEngine.pdb
 D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\obj\Debug\netstandard2.0\DemographicEngine.dll
 D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\obj\Debug\netstandard2.0\DemographicEngine.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\bin\Debug\netstandard2.0\DemographicEngine.deps.json
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\bin\Debug\netstandard2.0\DemographicEngine.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\bin\Debug\netstandard2.0\DemographicEngine.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\obj\Debug\netstandard2.0\DemographicEngine.csproj.AssemblyReference.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\obj\Debug\netstandard2.0\DemographicEngine.GeneratedMSBuildEditorConfig.editorconfig
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\obj\Debug\netstandard2.0\DemographicEngine.AssemblyInfoInputs.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\obj\Debug\netstandard2.0\DemographicEngine.AssemblyInfo.cs
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\obj\Debug\netstandard2.0\DemographicEngine.csproj.CoreCompileInputs.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\obj\Debug\netstandard2.0\DemographicEngine.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\DemograqpicEngine\obj\Debug\netstandard2.0\DemographicEngine.pdb

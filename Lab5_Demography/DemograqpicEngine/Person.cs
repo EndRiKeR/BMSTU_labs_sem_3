@@ -15,14 +15,15 @@ namespace DemographicEngine
         public int Age { get; private set; }
 
         private event DeathEvent _personDeath;
+        private event BirthEvent _personBirth;
 
-        //Задается возраст и пол
-        public Person(int nowYear, int age, DeathEvent deathEvent)
+        public Person(int nowYear, int age, DeathEvent deathEvent, BirthEvent birthEvent)
         {
             Gender = ProbabilityCalculator.IsEventHappened(StandartConstants.GenderManChange) ? Gender.Man : Gender.Woman;
             BirthYear = nowYear - age;
             Age = age;
             _personDeath += deathEvent;
+            _personBirth += birthEvent;
         }
 
         public void OnYearTick(List<AgesPeriod> chanceToDie)
@@ -49,7 +50,12 @@ namespace DemographicEngine
                     _personDeath.Invoke(this);
                 }
             }
-               
+
+            if (Gender == Gender.Woman && Age >= 18 && ProbabilityCalculator.IsEventHappened(StandartConstants.ChildBirthChance))
+            {
+                var child = new Person(BirthYear + Age, 0, _personDeath, _personBirth);
+                _personBirth.Invoke(child);
+            }  
         }
 
         public override string ToString()
