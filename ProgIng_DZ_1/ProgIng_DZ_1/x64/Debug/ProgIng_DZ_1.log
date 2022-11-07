@@ -1,0 +1,3 @@
+﻿  ProgIng_DZ_1.cpp
+D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ_1\ProgIng_DZ_1\ProgIng_DZ_1.cpp(152,30): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  ProgIng_DZ_1.vcxproj -> D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ_1\x64\Debug\ProgIng_DZ_1.exe
