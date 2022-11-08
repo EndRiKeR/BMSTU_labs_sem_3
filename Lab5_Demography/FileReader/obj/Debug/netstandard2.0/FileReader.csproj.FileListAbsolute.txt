@@ -21,3 +21,6 @@ D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netst
 D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.csproj.CopyComplete
 D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.dll
 D:\myProgects\repLab\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.pdb
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\bin\Debug\netstandard2.0\DemographicEngine.dll
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\bin\Debug\netstandard2.0\DemographicEngine.pdb
+D:\ForBMSTU\BMSTU_labs_sem_3\Lab5_Demography\FileReader\obj\Debug\netstandard2.0\FileReader.csproj.CopyComplete

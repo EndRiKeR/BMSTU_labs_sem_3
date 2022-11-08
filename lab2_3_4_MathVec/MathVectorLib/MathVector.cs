@@ -444,5 +444,24 @@ namespace MathVectorSpace
 
             return vector.ScalarMultiply(secondVec);
         }
+
+        public double[] SortVec()
+        {
+            List<double> listVers = new List<double>(_axis);
+            listVers.Sort();
+            return listVers.ToArray();
+        }
+
+        public double GetMedian()
+        {
+            double[] tmp = SortVec();
+            int checkSize = tmp.Length % 2;
+            int medSize = tmp.Length / 2;
+            if (tmp.Length != 1)
+                return (checkSize) != 0 ? tmp[medSize] : ((tmp[medSize - 1] + tmp[medSize]) / 2);
+            else
+                return tmp[0];
+
+        }
     }
 }

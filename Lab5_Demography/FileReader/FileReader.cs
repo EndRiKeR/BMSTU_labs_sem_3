@@ -59,14 +59,14 @@ namespace FileReader
             }
         }
 
-        public List<AgesPeriod> ParceDeathRulesData(string[] strings)
+        public List<AgesDeathPeriod> ParceDeathRulesData(string[] strings)
         {
             try
             {
                 if (strings[0] != _deathRule)
                     throw new RikerFileWrongTypeException(_deathRule);
 
-                List<AgesPeriod> deathRule = new List<AgesPeriod>();
+                List<AgesDeathPeriod> deathRule = new List<AgesDeathPeriod>();
 
                 foreach (var row in strings)
                 {
@@ -86,7 +86,7 @@ namespace FileReader
                         words[i] = words[i].Replace(".", ",");
                     }
 
-                    AgesPeriod ages = new AgesPeriod(Convert.ToInt32(words[0]),
+                    AgesDeathPeriod ages = new AgesDeathPeriod(Convert.ToInt32(words[0]),
                                                         Convert.ToInt32(words[1]),
                                                         Convert.ToDouble(words[2]),
                                                         Convert.ToDouble(words[3]));

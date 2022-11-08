@@ -13,6 +13,9 @@ namespace GrafsForIris
 {
     public partial class Form1 : Form
     {
+        private FileReader fr = new FileReader();
+        private VectorWorker vw = new VectorWorker();
+
         public Form1()
         {
             InitializeComponent();
@@ -22,14 +25,14 @@ namespace GrafsForIris
             PL_chart.Titles.Add("Petal Length");
             PW_chart.Titles.Add("Petal Width");
             Pie_chart.Titles.Add("Distances");
+            MedianChart.Titles.Add("Median of Sepal length");
 
         }
 
         private void LoadButtonClick(object sender, EventArgs e)
 
         {
-            FileReader fr = new FileReader();
-            VectorWorker vw = new VectorWorker();
+            
 
             fr.ChooseFilePath();
 
@@ -47,7 +50,11 @@ namespace GrafsForIris
 
                 Console.WriteLine(middleVectors.ToString());
 
-                UpdateUI(middleVectors, distances);
+                var medians = vw.CountVectorsMedians(sortedVectots);
+
+                Console.WriteLine(medians.ToString());
+
+                UpdateUI(middleVectors, distances, medians);
             }
             catch (RikerBaseFileExceptions ex)
             {
@@ -55,7 +62,7 @@ namespace GrafsForIris
             }
         }
 
-        private void UpdateUI(MiddleVectors vectors, DistanceValues value)
+        private void UpdateUI(MiddleVectors vectors, DistanceValues value, DistanceValues medians)
         {
 
             //В теории... это можно оптимизировать, но это архитектуру менять
@@ -65,6 +72,7 @@ namespace GrafsForIris
             PL_chart.Series.Clear();
             PW_chart.Series.Clear();
             Pie_chart.Series.Clear();
+            MedianChart.Series.Clear();
 
             SL_chart.Series.Add("Setosa");
             SL_chart.Series.Add("Versicolor");
@@ -117,6 +125,18 @@ namespace GrafsForIris
             Pie_chart.Series["Iris"].Points.AddXY("Setosa - Versicolor", value.Setosa);
             Pie_chart.Series["Iris"].Points.AddXY("Versicolor - Verginica", value.Versicolor);
             Pie_chart.Series["Iris"].Points.AddXY("Virginica - Setosa", value.Virginica);
+
+            //Medians
+
+            MedianChart.Series.Add("Setosa").Points.AddXY("SetosaMed", medians.Setosa);
+            MedianChart.Series.Add("Versicolor").Points.AddXY("VersicolorMed", medians.Versicolor);
+            MedianChart.Series.Add("Virginica").Points.AddXY("VirginicaMed", medians.Virginica);
+
+            MedianChart.Series["Setosa"].IsValueShownAsLabel = true;
+            MedianChart.Series["Versicolor"].IsValueShownAsLabel = true;
+            MedianChart.Series["Virginica"].IsValueShownAsLabel = true;
+
+
 
         }
     }

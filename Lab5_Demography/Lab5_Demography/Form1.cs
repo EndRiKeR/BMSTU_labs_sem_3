@@ -16,13 +16,15 @@ namespace Lab5_Demography
     public partial class Form1 : Form
     {
         private Dictionary<int, double> _initialAges;
-        private List<AgesPeriod> _deathRules;
+        private List<AgesDeathPeriod> _deathRules;
 
         private Reader _reader = new Reader();
 
         private int _startAge = 1970;
-        private int _endAge = 2010;
+        private int _endAge = 2022;
         private int _population = 130;
+
+        private const int _inMillions = 1000000;
 
 
         public Form1()
@@ -85,11 +87,15 @@ namespace Lab5_Demography
 
             if (_endAge - _startAge <= 300)
             {
-                Engine engine = new Engine(_initialAges, _deathRules, _startAge, _endAge, _population * 1000);
+                Engine engine = new Engine(_initialAges, _deathRules, _startAge, _endAge, _population * _inMillions);
 
-                engine.StatisticSend += UpdateCharts;
+                engine.StatisticSend += UpdateSplineCharts;
+
+                engine.DemographyStatisticSend += UpdateChartsCharts;
 
                 engine.StartEngine();
+
+                Console.WriteLine("END!");
             }
             else
             {
@@ -104,38 +110,46 @@ namespace Lab5_Demography
             population_chart.Series.Add("PopTotal").ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             population_chart.Series.Add("PopMan").ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             population_chart.Series.Add("PopWoman").ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            population_chart.Series["PopTotal"].IsValueShownAsLabel = true;
-            population_chart.Series["PopMan"].IsValueShownAsLabel = true;
-            population_chart.Series["PopWoman"].IsValueShownAsLabel = true;
+            //population_chart.Series["PopTotal"].IsValueShownAsLabel = true;
+            //population_chart.Series["PopMan"].IsValueShownAsLabel = true;
+            //population_chart.Series["PopWoman"].IsValueShownAsLabel = true;
+
+            //demography chart
+            demography_chart.Series.Clear();
+            demography_chart.Series.Add("Man").IsValueShownAsLabel = true;
+            demography_chart.Series.Add("Woman").IsValueShownAsLabel = true;
         }
 
-        private void UpdateCharts(StatisticData data)
+        private void UpdateSplineCharts(StatisticData data)
         {
             population_chart.Series["PopTotal"].Points.AddXY(data.Age, data.PopTotal);
             population_chart.Series["PopMan"].Points.AddXY(data.Age, data.PopMan);
             population_chart.Series["PopWoman"].Points.AddXY(data.Age, data.PopWoman);
         }
 
-        private void start_age_txt_TextChanged(object sender, EventArgs e)
+        private void UpdateChartsCharts(List<AgedStatistic> data)
         {
-            int tmp = 0;
-            int.TryParse(start_age_txt.Text, out tmp);
-            if (tmp >= 0)
-                _startAge = tmp;
-            else
-                start_age_txt.Text = "1970";
+            foreach(var stat in data)
+            {
+                demography_chart.Series["Man"].Points.AddXY(stat.GetPeriod(), stat.ManCounter);
+                demography_chart.Series["Woman"].Points.AddXY(stat.GetPeriod(), stat.WomanCounter);
+            }
+            
         }
 
-        private void end_age_txt_TextChanged(object sender, EventArgs e)
+        private void start_age_nud_ValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(end_age_txt.Text) >= 0)
-                _endAge = Convert.ToInt32(end_age_txt.Text);
+            _startAge = Convert.ToInt32(start_age_nud.Value);
         }
 
-        private void population_txt_TextChanged(object sender, EventArgs e)
+        private void end_age_nud_ValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(population_txt.Text) >= 0 || Convert.ToInt32(population_txt.Text) <= 20)
-                _population = Convert.ToInt32(population_txt.Text);
+            _endAge = Convert.ToInt32(end_age_nud.Value);
+        }
+
+        private void population_nud_ValueChanged(object sender, EventArgs e)
+        {
+            _population = Convert.ToInt32(population_nud.Value);
         }
     }
 }

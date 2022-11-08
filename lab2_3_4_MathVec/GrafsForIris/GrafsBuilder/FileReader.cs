@@ -15,6 +15,9 @@ namespace GrafsForIris.GrafsBuilder
         private const string _fileType = "sepal_length,sepal_width,petal_length,petal_width,species";
         private const string _irisType = "setosaversicolorvirginica";
 
+        private const int _maxSizeInByte = 5000;
+        private const int _minSizeInByte = 60;
+
         /// <summary>
         /// Выдает диалоговое окно и берет путь *.csv 
         /// </summary>
@@ -39,7 +42,7 @@ namespace GrafsForIris.GrafsBuilder
 
             FileInfo fileInfo = new FileInfo(_filePath);
 
-            if (fileInfo.Length > 5000 || fileInfo.Length <= 60)
+            if (fileInfo.Length > _maxSizeInByte || fileInfo.Length < _minSizeInByte)
                 throw new RikerFileWrongSizeExceptions();
 
             return File.ReadAllLines(_filePath);

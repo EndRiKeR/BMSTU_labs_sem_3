@@ -78,6 +78,50 @@ namespace GrafsForIris
 
             return new DistanceValues(distSetosaAndVersicolor, distVersicolorAndVerginica, distVerginicaAndSetosa);
         }
-        
+
+        public DistanceValues CountVectorsMedians(SortedVectorsStruct vectors)
+        {
+            List<double> setosaVec = new List<double>();
+            List<double> versicolorVec = new List<double>();
+            List<double> virginicaVec = new List<double>();
+
+            foreach (var vec in vectors.Setosa)
+            {
+                setosaVec.Add(vec[0]);
+            }
+
+            foreach (var vec in vectors.Versicolor)
+            {
+                versicolorVec.Add(vec[0]);
+            }
+
+            foreach (var vec in vectors.Virginica)
+            {
+                virginicaVec.Add(vec[0]);
+            }
+
+            double distSetosaAndVersicolor = GetMedian(setosaVec);
+            double distVersicolorAndVerginica = GetMedian(versicolorVec);
+            double distVerginicaAndSetosa = GetMedian(virginicaVec);
+
+            return new DistanceValues(distSetosaAndVersicolor, distVersicolorAndVerginica, distVerginicaAndSetosa);
+        }
+
+        private double GetMedian(List<double> list)
+        {
+            List<double> tmp = new List<double>(list);
+
+            tmp.Sort();
+
+            int sizeHalf = tmp.Count / 2;
+            int sizeDivideTrash = tmp.Count % 2;
+
+            if (tmp.Count != 1)
+                return (sizeDivideTrash) != 0 ? tmp[sizeHalf] : ((tmp[sizeHalf - 1] + tmp[sizeHalf]) / 2);
+            else
+                return tmp[0];
+
+        }
+
     }
 }

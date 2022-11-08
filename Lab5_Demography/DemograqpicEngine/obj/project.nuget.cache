@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KMGmJbTBt4paamjQ2WBlaE2IgOIjFj84/d36bt6Wu1G1xHPEBYHdpO032s+oKXXVeBcc3Itm2+u4Ptpb70j3Dg==",
+  "dgSpecHash": "aor/uixxrZdHp03j8zpu4YbKc7Afz36PGOp7WK90IK00PEQcqcgdzUAVxl5aotPZlqYYxYL2RlZVFk8BApQlVw==",
   "success": true,
-  "projectFilePath": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\Lab5_Demography\\DemograqpicEngine\\DemographicEngine.csproj",
+  "projectFilePath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Lab5_Demography\\DemograqpicEngine\\DemographicEngine.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\solom\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\solom\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

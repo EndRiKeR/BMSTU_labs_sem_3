@@ -10,6 +10,8 @@ namespace GrafsForIris
 {
     struct SortedVectorsStruct
     {
+        //Как называется это свойство, которое можно инициализировать без set == Кто бы мог подумать. но это readonly
+        //Посчитать медиану любого поля и вывести вместе со значением на графике
         public List<MathVector> Setosa { get; }
         public List<MathVector> Versicolor { get; }
         public List<MathVector> Virginica { get; }
@@ -70,7 +72,7 @@ namespace GrafsForIris
 
         public override string ToString()
         {
-            string tmp = string.Join(Setosa.ToString(), Versicolor.ToString(), Virginica.ToString());
+            string tmp = string.Join(" ", "[", Setosa.ToString(), ",", Versicolor.ToString(), ",", Virginica.ToString(), "]");
             return tmp;
         }
     }

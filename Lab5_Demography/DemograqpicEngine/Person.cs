@@ -26,15 +26,15 @@ namespace DemographicEngine
             _personBirth += birthEvent;
         }
 
-        public void OnYearTick(List<AgesPeriod> chanceToDie)
+        public void OnYearTick(List<AgesDeathPeriod> chanceToDie)
         {
             Age += 1;
 
-            AgesPeriod deathChance = new AgesPeriod(0, 0, -1, -1);
+            AgesDeathPeriod deathChance = new AgesDeathPeriod(0, 0, -1, -1);
 
             foreach(var period in chanceToDie)
             {
-                if (Age >= period.AgeStart && Age <= period.AgeEnd)
+                if (Age >= period.Period.AgeStart && Age <= period.Period.AgeEnd)
                 {
                     deathChance = period;
                 }

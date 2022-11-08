@@ -4,22 +4,22 @@ using System.Collections.Generic;
 
 namespace DemographicEngine
 {
-    public delegate void YearEvent(List<AgesPeriod> agesPeriods);
+    public delegate void YearEvent(List<AgesDeathPeriod> agesPeriods);
 
     public delegate void DeathEvent(Person person);
     public delegate void BirthEvent(Person person);
     public delegate void StatisticEvent(StatisticData data);
+    public delegate void DemographyStatisticEvent(List<AgedStatistic> data);
 
 
     public class Engine : IEngine
     {
-        
-
         public event YearEvent YearTick;
         public event StatisticEvent StatisticSend;
+        public event DemographyStatisticEvent DemographyStatisticSend;
 
         public Dictionary<int, double> InitAges { get; }
-        public List<AgesPeriod> DeathRules { get; }
+        public List<AgesDeathPeriod> DeathRules { get; }
         public int NowAge { get; private set; }
         public int EndAge { get; }
         public int Population { get; }
@@ -29,8 +29,11 @@ namespace DemographicEngine
         private int _populationMan = 0;
         private int _populationWoman = 0;
 
+        private const int _ModifierForInitialAges = 1000;
+        private const int _peoplesInOnePersion = 10000;
+
         public Engine(Dictionary<int, double> initAges,
-                        List<AgesPeriod> initDeathRules,
+                        List<AgesDeathPeriod> initDeathRules,
                         int startAge,  
                         int endAge,
                         int population)
@@ -50,13 +53,13 @@ namespace DemographicEngine
 
             foreach (var pair in InitAges)
             {
-                double peopleCount = pair.Value * Population;
+                double peopleCount = (pair.Value / _ModifierForInitialAges)  * Population;
 
                 while (peopleCount > 0)
                 {
                     Person person = new Person(NowAge, pair.Key, OnPersonDeath, OnPersonBirth);
                     NewPersonArrived(person);
-                    peopleCount -= 1000;
+                    peopleCount -= _peoplesInOnePersion;
                 }
             }
 
@@ -71,6 +74,10 @@ namespace DemographicEngine
                 Console.WriteLine($"New Year Tick. Now Age: {NowAge}. Population in Total: {_populationTotal}, Mans population: {_populationMan}, Womans Population: {_populationWoman}.");
                 NewYearTick();
             }
+
+            DemographyStatisticSend.Invoke(FormAgedStatisticData());
+
+
         }
 
         public void NewYearTick()
@@ -90,6 +97,8 @@ namespace DemographicEngine
         {
             //Console.WriteLine($"Person died: {person}");
             YearTick -= person.OnYearTick;
+
+            _peoples.Remove(person);
 
             _populationTotal -= 1;
 
@@ -115,6 +124,32 @@ namespace DemographicEngine
         private StatisticData FormStatisticData()
         {
             StatisticData data = new StatisticData(NowAge, _populationTotal, _populationMan, _populationWoman);
+            return data;
+        }
+
+        private List<AgedStatistic> FormAgedStatisticData()
+        {
+            //0-18, 19-44, 45-65 и 66-100 
+            List<AgedStatistic> data = new List<AgedStatistic>();
+            data.Add(new AgedStatistic(0, 18));
+            data.Add(new AgedStatistic(19, 44));
+            data.Add(new AgedStatistic(45, 65));
+            data.Add(new AgedStatistic(66, 100));
+            data.Add(new AgedStatistic(101, 120));
+
+            foreach(var people in _peoples)
+            {
+                for(int period = 0; period < data.Count; period++)
+                {
+                    if (data[period].ContainAge(people.Age))
+                        if (people.Gender == Gender.Man)
+                            data[period].IncrementMan();
+                        else
+                            data[period].IncrementWoman();
+                }
+                
+
+            }
             return data;
         }
     }
