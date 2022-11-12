@@ -34,7 +34,7 @@ namespace DemographicEngine
 
             foreach(var period in chanceToDie)
             {
-                if (Age >= period.Period.AgeStart && Age <= period.Period.AgeEnd)
+                if (period.Period.ContainAge(Age))
                 {
                     deathChance = period;
                 }

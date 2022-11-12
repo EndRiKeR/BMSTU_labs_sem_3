@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DemographicEngine.StructsAndEnums;
 
 namespace DemographicEngine
 {
@@ -8,7 +9,7 @@ namespace DemographicEngine
     {
         event YearEvent YearTick;
         void SetupWorld();
-        void StartEngine();
+        StatisticData StartEngine();
         void NewYearTick();
 
     }
