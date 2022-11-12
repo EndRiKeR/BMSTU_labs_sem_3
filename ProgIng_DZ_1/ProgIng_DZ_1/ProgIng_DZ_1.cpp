@@ -11,6 +11,8 @@ void TranslateNumberSystem(char* num2, char* num16);
 void WriteInFile(FILE* filePtr16, char* num16);
 char FromDoubleToSixteen(const char* tetra);
 
+int ReadFromFileTmp(FILE* filePtr2, char* num2);
+
 int main()
 {
     setlocale(LC_ALL, "RUS");
@@ -23,9 +25,10 @@ int main()
     char num16[NUM16SIZE];
     int i = 0;
     int rc = 0;
+    int addRc = 0;
 
-    const char* _inFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
-    const char* _outFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
+    const char* _inFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
+    const char* _outFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
 
     FILE* filePtr2 = NULL;
     FILE* filePtr16 = NULL;
@@ -35,11 +38,12 @@ int main()
 
     printf("Открытие файлов\n");
     rc = fopen_s(&filePtr2, _inFilePath, "r");
-    rc = fopen_s(&filePtr16, _outFilePath, "w");
-    if (rc != 0)
+    addRc = fopen_s(&filePtr16, _outFilePath, "w");
+    if (rc != 0 || addRc != 0)
     {
-        fclose(filePtr2);
-        fclose(filePtr16);
+        if (addRc != 0)
+            fclose(filePtr16);
+
         printf("Ошибка! Не удалось открыть файл.\n");
     }
     else
@@ -66,7 +70,7 @@ int main()
             else
             {
                 i += 1;
-                rc = ReadFromFile(filePtr2, num2);
+                rc = ReadFromFileTmp(filePtr2, num2);
                 printf("Debug Log: Read String = %s;\n", num2);
 
                 if (rc != 0) {
@@ -89,6 +93,19 @@ int main()
         if (rc == 0)
             printf("Программа успешно завершила работу!\n");
     }
+}
+//"%[^\n]"
+
+int ReadFromFileTmp(FILE* filePtr2, char* num2)
+{
+
+    //TODO:: Сделать построчно
+    int rc = 0;
+    int i = 0;
+    rc = fscanf_s(filePtr2, "%s[^\n]", num2);
+
+    printf("%s", num2);
+    return rc;
 }
 
 int ReadFromFile(FILE* filePtr2, char* num2)

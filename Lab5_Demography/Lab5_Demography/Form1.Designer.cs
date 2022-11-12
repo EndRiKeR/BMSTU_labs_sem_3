@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.LoadAges_btn = new System.Windows.Forms.Button();
             this.LoadDeath_btn = new System.Windows.Forms.Button();
             this.start_age_lbl = new System.Windows.Forms.Label();
@@ -45,6 +45,8 @@
             this.end_age_nud = new System.Windows.Forms.NumericUpDown();
             this.population_nud = new System.Windows.Forms.NumericUpDown();
             this.demography_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.population_chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_age_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.end_age_nud)).BeginInit();
@@ -55,7 +57,7 @@
             // LoadAges_btn
             // 
             this.LoadAges_btn.Location = new System.Drawing.Point(56, 202);
-            this.LoadAges_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LoadAges_btn.Margin = new System.Windows.Forms.Padding(4);
             this.LoadAges_btn.Name = "LoadAges_btn";
             this.LoadAges_btn.Size = new System.Drawing.Size(163, 118);
             this.LoadAges_btn.TabIndex = 0;
@@ -65,8 +67,9 @@
             // 
             // LoadDeath_btn
             // 
+            this.LoadDeath_btn.Enabled = false;
             this.LoadDeath_btn.Location = new System.Drawing.Point(56, 335);
-            this.LoadDeath_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LoadDeath_btn.Margin = new System.Windows.Forms.Padding(4);
             this.LoadDeath_btn.Name = "LoadDeath_btn";
             this.LoadDeath_btn.Size = new System.Drawing.Size(163, 118);
             this.LoadDeath_btn.TabIndex = 1;
@@ -96,8 +99,9 @@
             // 
             // start_btn
             // 
+            this.start_btn.Enabled = false;
             this.start_btn.Location = new System.Drawing.Point(56, 469);
-            this.start_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.start_btn.Margin = new System.Windows.Forms.Padding(4);
             this.start_btn.Name = "start_btn";
             this.start_btn.Size = new System.Drawing.Size(163, 48);
             this.start_btn.TabIndex = 6;
@@ -107,17 +111,17 @@
             // 
             // population_chart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.population_chart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.population_chart.Legends.Add(legend1);
+            chartArea5.Name = "ChartArea1";
+            this.population_chart.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.population_chart.Legends.Add(legend5);
             this.population_chart.Location = new System.Drawing.Point(319, 26);
-            this.population_chart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.population_chart.Margin = new System.Windows.Forms.Padding(4);
             this.population_chart.Name = "population_chart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.population_chart.Series.Add(series1);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.population_chart.Series.Add(series5);
             this.population_chart.Size = new System.Drawing.Size(692, 491);
             this.population_chart.TabIndex = 7;
             this.population_chart.Text = "Population";
@@ -203,25 +207,40 @@
             // 
             // demography_chart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.demography_chart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.demography_chart.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.demography_chart.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.demography_chart.Legends.Add(legend6);
             this.demography_chart.Location = new System.Drawing.Point(1018, 26);
             this.demography_chart.Name = "demography_chart";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.demography_chart.Series.Add(series2);
-            this.demography_chart.Size = new System.Drawing.Size(271, 491);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.demography_chart.Series.Add(series6);
+            this.demography_chart.Size = new System.Drawing.Size(448, 491);
             this.demography_chart.TabIndex = 13;
             this.demography_chart.Text = "man/woman demo";
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(56, 519);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(163, 23);
+            this.progressBar.TabIndex = 14;
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerReportsProgress = true;
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1301, 554);
+            this.ClientSize = new System.Drawing.Size(1478, 554);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.demography_chart);
             this.Controls.Add(this.population_nud);
             this.Controls.Add(this.end_age_nud);
@@ -233,7 +252,7 @@
             this.Controls.Add(this.start_age_lbl);
             this.Controls.Add(this.LoadDeath_btn);
             this.Controls.Add(this.LoadAges_btn);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.population_chart)).EndInit();
@@ -259,6 +278,8 @@
         private System.Windows.Forms.NumericUpDown end_age_nud;
         private System.Windows.Forms.NumericUpDown population_nud;
         private System.Windows.Forms.DataVisualization.Charting.Chart demography_chart;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }
 

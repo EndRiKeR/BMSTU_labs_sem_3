@@ -10,9 +10,13 @@ using System.Windows.Forms;
 using FileReader;
 using DemographicEngine.StructsAndEnums;
 using DemographicEngine;
+using System.Threading;
 
 namespace Lab5_Demography
 {
+    //TODO: ПРогресс бар принял определенную религию
+    //Либо переделывать все под Task, а это перелопачивать архитектуру
+    //Либо что-то сделать с BackGroundWorker
     public partial class Form1 : Form
     {
         private Dictionary<int, double> _initialAges;
@@ -26,7 +30,10 @@ namespace Lab5_Demography
 
         private const int _inMillions = 1000000;
 
+        private Engine _engine;
 
+        private BackgroundWorker _backWorker;
+       
         public Form1()
         {
             InitializeComponent();
@@ -51,8 +58,10 @@ namespace Lab5_Demography
             {
                 string filePath = TryLoadFile();
 
-                Reader reader = new Reader();
-                _initialAges = reader.ParceInitialAgeData(reader.ReadFromFile(filePath));
+                
+                _initialAges = _reader.ParceInitialAgeData(_reader.ReadFromFile(filePath));
+
+                LoadDeath_btn.Enabled = true;
 
                 Console.WriteLine($"{_initialAges}");
 
@@ -60,6 +69,7 @@ namespace Lab5_Demography
             catch(RikerBaseFileException ex)
             {
                 Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -68,9 +78,10 @@ namespace Lab5_Demography
             try
             {
                 string filePath = TryLoadFile();
-
                 
                 _deathRules = _reader.ParceDeathRulesData(_reader.ReadFromFile(filePath));
+
+                start_btn.Enabled = true;
 
                 Console.WriteLine($"{_deathRules}");
 
@@ -78,6 +89,7 @@ namespace Lab5_Demography
             catch (RikerBaseFileException ex)
             {
                 Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -87,13 +99,16 @@ namespace Lab5_Demography
 
             if (_endAge - _startAge <= 300)
             {
-                Engine engine = new Engine(_initialAges, _deathRules, _startAge, _endAge, _population * _inMillions);
+                _engine = new Engine(_initialAges, _deathRules, _startAge, _endAge, _population * _inMillions);
 
-                engine.StatisticSend += UpdateSplineCharts;
+                LoadAges_btn.Enabled = false;
+                LoadDeath_btn.Enabled = false;
+                start_btn.Enabled = false;
 
-                engine.DemographyStatisticSend += UpdateChartsCharts;
+                //_engine.StatisticSend += UpdateSplineCharts;
+                //_engine.DemographyStatisticSend += UpdateChartsCharts;
 
-                engine.StartEngine();
+                backgroundWorker.RunWorkerAsync();
 
                 Console.WriteLine("END!");
             }
@@ -114,17 +129,28 @@ namespace Lab5_Demography
             //population_chart.Series["PopMan"].IsValueShownAsLabel = true;
             //population_chart.Series["PopWoman"].IsValueShownAsLabel = true;
 
-            //demography chart
             demography_chart.Series.Clear();
             demography_chart.Series.Add("Man").IsValueShownAsLabel = true;
             demography_chart.Series.Add("Woman").IsValueShownAsLabel = true;
+
+            progressBar.Value = 0;
         }
 
-        private void UpdateSplineCharts(StatisticData data)
+        private void UpdateCharts(StatisticData data)
         {
-            population_chart.Series["PopTotal"].Points.AddXY(data.Age, data.PopTotal);
-            population_chart.Series["PopMan"].Points.AddXY(data.Age, data.PopMan);
-            population_chart.Series["PopWoman"].Points.AddXY(data.Age, data.PopWoman);
+            UpdateSplineCharts(data.PopStat);
+            UpdateChartsCharts(data.AgedStat);
+        }
+
+        private void UpdateSplineCharts(List<PopStatistic> data)
+        {
+            foreach(var year in data)
+            {
+                population_chart.Series["PopTotal"].Points.AddXY(year.Age, year.PopTotal);
+                population_chart.Series["PopMan"].Points.AddXY(year.Age, year.PopMan);
+                population_chart.Series["PopWoman"].Points.AddXY(year.Age, year.PopWoman);
+            }
+            
         }
 
         private void UpdateChartsCharts(List<AgedStatistic> data)
@@ -150,6 +176,33 @@ namespace Lab5_Demography
         private void population_nud_ValueChanged(object sender, EventArgs e)
         {
             _population = Convert.ToInt32(population_nud.Value);
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            _backWorker = (BackgroundWorker)sender;
+            _engine.Ping += backWorkerTakePing;
+           
+            var data = _engine.StartEngine();
+            e.Result = data;
+        }
+
+        private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar.Value = e.ProgressPercentage;
+        }
+
+        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            UpdateCharts((StatisticData)e.Result);
+            LoadAges_btn.Enabled = true;
+            LoadDeath_btn.Enabled = true;
+            start_btn.Enabled = true;
+        }
+
+        private void backWorkerTakePing(int age)
+        {
+            _backWorker.ReportProgress((age - _startAge)/(_endAge - _startAge) * 100);
         }
     }
 }
