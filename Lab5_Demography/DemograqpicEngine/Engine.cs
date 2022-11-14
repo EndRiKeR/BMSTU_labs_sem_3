@@ -1,4 +1,5 @@
 ﻿using DemographicEngine.StructsAndEnums;
+using DemographicEngine.StaticAndConstants;
 using System;
 using System.Collections.Generic;
 
@@ -32,7 +33,7 @@ namespace DemographicEngine
         private int _populationWoman = 0;
 
         private const int _ModifierForInitialAges = 1000;
-        private const int _peoplesInOnePersion = 10000;
+        private int _peoplesInOnePersion = StandartConstants.InOnePerson;
 
         private List<PopStatistic> _listStatisticData = new List<PopStatistic>();
 
@@ -55,15 +56,29 @@ namespace DemographicEngine
         {
             //Console.WriteLine($"Setup Engine");
 
+            double tmpPop = 0;
+
             foreach (var pair in InitAges)
             {
-                double peopleCount = (pair.Value / _ModifierForInitialAges)  * Population;
+                double peopleCount = Math.Round((pair.Value / _ModifierForInitialAges)  * Population);
 
-                while (peopleCount > 0)
+                while (peopleCount > _peoplesInOnePersion)
                 {
                     Person person = new Person(NowAge, pair.Key, OnPersonDeath, OnPersonBirth);
                     NewPersonArrived(person);
+
                     peopleCount -= _peoplesInOnePersion;
+                }
+
+                if (peopleCount > 0 )
+                {
+                    tmpPop += peopleCount;
+                    if (tmpPop >= _peoplesInOnePersion)
+                    {
+                        tmpPop -= _peoplesInOnePersion;
+                        Person person = new Person(NowAge, pair.Key, OnPersonDeath, OnPersonBirth);
+                        NewPersonArrived(person);
+                    }
                 }
             }
 
@@ -87,11 +102,17 @@ namespace DemographicEngine
 
         public void NewYearTick()
         {
-            YearTick.Invoke(DeathRules);
-            Ping(NowAge);
-            NowAge += 1;
-
             _listStatisticData.Add(FormPopStatistic());
+
+            if (YearTick != null)
+                YearTick.Invoke(DeathRules); //YearTick?.Invoke(DeathRules);
+            else
+                Console.WriteLine("is empty"); //Debug.Log("YearTick is empty");
+            
+            Ping(NowAge);
+
+
+            NowAge += 1;
         }
 
         private void OnPersonBirth(Person child)
@@ -104,6 +125,8 @@ namespace DemographicEngine
         {
             //Console.WriteLine($"Person died: {person}");
             YearTick -= person.OnYearTick;
+            person._personBirth -= OnPersonBirth;
+            person._personDeath -= OnPersonDeath;
 
             _peoples.Remove(person);
 
@@ -172,6 +195,7 @@ namespace DemographicEngine
                     womanCount = 0;
                 }
 
+                if (period < agePeriods.Count)
                 if (agePeriods[period].ContainAge(people.Age))
                     if (people.Gender == Gender.Man)
                         manCount++;

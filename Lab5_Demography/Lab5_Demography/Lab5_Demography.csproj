@@ -69,6 +69,21 @@
     </Compile>
     <None Include="CsvFiles\DeathRules.csv" />
     <None Include="CsvFiles\InitialAge.csv" />
+    <None Include="CsvFiles\testCsv\Correct\DeathRules.csv" />
+    <None Include="CsvFiles\testCsv\Correct\DeathRulesWithMomentaryDeath.csv" />
+    <None Include="CsvFiles\testCsv\Correct\DeathRulesWithMomentaryDeathForWoman.csv" />
+    <None Include="CsvFiles\testCsv\Correct\DeathRulesWithoutDeath.csv" />
+    <None Include="CsvFiles\testCsv\Correct\DeathRules_forTest.csv" />
+    <None Include="CsvFiles\testCsv\Correct\InitialAge.csv" />
+    <None Include="CsvFiles\testCsv\Correct\InitialAgeOnlyOldPeople.csv" />
+    <None Include="CsvFiles\testCsv\Incorrect\bigFileException.csv" />
+    <None Include="CsvFiles\testCsv\Incorrect\DeathRules_figureError.csv" />
+    <None Include="CsvFiles\testCsv\Incorrect\DeathRules_NegativeDataException.csv" />
+    <None Include="CsvFiles\testCsv\Incorrect\DeathRules_paramError.csv" />
+    <None Include="CsvFiles\testCsv\Incorrect\emptyFileException.csv" />
+    <None Include="CsvFiles\testCsv\Incorrect\InitialAge_figureError.csv" />
+    <None Include="CsvFiles\testCsv\Incorrect\InitialAge_NegativeDataException.csv" />
+    <None Include="CsvFiles\testCsv\Incorrect\InitialAge_paramError.csv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

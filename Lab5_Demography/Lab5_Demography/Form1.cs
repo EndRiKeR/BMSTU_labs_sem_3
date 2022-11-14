@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FileReader;
+using DemographicEngine.StaticAndConstants;
 using DemographicEngine.StructsAndEnums;
 using DemographicEngine;
 using System.Threading;
@@ -97,7 +98,7 @@ namespace Lab5_Demography
         {
             SetupNewCharts();
 
-            if (_endAge - _startAge <= 300)
+            if ((_endAge - _startAge <= 300) && (_endAge > _startAge))
             {
                 _engine = new Engine(_initialAges, _deathRules, _startAge, _endAge, _population * _inMillions);
 
@@ -114,7 +115,10 @@ namespace Lab5_Demography
             }
             else
             {
-                MessageBox.Show("Слишком большой период моделирования!\nПериод моделирования не может быть более 300 лет\nПожалейте оперативу разраба(");
+                if (_endAge <= _startAge)
+                    MessageBox.Show("Период моделирвоания слишком мал!\nПрограмме нечего моделировать!");
+                else
+                    MessageBox.Show("Слишком большой период моделирования!\nПериод моделирования не может быть более 300 лет\nПожалейте оперативу разраба(");
             }
         }
 
@@ -146,9 +150,11 @@ namespace Lab5_Demography
         {
             foreach(var year in data)
             {
-                population_chart.Series["PopTotal"].Points.AddXY(year.Age, year.PopTotal);
-                population_chart.Series["PopMan"].Points.AddXY(year.Age, year.PopMan);
-                population_chart.Series["PopWoman"].Points.AddXY(year.Age, year.PopWoman);
+                    population_chart.Series["PopTotal"].Points.AddXY(year.Age, year.PopTotal * StandartConstants.InOnePerson);
+                    population_chart.Series["PopMan"].Points.AddXY(year.Age, year.PopMan * StandartConstants.InOnePerson);
+                    population_chart.Series["PopWoman"].Points.AddXY(year.Age, year.PopWoman * StandartConstants.InOnePerson);
+
+                
             }
             
         }
@@ -157,8 +163,11 @@ namespace Lab5_Demography
         {
             foreach(var stat in data)
             {
-                demography_chart.Series["Man"].Points.AddXY(stat.GetPeriod(), stat.ManCounter);
-                demography_chart.Series["Woman"].Points.AddXY(stat.GetPeriod(), stat.WomanCounter);
+
+
+                demography_chart.Series["Man"].Points.AddXY(stat.GetPeriod(), stat.ManCounter * StandartConstants.InOnePerson);
+                demography_chart.Series["Woman"].Points.AddXY(stat.GetPeriod(), stat.WomanCounter * StandartConstants.InOnePerson);
+
             }
             
         }
