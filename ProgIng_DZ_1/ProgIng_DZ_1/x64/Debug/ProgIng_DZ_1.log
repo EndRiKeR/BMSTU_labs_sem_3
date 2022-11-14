@@ -1,7 +1,6 @@
 ﻿  ProgIng_DZ_1.cpp
-D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ_1\ProgIng_DZ_1\ProgIng_DZ_1.cpp(103,29): warning C4473: "fscanf_s": передано недостаточно аргументов для строки формата
-D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ_1\ProgIng_DZ_1\ProgIng_DZ_1.cpp(103,29): message : заполнители и их параметры ожидают переменное число аргументов в количестве 2, но было предоставлено 1
-D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ_1\ProgIng_DZ_1\ProgIng_DZ_1.cpp(103,29): message : отсутствующий вариативный аргумент "2" требуется для строки форматирования "%s"
-D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ_1\ProgIng_DZ_1\ProgIng_DZ_1.cpp(103,29): message : этот аргумент используется в качестве размера буфера
-D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ_1\ProgIng_DZ_1\ProgIng_DZ_1.cpp(167,30): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-  ProgIng_DZ_1.vcxproj -> D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ_1\x64\Debug\ProgIng_DZ_1.exe
+D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ_1\ProgIng_DZ_1\ProgIng_DZ_1.cpp(9,1): warning C4005: _countof: изменение макроопределения
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\stdlib.h(27): message : см. предыдущее определение "_countof"
+D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ_1\ProgIng_DZ_1\ProgIng_DZ_1.cpp(110,27): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ_1\ProgIng_DZ_1\ProgIng_DZ_1.cpp(142,30): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  ProgIng_DZ_1.vcxproj -> D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ_1\x64\Debug\ProgIng_DZ_1.exe

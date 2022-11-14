@@ -5,6 +5,8 @@
 #pragma warning(disable : 4996)
 //#define NUM2_SIZE 100;
 //#define NUM16_SIZE 25;
+#define _NO_CRT_STDIO_INLINE
+#define _countof(array) (sizeof(array) / sizeof(array[0]))
 
 int ReadFromFile(FILE*, char* num2);
 void TranslateNumberSystem(char* num2, char* num16);
@@ -27,8 +29,13 @@ int main()
     int rc = 0;
     int addRc = 0;
 
-    const char* _inFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
-    const char* _outFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
+    //PC path
+    const char* _inFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
+    const char* _outFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
+
+    //Laptop path
+    //const char* _inFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
+    //const char* _outFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
 
     FILE* filePtr2 = NULL;
     FILE* filePtr16 = NULL;
@@ -70,7 +77,7 @@ int main()
             else
             {
                 i += 1;
-                rc = ReadFromFileTmp(filePtr2, num2);
+                rc = ReadFromFile(filePtr2, num2);
                 printf("Debug Log: Read String = %s;\n", num2);
 
                 if (rc != 0) {
@@ -94,65 +101,32 @@ int main()
             printf("Программа успешно завершила работу!\n");
     }
 }
-//"%[^\n]"
-
-int ReadFromFileTmp(FILE* filePtr2, char* num2)
-{
-
-    //TODO:: Сделать построчно
-    int rc = 0;
-    int i = 0;
-    rc = fscanf_s(filePtr2, "%s[^\n]", num2);
-
-    printf("%s", num2);
-    return rc;
-}
 
 int ReadFromFile(FILE* filePtr2, char* num2)
 {
-    char ch = fgetc(filePtr2);
-    int index = 0;
     int rc = 0;
+    int i = 0;
+    fscanf(filePtr2, "%[^\n]%*c", num2);
+    int len = strlen(num2);
+    num2[len] = '\0';
 
-    while (ch != '\n')
+    while (i < len) // либо вынести условие, что rc == 0 сюда
     {
-        if (ch != '1' && ch != '0')
+        if (num2[i] == '0' || num2[i] == '1')
+        {
+            ++i;
+        }
+        else
         {
             rc = -1;
             break;
         }
-
-        *(num2 + index) = ch;
-
-        if (index >= 100)
-        {
-            rc = -1;
-            break;
-        }
-
-        index += 1;
-        ch = fgetc(filePtr2);
-
-        if (feof(filePtr2))
-        {
-            break;
-        }
     }
-
-    if (index == 0)
-    {
-        rc = -1;
-    }
-
-    if (index <= 100)
-    {
-        *(num2 + index) = '\0';
-    }
-
     return rc;
 }
 
-void TranslateNumberSystem(char* num2, char* num16)
+//не сходится с псевдокодом
+void TranslateNumberSystem(char* num2, char* num16) 
 {
     int mod = strlen(num2) % 4;
     char tmp[101];
