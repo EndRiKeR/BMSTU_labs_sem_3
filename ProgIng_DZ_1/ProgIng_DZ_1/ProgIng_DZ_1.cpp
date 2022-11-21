@@ -30,12 +30,12 @@ int main()
     int addRc = 0;
 
     //PC path
-    const char* _inFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
-    const char* _outFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
+    //const char* _inFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
+    //const char* _outFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
 
     //Laptop path
-    //const char* _inFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
-    //const char* _outFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
+    const char* _inFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
+    const char* _outFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
 
     FILE* filePtr2 = NULL;
     FILE* filePtr16 = NULL;
@@ -106,11 +106,14 @@ int ReadFromFile(FILE* filePtr2, char* num2)
 {
     int rc = 0;
     int i = 0;
-    fscanf(filePtr2, "%[^\n]%*c", num2);
+    int takenData = fscanf(filePtr2, "%[^\n]%*c", num2);
     int len = strlen(num2);
     num2[len] = '\0';
 
-    while (i < len) // либо вынести условие, что rc == 0 сюда
+    if (takenData == -1)
+        rc = -1;
+
+    while (i < len && rc == 0)
     {
         if (num2[i] == '0' || num2[i] == '1')
         {
@@ -134,11 +137,14 @@ void TranslateNumberSystem(char* num2, char* num16)
 
     tmp[100] = '\0';
     result[25] = '\0';
-      
-    for (int i = 0; i < mod; ++i) {
+    
+    if (mod == 0)
+        mod = 4;
+
+    for (int i = 0; i < (4 - mod); ++i) {
         *(tmp + i) = '0';
     }
-    strcpy(tmp + mod, num2);
+    strcpy(tmp + (4 - mod), num2);
 
     int div = strlen(tmp) / 4;
 
