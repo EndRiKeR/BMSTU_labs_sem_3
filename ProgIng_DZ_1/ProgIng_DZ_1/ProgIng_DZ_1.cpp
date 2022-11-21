@@ -2,6 +2,8 @@
 #include "stdlib.h"
 #include "string.h"
 #include "locale.h"
+#include "assert.h"
+
 #pragma warning(disable : 4996)
 //#define NUM2_SIZE 100;
 //#define NUM16_SIZE 25;
@@ -30,12 +32,12 @@ int main()
     int addRc = 0;
 
     //PC path
-    //const char* _inFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
-    //const char* _outFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
+    const char* _inFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
+    const char* _outFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
 
     //Laptop path
-    const char* _inFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
-    const char* _outFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
+    //const char* _inFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
+    //const char* _outFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
 
     FILE* filePtr2 = NULL;
     FILE* filePtr16 = NULL;
@@ -49,7 +51,7 @@ int main()
     if (rc != 0 || addRc != 0)
     {
         if (addRc != 0)
-            fclose(filePtr16);
+            fclose(filePtr2);
 
         printf("Ошибка! Не удалось открыть файл.\n");
     }
@@ -104,6 +106,9 @@ int main()
 
 int ReadFromFile(FILE* filePtr2, char* num2)
 {
+    assert(filePtr2);
+    assert(num2);
+
     int rc = 0;
     int i = 0;
     int takenData = fscanf(filePtr2, "%[^\n]%*c", num2);
@@ -131,6 +136,9 @@ int ReadFromFile(FILE* filePtr2, char* num2)
 //не сходится с псевдокодом
 void TranslateNumberSystem(char* num2, char* num16) 
 {
+    assert(num2);
+    assert(num16);
+
     int mod = strlen(num2) % 4;
     char tmp[101];
     char result[26];
@@ -145,6 +153,8 @@ void TranslateNumberSystem(char* num2, char* num16)
         *(tmp + i) = '0';
     }
     strcpy(tmp + (4 - mod), num2);
+
+    assert(strlen(tmp) % 4 == 0);
 
     int div = strlen(tmp) / 4;
 
@@ -161,11 +171,17 @@ void TranslateNumberSystem(char* num2, char* num16)
 
 void WriteInFile(FILE* filePtr16, char* num16)
 {
+
+    assert(filePtr16);
+    assert(num16);
+
     fprintf(filePtr16, "%s %c", num16, '\n');
 }
 
 char FromDoubleToSixteen(const char* tetra)
 {
+    assert(strlen(tetra) >= 4);
+
     char res = ' ';
 
     if (tetra[0] == '0')
