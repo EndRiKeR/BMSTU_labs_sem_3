@@ -1,0 +1,7 @@
+﻿  ProgIng_DZ_1.cpp
+D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\ProgIng_DZ_1.cpp(11,1): warning C4005: _countof: изменение макроопределения
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\stdlib.h(27): message : см. предыдущее определение "_countof"
+D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\ProgIng_DZ_1.cpp(117,27): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\ProgIng_DZ_1.cpp(161,30): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\ProgIng_DZ_1.cpp(107): warning C4715: mainProgram: значение возвращается не при всех путях выполнения
+  ProgIng_DZ_1.vcxproj -> D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\x64\Debug\ProgIng_DZ_1.exe
