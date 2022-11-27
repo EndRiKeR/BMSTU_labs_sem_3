@@ -4,7 +4,13 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="DoctorForm.cs">
+    <Compile Update="ExtraForms\DoctorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ExtraForms\CertificateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ExtraForms\SpecializationForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

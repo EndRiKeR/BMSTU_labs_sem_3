@@ -28,75 +28,147 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.contextBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.add_doc_btn = new System.Windows.Forms.Button();
+            this.doc_change_btn = new System.Windows.Forms.Button();
+            this.doc_del_btn = new System.Windows.Forms.Button();
+            this.cerf_del_btn = new System.Windows.Forms.Button();
+            this.cerf_change_btn = new System.Windows.Forms.Button();
+            this.cerf_add_btn = new System.Windows.Forms.Button();
+            this.spec_del_btn = new System.Windows.Forms.Button();
+            this.spec_change_btn = new System.Windows.Forms.Button();
+            this.spec_add_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contextBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 16);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(1543, 527);
+            this.dataGridView1.Size = new System.Drawing.Size(1354, 703);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // contextBindingSource
+            // add_doc_btn
             // 
-            this.contextBindingSource.DataSource = typeof(DataBaseContext.Context);
+            this.add_doc_btn.Location = new System.Drawing.Point(90, 726);
+            this.add_doc_btn.Name = "add_doc_btn";
+            this.add_doc_btn.Size = new System.Drawing.Size(162, 29);
+            this.add_doc_btn.TabIndex = 1;
+            this.add_doc_btn.Text = "AddDoctor";
+            this.add_doc_btn.UseVisualStyleBackColor = true;
+            this.add_doc_btn.Click += new System.EventHandler(this.add_doc_btn_Click);
             // 
-            // textBox1
+            // doc_change_btn
             // 
-            this.textBox1.Location = new System.Drawing.Point(91, 580);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 1;
+            this.doc_change_btn.Location = new System.Drawing.Point(90, 761);
+            this.doc_change_btn.Name = "doc_change_btn";
+            this.doc_change_btn.Size = new System.Drawing.Size(162, 29);
+            this.doc_change_btn.TabIndex = 2;
+            this.doc_change_btn.Text = "ChangeDoctor";
+            this.doc_change_btn.UseVisualStyleBackColor = true;
+            this.doc_change_btn.Click += new System.EventHandler(this.doc_change_btn_Click);
             // 
-            // textBox2
+            // doc_del_btn
             // 
-            this.textBox2.Location = new System.Drawing.Point(356, 580);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 2;
+            this.doc_del_btn.Location = new System.Drawing.Point(90, 796);
+            this.doc_del_btn.Name = "doc_del_btn";
+            this.doc_del_btn.Size = new System.Drawing.Size(162, 29);
+            this.doc_del_btn.TabIndex = 3;
+            this.doc_del_btn.Text = "DeleteDoctor";
+            this.doc_del_btn.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // cerf_del_btn
             // 
-            this.textBox3.Location = new System.Drawing.Point(588, 580);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 23);
-            this.textBox3.TabIndex = 3;
+            this.cerf_del_btn.Location = new System.Drawing.Point(256, 796);
+            this.cerf_del_btn.Name = "cerf_del_btn";
+            this.cerf_del_btn.Size = new System.Drawing.Size(162, 29);
+            this.cerf_del_btn.TabIndex = 6;
+            this.cerf_del_btn.Text = "DeleteCertificate";
+            this.cerf_del_btn.UseVisualStyleBackColor = true;
+            // 
+            // cerf_change_btn
+            // 
+            this.cerf_change_btn.Location = new System.Drawing.Point(256, 761);
+            this.cerf_change_btn.Name = "cerf_change_btn";
+            this.cerf_change_btn.Size = new System.Drawing.Size(162, 29);
+            this.cerf_change_btn.TabIndex = 5;
+            this.cerf_change_btn.Text = "ChangeCertificate";
+            this.cerf_change_btn.UseVisualStyleBackColor = true;
+            // 
+            // cerf_add_btn
+            // 
+            this.cerf_add_btn.Location = new System.Drawing.Point(256, 726);
+            this.cerf_add_btn.Name = "cerf_add_btn";
+            this.cerf_add_btn.Size = new System.Drawing.Size(162, 29);
+            this.cerf_add_btn.TabIndex = 4;
+            this.cerf_add_btn.Text = "AddCertificate";
+            this.cerf_add_btn.UseVisualStyleBackColor = true;
+            // 
+            // spec_del_btn
+            // 
+            this.spec_del_btn.Location = new System.Drawing.Point(423, 796);
+            this.spec_del_btn.Name = "spec_del_btn";
+            this.spec_del_btn.Size = new System.Drawing.Size(162, 29);
+            this.spec_del_btn.TabIndex = 9;
+            this.spec_del_btn.Text = "DeleteSpecialiation";
+            this.spec_del_btn.UseVisualStyleBackColor = true;
+            // 
+            // spec_change_btn
+            // 
+            this.spec_change_btn.Location = new System.Drawing.Point(423, 761);
+            this.spec_change_btn.Name = "spec_change_btn";
+            this.spec_change_btn.Size = new System.Drawing.Size(162, 29);
+            this.spec_change_btn.TabIndex = 8;
+            this.spec_change_btn.Text = "ChangeSpecialization";
+            this.spec_change_btn.UseVisualStyleBackColor = true;
+            // 
+            // spec_add_btn
+            // 
+            this.spec_add_btn.Location = new System.Drawing.Point(423, 726);
+            this.spec_add_btn.Name = "spec_add_btn";
+            this.spec_add_btn.Size = new System.Drawing.Size(162, 29);
+            this.spec_add_btn.TabIndex = 7;
+            this.spec_add_btn.Text = "AddSpecialization";
+            this.spec_add_btn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1567, 843);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1395, 839);
+            this.Controls.Add(this.spec_del_btn);
+            this.Controls.Add(this.spec_change_btn);
+            this.Controls.Add(this.spec_add_btn);
+            this.Controls.Add(this.cerf_del_btn);
+            this.Controls.Add(this.cerf_change_btn);
+            this.Controls.Add(this.cerf_add_btn);
+            this.Controls.Add(this.doc_del_btn);
+            this.Controls.Add(this.doc_change_btn);
+            this.Controls.Add(this.add_doc_btn);
             this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contextBindingSource)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource contextBindingSource;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button add_doc_btn;
+        private System.Windows.Forms.Button doc_change_btn;
+        private System.Windows.Forms.Button doc_del_btn;
+        private System.Windows.Forms.Button cerf_del_btn;
+        private System.Windows.Forms.Button cerf_change_btn;
+        private System.Windows.Forms.Button cerf_add_btn;
+        private System.Windows.Forms.Button spec_del_btn;
+        private System.Windows.Forms.Button spec_change_btn;
+        private System.Windows.Forms.Button spec_add_btn;
     }
 }

@@ -26,7 +26,7 @@ namespace DataBaseContext
         // Я использую подключение через длиииииинную строку параметров.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=testDB2;Username=postgres;Password=Uthfym5144172");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=testDbLaptop;Username=postgres;Password=Uthfym5144172");
         }
 
     }

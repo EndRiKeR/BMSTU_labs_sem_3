@@ -1,6 +1,8 @@
-﻿namespace Presentation
+﻿using Npgsql;
+
+namespace Presentation
 {
-    partial class DoctorForm
+    partial class SpecializationForm
     {
         /// <summary>
         /// Required designer variable.

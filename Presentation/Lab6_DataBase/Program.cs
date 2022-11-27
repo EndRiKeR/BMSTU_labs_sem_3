@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataBaseModels.Entity;
 using DataBaseContext;
+using Core;
 
 namespace Lab6_DataBase
 {
@@ -20,6 +21,10 @@ namespace Lab6_DataBase
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
+            var context = new Context();
+            var dataBaseWorker = new DataBase();
+            dataBaseWorker.InitializeWithTestData();
         }
     }
 }
