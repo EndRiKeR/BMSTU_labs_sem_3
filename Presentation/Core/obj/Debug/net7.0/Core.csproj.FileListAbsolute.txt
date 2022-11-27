@@ -1,0 +1,17 @@
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\bin\Debug\net7.0\Core.deps.json
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\bin\Debug\net7.0\Core.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\bin\Debug\net7.0\Core.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\obj\Debug\net7.0\Core.csproj.AssemblyReference.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\obj\Debug\net7.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\obj\Debug\net7.0\Core.AssemblyInfoInputs.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\obj\Debug\net7.0\Core.AssemblyInfo.cs
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\obj\Debug\net7.0\Core.csproj.CoreCompileInputs.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\obj\Debug\net7.0\Core.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\obj\Debug\net7.0\refint\Core.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\obj\Debug\net7.0\Core.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\obj\Debug\net7.0\ref\Core.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\bin\Debug\net7.0\DataBaseContext.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\bin\Debug\net7.0\DataBaseModels.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\bin\Debug\net7.0\DataBaseContext.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\bin\Debug\net7.0\DataBaseModels.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Core\obj\Debug\net7.0\Core.csproj.CopyComplete

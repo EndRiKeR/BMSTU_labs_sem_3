@@ -1,0 +1,15 @@
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\bin\Debug\net7.0\DataBaseContext.deps.json
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\bin\Debug\net7.0\DataBaseContext.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\bin\Debug\net7.0\DataBaseContext.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\obj\Debug\net7.0\DataBaseContext.csproj.AssemblyReference.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\obj\Debug\net7.0\DataBaseContext.GeneratedMSBuildEditorConfig.editorconfig
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\obj\Debug\net7.0\DataBaseContext.AssemblyInfoInputs.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\obj\Debug\net7.0\DataBaseContext.AssemblyInfo.cs
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\obj\Debug\net7.0\DataBaseContext.csproj.CoreCompileInputs.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\obj\Debug\net7.0\DataBaseContext.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\obj\Debug\net7.0\refint\DataBaseContext.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\obj\Debug\net7.0\DataBaseContext.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\obj\Debug\net7.0\ref\DataBaseContext.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\bin\Debug\net7.0\DataBaseModels.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\bin\Debug\net7.0\DataBaseModels.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\obj\Debug\net7.0\DataBaseContext.csproj.CopyComplete

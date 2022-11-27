@@ -1,0 +1,12 @@
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseModels\obj\Debug\netcoreapp7.0\DataBaseModels.csproj.AssemblyReference.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseModels\obj\Debug\netcoreapp7.0\DataBaseModels.GeneratedMSBuildEditorConfig.editorconfig
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseModels\obj\Debug\netcoreapp7.0\DataBaseModels.AssemblyInfoInputs.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseModels\obj\Debug\netcoreapp7.0\DataBaseModels.AssemblyInfo.cs
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseModels\obj\Debug\netcoreapp7.0\DataBaseModels.csproj.CoreCompileInputs.cache
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseModels\bin\Debug\netcoreapp7.0\DataBaseModels.deps.json
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseModels\bin\Debug\netcoreapp7.0\DataBaseModels.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseModels\bin\Debug\netcoreapp7.0\DataBaseModels.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseModels\obj\Debug\netcoreapp7.0\DataBaseModels.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseModels\obj\Debug\netcoreapp7.0\refint\DataBaseModels.dll
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseModels\obj\Debug\netcoreapp7.0\DataBaseModels.pdb
+D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseModels\obj\Debug\netcoreapp7.0\ref\DataBaseModels.dll
