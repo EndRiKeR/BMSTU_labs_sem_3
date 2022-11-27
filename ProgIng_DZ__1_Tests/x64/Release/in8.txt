@@ -1,0 +1,2 @@
+D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\x64\Release\Files\In2_Word.txt
+D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\x64\Release\Files\Out16_Word.txt

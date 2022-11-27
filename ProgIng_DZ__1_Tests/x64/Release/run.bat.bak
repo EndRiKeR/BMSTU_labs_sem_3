@@ -1,0 +1,3 @@
+@echo off
+cls
+for %%i in (1) do call test.bat %%i

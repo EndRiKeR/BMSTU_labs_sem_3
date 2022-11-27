@@ -1,12 +1,12 @@
-п»ї#include "stdio.h"
+#include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
 #include "locale.h"
 #include "assert.h"
 
 #pragma warning(disable : 4996)
-//#define NUM2_SIZE 100;
-//#define NUM16_SIZE 25;
+//#define NUM2_SIZE 100
+//#define NUM16_SIZE 25
 #define _NO_CRT_STDIO_INLINE
 #define _countof(array) (sizeof(array) / sizeof(array[0]))
 
@@ -15,34 +15,29 @@ void TranslateNumberSystem(char* num2, char* num16);
 void WriteInFile(FILE* filePtr16, char* num16);
 char FromDoubleToSixteen(const char* tetra);
 
-int mainProgram(const char* inPtr, const char* outPtr);
+int ReadFromFileTmp(FILE* filePtr2, char* num2);
 
 int main()
 {
     setlocale(LC_ALL, "RUS");
 
-    char inPtr[100];
-    char outPtr[100];
-
-    scanf("%s %s", inPtr, outPtr);
-
-    mainProgram(inPtr, outPtr);
-
-    return 0;
-}
-
-int mainProgram(const char* _inFilePath, const char* _outFilePath)
-{
-    printf("РџСЂРѕРіСЂР°РјРјР° Р·Р°РїСѓС‰РµРЅР°.\n");
+    printf("Программа запущена.\n");
     const int NUM2SIZE = 101;
     const int NUM16SIZE = 26;
 
     char num2[NUM2SIZE];
     char num16[NUM16SIZE];
-
     int i = 0;
     int rc = 0;
     int addRc = 0;
+
+    //PC path
+    //const char* _inFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
+    //const char* _outFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
+
+    //Laptop path
+    const char* _inFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
+    const char* _outFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
 
     FILE* filePtr2 = NULL;
     FILE* filePtr16 = NULL;
@@ -50,12 +45,12 @@ int mainProgram(const char* _inFilePath, const char* _outFilePath)
     num2[100] = '\0';
     num16[25] = '\0';
 
-    printf("РћС‚РєСЂС‹С‚РёРµ С„Р°Р№Р»РѕРІ\n");
+    printf("Открытие файлов\n");
     rc = fopen_s(&filePtr2, _inFilePath, "r");
     addRc = fopen_s(&filePtr16, _outFilePath, "w");
     if (rc != 0 || addRc != 0)
     {
-        printf("РћС€РёР±РєР°! РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р».\n");
+        printf("Ошибка! Не удалось открыть файл.\n");
     }
     else
     {
@@ -63,19 +58,19 @@ int mainProgram(const char* _inFilePath, const char* _outFilePath)
 
         if (feof(filePtr2)) {
             rc = -1;
-            printf("РћС€РёР±РєР°! РџРѕРґР°РЅ РїСѓСЃС‚РѕР№ С„Р°Р№Р».\n");
+            printf("Ошибка! Подан пустой файл.\n");
         }
         else
         {
             rewind(filePtr2);
         }
 
-        printf("РќР°С‡Р°Р»РѕСЃСЊ С‡С‚РµРЅРёРµ.\n");
+        printf("Началось чтение.\n");
         while (!feof(filePtr2))
         {
             if (i > 10) {
                 rc = -1;
-                printf("РћС€РёР±РєР°! Р Р°Р·РјРµСЂ С„Р°Р№Р»Р° РїСЂРµРІС‹С€Р°РµС‚ 10 СЃС‚СЂРѕРє.\n");
+                printf("Ошибка! Размер файла превышает 10 строк.\n");
                 break;
             }
             else
@@ -86,7 +81,7 @@ int mainProgram(const char* _inFilePath, const char* _outFilePath)
 
                 if (rc != 0) {
                     rc = -1;
-                    printf("РћС€РёР±РєР°! РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ С„РѕСЂРјР°С‚ РґР°РЅРЅС‹С…\n");
+                    printf("Ошибка! Некорректный формат данных\n");
                     break;
                 }
 
@@ -97,12 +92,12 @@ int mainProgram(const char* _inFilePath, const char* _outFilePath)
             }
         }
 
-        printf("Р—Р°РєСЂС‹С‚РёРµ С„Р°Р№Р»РѕРІ.\n");
+        printf("Закрытие файлов.\n");
         fclose(filePtr2);
         fclose(filePtr16);
 
         if (rc == 0)
-            printf("РџСЂРѕРіСЂР°РјРјР° СѓСЃРїРµС€РЅРѕ Р·Р°РІРµСЂС€РёР»Р° СЂР°Р±РѕС‚Сѓ!\n");
+            printf("Программа успешно завершила работу!\n");
     }
 }
 
@@ -135,8 +130,8 @@ int ReadFromFile(FILE* filePtr2, char* num2)
     return rc;
 }
 
-//РЅРµ СЃС…РѕРґРёС‚СЃСЏ СЃ РїСЃРµРІРґРѕРєРѕРґРѕРј
-void TranslateNumberSystem(char* num2, char* num16) 
+//не сходится с псевдокодом
+void TranslateNumberSystem(char* num2, char* num16)
 {
     assert(num2);
     assert(num16);
@@ -147,8 +142,8 @@ void TranslateNumberSystem(char* num2, char* num16)
 
     tmp[100] = '\0';
     result[25] = '\0';
-    
-    if (mod == 0)
+
+    if (mod == 0) //вынести добавление
         mod = 4;
 
     for (int i = 0; i < (4 - mod); ++i) {

@@ -5,8 +5,8 @@
 #include "assert.h"
 
 #pragma warning(disable : 4996)
-//#define NUM2_SIZE 100;
-//#define NUM16_SIZE 25;
+//#define NUM2_SIZE 100
+//#define NUM16_SIZE 25
 #define _NO_CRT_STDIO_INLINE
 #define _countof(array) (sizeof(array) / sizeof(array[0]))
 
@@ -32,12 +32,12 @@ int main()
     int addRc = 0;
 
     //PC path
-    const char* _inFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
-    const char* _outFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
+    //const char* _inFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
+    //const char* _outFilePath = "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
 
     //Laptop path
-    //const char* _inFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
-    //const char* _outFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
+    const char* _inFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/In2.txt";
+    const char* _outFilePath = "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ_1/ProgIng_DZ_1/Out16.txt";
 
     FILE* filePtr2 = NULL;
     FILE* filePtr16 = NULL;
@@ -50,9 +50,6 @@ int main()
     addRc = fopen_s(&filePtr16, _outFilePath, "w");
     if (rc != 0 || addRc != 0)
     {
-        if (addRc != 0)
-            fclose(filePtr2);
-
         printf("Ошибка! Не удалось открыть файл.\n");
     }
     else
@@ -146,7 +143,7 @@ void TranslateNumberSystem(char* num2, char* num16)
     tmp[100] = '\0';
     result[25] = '\0';
     
-    if (mod == 0)
+    if (mod == 0) //вынести добавление
         mod = 4;
 
     for (int i = 0; i < (4 - mod); ++i) {

@@ -1,0 +1,5 @@
+In: Out: Start program.
+Open files
+Start reading.
+Error! File has more then 10 rows.
+Close files.
