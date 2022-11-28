@@ -1,12 +1,14 @@
 ﻿  FuncTest.cpp
-D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\BinToSix.h(7,1): warning C4005: NDEBUG: изменение макроопределения
-D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\FuncTest.cpp : message : см. предыдущее определение "NDEBUG"
-D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\BinToSix.h(14,1): warning C4005: _countof: изменение макроопределения
+D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\BinToSix.h(7,1): warning C4005: NDEBUG: изменение макроопределения
+D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\FuncTest.cpp : message : см. предыдущее определение "NDEBUG"
+D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\BinToSix.h(14,1): warning C4005: _countof: изменение макроопределения
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\stdlib.h(27): message : см. предыдущее определение "_countof"
   Создание кода
-D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\FuncTest.cpp(61): warning C4715: Test_ReadFromFile: значение возвращается не при всех путях выполнения
-  12 of 12 functions (100.0%) were compiled.
-    3 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\FuncTest.cpp(151): warning C4715: Test_TranslateNumberSystem: значение возвращается не при всех путях выполнения
+D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\FuncTest.cpp(87): warning C4715: Test_WriteInFile: значение возвращается не при всех путях выполнения
+D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\FuncTest.cpp(207): warning C4715: Test_ReadFromFile: значение возвращается не при всех путях выполнения
+  3 of 17 functions (17.6%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
-  ProgIng_DZ_1.vcxproj -> D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\x64\Release\ProgIng_DZ_1.exe
+  ProgIng_DZ_1.vcxproj -> D:\myProgects\repLab\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\x64\Release\ProgIng_DZ_1.exe

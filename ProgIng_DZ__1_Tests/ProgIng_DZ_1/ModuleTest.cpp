@@ -156,13 +156,13 @@ void TranslateNumberSystem(char* num2, char* num16)
     strcpy(num16, result);
 }
 
-void WriteInFile(FILE* filePtr16, char* num16)
+int WriteInFile(FILE* filePtr16, char* num16)
 {
 
     assert(filePtr16);
     assert(num16);
 
-    fprintf(filePtr16, "%s %c", num16, '\n');
+    return fprintf(filePtr16, "%s %c", num16, '\n') - 2;
 }
 
 char FromDoubleToSixteen(const char* tetra)

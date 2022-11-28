@@ -15,7 +15,7 @@
 
 int ReadFromFile(FILE*, char* num2);
 void TranslateNumberSystem(char* num2, char* num16);
-void WriteInFile(FILE* filePtr16, char* num16);
+int WriteInFile(FILE* filePtr16, char* num16);
 char FromDoubleToSixteen(const char* tetra);
 
 int mainProgram(const char* inPtr, const char* outPtr);
