@@ -21,30 +21,70 @@ namespace Lab6_DataBase
         DoctorForm _docForm = new DoctorForm();
         SpecializationForm _specForm = new SpecializationForm();
 
-        int _countOfDocs = 0;
-        int _countOfCerf = 0;
-        int _countOfSpec = 0;
+        /*List<int> _countOfDocs = new List<int>();
+        List<int> _countOfCerf = new List<int>();
+        List<int> _countOfSpec = new List<int>();*/
+
+        int _curId = 0;
+        string _curTable = "";
+        Moves _move = Moves.None;
+
+
+
+        Limits limits = new Limits();
 
         public Form1()
         {
             InitializeComponent();
-            /*CertificateForm _cerfForm = new CertificateForm();
-            DoctorForm _docForm = new DoctorForm();
-            SpecializationForm _specForm = new SpecializationForm();*/
 
             _docForm.EndEvent += OkInDoc;
 
-            var limits = _dataBase.GetIdLimits();
-            _countOfDocs = limits.DoctorsLimits;
-            _countOfCerf = limits.CertificatesLimits;
-            _countOfSpec = limits.SpecializationsLimits;
+            limits = _dataBase.GetIdLimits();
 
+        }
+
+        private void ButtonPressed(object sender, EventArgs e)
+        {
+            try
+            {
+                _curId = Convert.ToInt16(id_catcher_txt.Text);
+                _curTable = tables_names_cb.Text;
+                switch (((Button)sender).Text)
+                {
+                    case "Add":
+                        _move = Moves.Add;
+                        break;
+                    case "Change":
+                        _move = Moves.Change;
+                        break;
+                    case "Delete":
+                        _move = Moves.Del;
+                        break;
+                }
+
+                DoMove();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Uncorrect ID Format");
+            }
+            
+            
+        }
+
+        private void DoMove()
+        {
+            
+        }
+
+        private Limits SetupNowLimits()
+        {
+            return _dataBase.GetIdLimits();
         }
 
         private void add_doc_btn_Click(object sender, EventArgs e)
         {
-            //Вот тут добавить проверку на текущий ID врача
-            _docForm.SetupAndStart(Moves.Add, ++_countOfDocs);
+            _docForm.SetupAndStart(Moves.Add, SetupNowLimits());
         }
 
         private void OkInDoc(Moves move)
@@ -65,7 +105,18 @@ namespace Lab6_DataBase
 
         private void doc_change_btn_Click(object sender, EventArgs e)
         {
-            _docForm.SetupAndStart(Moves.Add);
+            _docForm.SetupAndStart(Moves.Change, SetupNowLimits());
+        }
+
+        private void doc_del_btn_Click(object sender, EventArgs e)
+        {
+
+            _docForm.SetupAndStart(Moves.Del, SetupNowLimits());
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

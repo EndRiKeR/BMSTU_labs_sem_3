@@ -8,19 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataBaseModels.Entity;
+using Core;
 
 namespace Presentation
 {
     public partial class DoctorForm : Form
     {
 
-        private int _docId = 0;
-        private int _specId = 0;
-        private string _docName = "Anon";
+        private List<int> _docId = new List<int>();
+        private List<int> _specId = new List<int>();
+
+        private Doctor? _oldDoc;
 
         private bool _changesSaved = false;
 
-        private Moves _move = Presentation.Moves.None;
+        private Moves _move = Moves.None;
 
         public event Action<Moves> EndEvent;
 
@@ -29,44 +31,42 @@ namespace Presentation
             InitializeComponent();
         }
 
-        public void SetupAndStart(Moves move, int docId = -1, int specId = 1, string docName = "Anon")
+        public void SetupAndStart(Moves move, Limits limit, Doctor doc = null)
         {
-            _docId = docId;
-            _specId = specId;
-            _docName = docName;
+            if (move == Moves.Change)
+                _oldDoc = doc;
+
+            _docId = limit.DoctorsLimits;
+            _specId = limit.SpecializationsLimits;
 
             _changesSaved = false;
-
             _move = move;
 
-            SetupForm();
+            SetupForm(limit);
 
             this.Show();
         }
 
-        public void SetupForm()
+        public void SetupForm(Limits limit)
         {
-            docForm_docId_nud.Maximum = _docId;
-            docForm_docId_nud.Minimum = _docId;
-            docForm_docId_nud.Value = _docId;
-            docForm_docId_nud.InterceptArrowKeys = (_move != Moves.Add);
+            docForm_docName_txt.Text = "";
+            docForm_docName_txt.Enabled = (_move != Moves.Del);
 
-            //добавить проверку, что специализация существует
-            docForm_specId_nud.Value = _specId;
+            docForm_docId_txt.Text = "";
+            docForm_docId_txt.Enabled = (_move == Moves.Del);
 
-            docForm_docName_txt.Text = _docName;
+            docForm_specId_txt.Text = "";
+            docForm_specId_txt.Enabled = (_move != Moves.Del);
         }
 
         public Doctor GetData()
         {
             if (_changesSaved)
-                return new Doctor((int)docForm_docId_nud.Value,
-                                (int)docForm_specId_nud.Value,
+                return new Doctor(Convert.ToInt32(docForm_docId_txt.Text),
+                                Convert.ToInt32(docForm_specId_txt.Text),
                                 docForm_docName_txt.Text);
 
-            return new Doctor(_docId,
-                                _specId,
-                                _docName);
+            return _oldDoc;
 
         }
 
@@ -75,6 +75,11 @@ namespace Presentation
             _changesSaved = true;
             this.Hide();
             EndEvent?.Invoke(_move);
+        }
+
+        private void docForm_docName_txt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

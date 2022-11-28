@@ -28,33 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.docForm_specId_nud = new System.Windows.Forms.NumericUpDown();
-            this.docForm_docId_nud = new System.Windows.Forms.NumericUpDown();
             this.docForm_docId_lbl = new System.Windows.Forms.Label();
             this.docForm_specId_lbl = new System.Windows.Forms.Label();
             this.docForm_docName_lbl = new System.Windows.Forms.Label();
             this.docForm_docName_txt = new System.Windows.Forms.TextBox();
             this.docForm_main_lbl = new System.Windows.Forms.Label();
             this.ok_btn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.docForm_specId_nud)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.docForm_docId_nud)).BeginInit();
+            this.docForm_specId_txt = new System.Windows.Forms.TextBox();
+            this.docForm_docId_txt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // docForm_specId_nud
-            // 
-            this.docForm_specId_nud.Location = new System.Drawing.Point(221, 152);
-            this.docForm_specId_nud.Name = "docForm_specId_nud";
-            this.docForm_specId_nud.Size = new System.Drawing.Size(150, 27);
-            this.docForm_specId_nud.TabIndex = 0;
-            // 
-            // docForm_docId_nud
-            // 
-            this.docForm_docId_nud.InterceptArrowKeys = false;
-            this.docForm_docId_nud.Location = new System.Drawing.Point(221, 87);
-            this.docForm_docId_nud.Name = "docForm_docId_nud";
-            this.docForm_docId_nud.ReadOnly = true;
-            this.docForm_docId_nud.Size = new System.Drawing.Size(150, 27);
-            this.docForm_docId_nud.TabIndex = 1;
             // 
             // docForm_docId_lbl
             // 
@@ -89,6 +71,7 @@
             this.docForm_docName_txt.Name = "docForm_docName_txt";
             this.docForm_docName_txt.Size = new System.Drawing.Size(150, 27);
             this.docForm_docName_txt.TabIndex = 5;
+            this.docForm_docName_txt.TextChanged += new System.EventHandler(this.docForm_docName_txt_TextChanged);
             // 
             // docForm_main_lbl
             // 
@@ -109,36 +92,48 @@
             this.ok_btn.UseVisualStyleBackColor = true;
             this.ok_btn.Click += new System.EventHandler(this.ok_btn_Click);
             // 
+            // docForm_specId_txt
+            // 
+            this.docForm_specId_txt.Location = new System.Drawing.Point(220, 149);
+            this.docForm_specId_txt.Name = "docForm_specId_txt";
+            this.docForm_specId_txt.Size = new System.Drawing.Size(150, 27);
+            this.docForm_specId_txt.TabIndex = 8;
+            // 
+            // docForm_docId_txt
+            // 
+            this.docForm_docId_txt.Location = new System.Drawing.Point(220, 86);
+            this.docForm_docId_txt.Name = "docForm_docId_txt";
+            this.docForm_docId_txt.Size = new System.Drawing.Size(150, 27);
+            this.docForm_docId_txt.TabIndex = 9;
+            // 
             // DoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 353);
+            this.Controls.Add(this.docForm_docId_txt);
+            this.Controls.Add(this.docForm_specId_txt);
             this.Controls.Add(this.ok_btn);
             this.Controls.Add(this.docForm_main_lbl);
             this.Controls.Add(this.docForm_docName_txt);
             this.Controls.Add(this.docForm_docName_lbl);
             this.Controls.Add(this.docForm_specId_lbl);
             this.Controls.Add(this.docForm_docId_lbl);
-            this.Controls.Add(this.docForm_docId_nud);
-            this.Controls.Add(this.docForm_specId_nud);
             this.Name = "DoctorForm";
             this.Text = "Doctor\'s Entity";
-            ((System.ComponentModel.ISupportInitialize)(this.docForm_specId_nud)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.docForm_docId_nud)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.NumericUpDown docForm_specId_nud;
-        private System.Windows.Forms.NumericUpDown docForm_docId_nud;
         private System.Windows.Forms.Label docForm_docId_lbl;
         private System.Windows.Forms.Label docForm_specId_lbl;
         private System.Windows.Forms.Label docForm_docName_lbl;
         private System.Windows.Forms.TextBox docForm_docName_txt;
         private System.Windows.Forms.Label docForm_main_lbl;
         private System.Windows.Forms.Button ok_btn;
+        private System.Windows.Forms.TextBox docForm_specId_txt;
+        private System.Windows.Forms.TextBox docForm_docId_txt;
     }
 }

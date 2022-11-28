@@ -11,7 +11,7 @@ namespace DataBaseContext
         // DbModel - модель базы данных (набор таблиц и сущностей)
         //public IDbModel DbModel { get; set; }
 
-        public DbSet<Specialization> Specializations { get; set; }
+        public DbSet<Specialization> Specializations { get; set; } //найти как PK установить
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
 

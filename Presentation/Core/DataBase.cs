@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using DataBaseContext;
 using DataBaseModels.Entity;
 
@@ -14,9 +15,9 @@ namespace Core
 
             using (Context db = new Context())
             {
-                limits = new Limits(db.Doctors.ToList().Count,
-                                    db.Certificates.ToList().Count,
-                                    db.Specializations.ToList().Count);
+                limits = new Limits(db.Doctors.Select(x => x.Id).ToList(),
+                                    db.Certificates.Select(x => x.Id).ToList(),
+                                    db.Specializations.Select(x => x.Id).ToList());
             }
 
             return limits;
@@ -175,6 +176,17 @@ namespace Core
                     Console.WriteLine(doc);
                 }
             }
+        }
+
+        public Doctor GetDoctor(int id)
+        {
+            Doctor doc;
+            using (Context db = new Context())
+            {
+                doc = db.Doctors.Find(id);
+            }
+
+            return doc;
         }
         
 

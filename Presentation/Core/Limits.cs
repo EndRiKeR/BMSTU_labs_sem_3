@@ -8,11 +8,11 @@ namespace Core
 {
     public struct Limits
     {
-        public int DoctorsLimits { get; }
-        public int CertificatesLimits { get; }
-        public int SpecializationsLimits { get; }
+        public List<int> DoctorsLimits { get; }
+        public List<int> CertificatesLimits { get; }
+        public List<int> SpecializationsLimits { get; }
 
-        public Limits(int doc, int cerf, int spec)
+        public Limits(List<int> doc, List<int> cerf, List<int> spec)
         {
             DoctorsLimits = doc;
             CertificatesLimits = cerf;
