@@ -33,8 +33,8 @@ namespace Presentation
             this.mail_lbl = new System.Windows.Forms.Label();
             this.specForm_specId_lbl = new System.Windows.Forms.Label();
             this.specForm_specName_lbl = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.specForm_specId_txt = new System.Windows.Forms.TextBox();
+            this.specForm_specName_txt = new System.Windows.Forms.TextBox();
             this.Ok_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -65,19 +65,19 @@ namespace Presentation
             this.specForm_specName_lbl.TabIndex = 2;
             this.specForm_specName_lbl.Text = "Specialization Name";
             // 
-            // textBox1
+            // specForm_specId_txt
             // 
-            this.textBox1.Location = new System.Drawing.Point(194, 95);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 3;
+            this.specForm_specId_txt.Location = new System.Drawing.Point(194, 95);
+            this.specForm_specId_txt.Name = "specForm_specId_txt";
+            this.specForm_specId_txt.Size = new System.Drawing.Size(100, 23);
+            this.specForm_specId_txt.TabIndex = 3;
             // 
-            // textBox2
+            // specForm_specName_txt
             // 
-            this.textBox2.Location = new System.Drawing.Point(195, 146);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 4;
+            this.specForm_specName_txt.Location = new System.Drawing.Point(195, 146);
+            this.specForm_specName_txt.Name = "specForm_specName_txt";
+            this.specForm_specName_txt.Size = new System.Drawing.Size(100, 23);
+            this.specForm_specName_txt.TabIndex = 4;
             // 
             // Ok_btn
             // 
@@ -87,6 +87,7 @@ namespace Presentation
             this.Ok_btn.TabIndex = 5;
             this.Ok_btn.Text = "Ok";
             this.Ok_btn.UseVisualStyleBackColor = true;
+            this.Ok_btn.Click += new System.EventHandler(this.ok_btn_Click);
             // 
             // SpecializationForm
             // 
@@ -94,13 +95,14 @@ namespace Presentation
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(334, 265);
             this.Controls.Add(this.Ok_btn);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.specForm_specName_txt);
+            this.Controls.Add(this.specForm_specId_txt);
             this.Controls.Add(this.specForm_specName_lbl);
             this.Controls.Add(this.specForm_specId_lbl);
             this.Controls.Add(this.mail_lbl);
             this.Name = "SpecializationForm";
             this.Text = "Specialization\'s Entity";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DoctorForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,8 +113,8 @@ namespace Presentation
         private System.Windows.Forms.Label mail_lbl;
         private System.Windows.Forms.Label specForm_specId_lbl;
         private System.Windows.Forms.Label specForm_specName_lbl;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox specForm_specId_txt;
+        private System.Windows.Forms.TextBox specForm_specName_txt;
         private System.Windows.Forms.Button Ok_btn;
     }
 }

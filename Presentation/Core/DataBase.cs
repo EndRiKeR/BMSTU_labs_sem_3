@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using DataBaseContext;
@@ -145,14 +146,14 @@ namespace Core
             }
         }
 
-        public void ChangeSpecialization(int id, Specialization newSpec)
+        public void ChangeSpecialization(Specialization newSpec)
         {
             using (Context db = new Context())
             {
-                var specs = db.Specializations.Where(x => x.Id == id).ToList();
+                var spec = db.Specializations.FirstOrDefault(x => x.Id == newSpec.Id);
 
-                if (specs.Count == 1)
-                    specs[0] = newSpec;
+                if (spec != null)
+                    spec.Name = newSpec.Name;
 
                 db.SaveChanges();
             }
@@ -180,11 +181,11 @@ namespace Core
         {
             using (Context db = new Context())
             {
-                var delete = db.Doctors.FirstOrDefault(x => x.Id == id);
-                db.Doctors.Remove(delete);
-
                 var deleteList = db.Certificates.Where(x => x.DoctorId.Id == id);
                 db.Certificates.RemoveRange(deleteList);
+
+                var delete = db.Doctors.FirstOrDefault(x => x.Id == id);
+                db.Doctors.Remove(delete);
 
                 db.SaveChanges();
             }
@@ -194,8 +195,14 @@ namespace Core
         {
             using (Context db = new Context())
             {
-                var deleteList = db.Specializations.Where(x => x.Id == id).ToList();
-                db.Specializations.RemoveRange(deleteList);
+                var deleteSpec = db.Specializations.FirstOrDefault(x => x.Id == id);
+                var deleteDocs = db.Doctors.Where(x => x.SpecializationId.Id == id);
+                var indexes = db.Doctors.Where(x => x.SpecializationId.Id == id).Select(x => x.Id);
+                var deleteCerf = db.Certificates.Where(x => indexes.Contains(x.DoctorId.Id));
+
+                db.Specializations.RemoveRange(deleteSpec);
+                db.Doctors.RemoveRange(deleteDocs);
+                db.Certificates.RemoveRange(deleteCerf);
 
                 db.SaveChanges();
             }
@@ -250,6 +257,63 @@ namespace Core
             return cerf;
         }
 
+        public Specialization GetSpecialization(int id)
+        {
+            Specialization spec;
+            using (Context db = new Context())
+            {
+                spec = db.Specializations.Find(id);
+            }
+            return spec;
+        }
+
+
+        public int HowManyDoctorsWithSpec(int id)
+        {
+            int result = -1;
+
+            using (Context db = new Context())
+            {
+                var specs = db.Specializations.ToList();
+                var docs = db.Doctors.ToList();
+
+                var resList = docs.Where(x => x.SpecializationId.Id == id);
+                result = resList.Count();
+            }
+
+            return result;
+        }
+
+        public string HowNamedSpecWithCertificate(int id)
+        {
+            string result = "";
+
+            using (Context db = new Context())
+            {
+                var specs = db.Specializations.ToList();
+                var docs = db.Doctors.ToList();
+                var cerf = db.Certificates.ToList();
+
+                result = cerf.FirstOrDefault(x => x.Id == id).DoctorId.SpecializationId.Name;
+            }
+
+            return result;
+        }
+
+        public DateTime WhenWasArrivedLastCerfForDoc(int id)
+        {
+            DateTime result = new();
+
+            using (Context db = new Context())
+            {
+                var docs = db.Doctors.ToList();
+                var cerf = db.Certificates.ToList();
+
+                result = cerf.Where(x => x.DoctorId.Id == id).Max(x => x.Date);
+            }
+
+            return result;
+        }
 
     }
 }

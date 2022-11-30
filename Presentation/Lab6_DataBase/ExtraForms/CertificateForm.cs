@@ -32,6 +32,7 @@ namespace Presentation
             cerfForm_docId_udn.Minimum = 0;
             cerfForm_cerfId_txt.ReadOnly = true;
             cerfForm_cerfId_txt.Visible = true;
+            cerfForm_cerfId_lbl.Visible = true;
         }
 
         public void SetupAndStart(Moves move, int id)

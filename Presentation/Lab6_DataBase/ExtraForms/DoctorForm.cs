@@ -31,7 +31,8 @@ namespace Presentation
 
             docForm_specId_udn.Minimum = 0;
             docForm_docId_txt.ReadOnly = true;
-            docForm_docName_txt.Visible = true;
+            docForm_docId_txt.Visible = true;
+            docForm_docId_lbl.Visible = true;
         }
 
         public void SetupAndStart(Moves move, int id)

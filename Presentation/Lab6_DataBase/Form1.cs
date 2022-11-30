@@ -46,6 +46,10 @@ namespace Lab6_DataBase
             setupComboBox();
             updateTable();
 
+            //Доп вопросы
+            EnableQuestButtons(false);
+            lastCerfForDoc_btn.Enabled = true;
+
         }
 
         private void ButtonPressed(object sender, EventArgs e)
@@ -107,6 +111,12 @@ namespace Lab6_DataBase
             _cerfForm.EndEvent += OkInCerf;
         }
 
+        private void SetupSpecForm()
+        {
+            _specForm = new SpecializationForm();
+            _specForm.EndEvent += OkInSpec;
+        }
+
         private void WorkWithEntity(Moves move, int id)
         {
 
@@ -120,7 +130,8 @@ namespace Lab6_DataBase
                     _docForm.SetupAndStart(move, id);
                     break;
                 case Tables.Specializations:
-                    //_docForm.SetupAndStart(move, id);
+                    SetupSpecForm();
+                    _specForm.SetupAndStart(move, id);
                     break;
                 case Tables.Certificates:
                     SetupCerfForm();
@@ -136,11 +147,6 @@ namespace Lab6_DataBase
             add_btn.Enabled = enable;
             change_btn.Enabled = enable;
             del_btn.Enabled = enable;
-        }
-
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            EnableButtons(true);
         }
 
         private void OkInDoc(Moves move)
@@ -185,9 +191,49 @@ namespace Lab6_DataBase
             updateTable();
         }
 
+        private void OkInSpec(Moves move)
+        {
+            switch (move)
+            {
+                case Moves.Add:
+                    _dataBase.AddToSpecializations(_specForm.GetData());
+                    break;
+                case Moves.Change:
+                    _dataBase.ChangeSpecialization(_specForm.GetData());
+                    break;
+                case Moves.Del:
+                    _dataBase.DeleteSpecialization(_specForm.GetData().Id);
+                    break;
+                default:
+                    break;
+            }
+
+            EnableButtons(true);
+            updateTable();
+        }
+
         private void tables_names_cb_SelectedIndexChanged(object sender, EventArgs e)
         {
             updateTable();
+
+            EnableQuestButtons(false);
+
+            switch (tables_names_cb.Text)
+            {
+                case "Doctor":
+                    lastCerfForDoc_btn.Enabled = true;
+                    break;
+                case "Certificate":
+                    SpecByCerf.Enabled = true;
+                    break;
+                case "Specialization":
+                    docInSpec_btn.Enabled = true;
+                    break;
+                default:
+                    MessageBox.Show("Uncorrect Table Name");
+                    break;
+            }
+
         }
 
         private void updateTable()
@@ -279,18 +325,47 @@ namespace Lab6_DataBase
             dataTable.Columns.AddRange(new DataGridViewTextBoxColumn[] { specId, name });
         }
 
-        private void FillRowsWithDoctors(List<Doctor> docs)
-        {
-            foreach (var doc in docs)
-            {
-                dataTable.Rows.Add(new string[] { $"{doc.Id}", $"{doc.SpecializationId}", $"{doc.Name}" });
-            }
-        }
-
         private void setupComboBox()
         {
             tables_names_cb.Items.Clear();
             tables_names_cb.Items.AddRange(new string[] { "Doctor", "Certificate", "Specialization" });
+        }
+
+        private void EnableQuestButtons(bool enable)
+        {
+            docInSpec_btn.Enabled = enable;
+            SpecByCerf.Enabled = enable;
+            lastCerfForDoc_btn.Enabled = enable;
+        }
+
+        private void docInSpec_btn_Click(object sender, EventArgs e)
+        {
+            int id = 0;
+
+            if (dataTable.Rows.Count > 0)
+                id = Convert.ToInt32(dataTable.Rows[dataTable.CurrentCell.RowIndex].Cells[0].Value);
+
+            MessageBox.Show($"{_dataBase.HowManyDoctorsWithSpec(id)} - столько врачей владеют специальностью {_dataBase.GetSpecialization(id)}.");
+        }
+
+        private void SpecByCerf_Click(object sender, EventArgs e)
+        {
+            int id = 0;
+
+            if (dataTable.Rows.Count > 0)
+                id = Convert.ToInt32(dataTable.Rows[dataTable.CurrentCell.RowIndex].Cells[0].Value);
+
+            MessageBox.Show($"{_dataBase.HowNamedSpecWithCertificate(id)} - название специализации, для которой был выдан сертификат {_dataBase.GetCertificate(id)}");
+        }
+
+        private void lastCerfForDoc_btn_Click(object sender, EventArgs e)
+        {
+            int id = 0;
+
+            if (dataTable.Rows.Count > 0)
+                id = Convert.ToInt32(dataTable.Rows[dataTable.CurrentCell.RowIndex].Cells[0].Value);
+
+            MessageBox.Show($"{_dataBase.WhenWasArrivedLastCerfForDoc(id)} - дата последнего сертификата врача {_dataBase.GetDoctor(id)}");
         }
     }
 }
