@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using DataBaseContext;
@@ -61,6 +62,43 @@ namespace Core
             }
         
         }
+
+        public List<Doctor> GetListOfDocs()
+        {
+            List<Doctor> docs = new();
+
+            using (Context db = new Context())
+            {
+                docs = db.Doctors.ToList();
+            }
+
+            return docs;
+        }
+
+        public List<Certificate> GetListOfCerfs()
+        {
+            List<Certificate> cerf = new();
+
+            using (Context db = new Context())
+            {
+                cerf = db.Certificates.ToList();
+            }
+
+            return cerf;
+        }
+
+        public List<Specialization> GetListOfSpecs()
+        {
+            List<Specialization> specs = new();
+
+            using (Context db = new Context())
+            {
+                specs = db.Specializations.ToList();
+            }
+
+            return specs;
+        }
+
 
         public void AddToDoctors(Doctor doc)
         {

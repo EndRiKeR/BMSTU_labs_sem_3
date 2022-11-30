@@ -37,12 +37,12 @@
             this.contextBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.specializationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.certificateBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataTable = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contextBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.specializationBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.certificateBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.SuspendLayout();
             // 
             // doctorBindingSource
@@ -106,33 +106,32 @@
             // 
             this.certificateBindingSource.DataSource = typeof(DataBaseModels.Entity.Certificate);
             // 
-            // dataGridView1
+            // dataTable
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(482, 258);
-            this.dataGridView1.TabIndex = 12;
+            this.dataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataTable.Location = new System.Drawing.Point(12, 12);
+            this.dataTable.Name = "dataTable";
+            this.dataTable.RowTemplate.Height = 25;
+            this.dataTable.Size = new System.Drawing.Size(482, 258);
+            this.dataTable.TabIndex = 12;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 425);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataTable);
             this.Controls.Add(this.tables_names_cb);
             this.Controls.Add(this.del_btn);
             this.Controls.Add(this.change_btn);
             this.Controls.Add(this.add_btn);
             this.Name = "Form1";
             this.Text = "Lab6";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.doctorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contextBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.specializationBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.certificateBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -146,6 +145,6 @@
         private System.Windows.Forms.BindingSource contextBindingSource;
         private System.Windows.Forms.BindingSource certificateBindingSource;
         private System.Windows.Forms.BindingSource specializationBindingSource;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataTable;
     }
 }

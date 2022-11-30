@@ -14,7 +14,7 @@ namespace DataBaseContext
         //Создавая объект контекста автоматически пробуем подключиться к БД
         public Context()
         {
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
             
             //DbModel = model;
@@ -24,7 +24,7 @@ namespace DataBaseContext
         // Я использую подключение через длиииииинную строку параметров.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=DbV1_testLazyId;Username=postgres;Password=Uthfym5144172");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=DbV1_normalMapping;Username=postgres;Password=Uthfym5144172");
             optionsBuilder.LogTo(message => System.Diagnostics.Debug.WriteLine(message));
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

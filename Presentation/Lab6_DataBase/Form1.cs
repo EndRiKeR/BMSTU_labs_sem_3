@@ -37,14 +37,16 @@ namespace Lab6_DataBase
             //Добавляем в эвенты реакции на всякое
             _docForm.EndEvent += OkInDoc;
 
+            //Инициализация объектов формы
             setupComboBox();
+            updateTable();
 
         }
 
         private void ButtonPressed(object sender, EventArgs e)
         {
-            int i = dataGridView1.SelectedCells.Count;
-            if (dataGridView1.SelectedCells.Count != 1)
+            int i = dataTable.SelectedCells.Count;
+            if (dataTable.SelectedCells.Count != 1)
             {
                 MessageBox.Show("Выбрано больше одной ячейки таблицы или ни одной");
             }
@@ -100,49 +102,38 @@ namespace Lab6_DataBase
             }
         }
 
-        private void doc_change_btn_Click(object sender, EventArgs e)
-        {
-            _docForm.SetupAndStart(Moves.Change, SetupNowLimits());
-        }
-
-        private void doc_del_btn_Click(object sender, EventArgs e)
-        {
-
-            _docForm.SetupAndStart(Moves.Del, SetupNowLimits());
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void tables_names_cb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //получить данные из бд
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
+            updateTable();
+
+        }
+
+        private void updateTable()
+        {
+            dataTable.Rows.Clear();
+            dataTable.Columns.Clear();
 
             switch (tables_names_cb.Text)
             {
                 case "Doctor":
+                    List<Doctor> docs = _dataBase.GetListOfDocs();
                     createColumnsForDoctor();
+                    foreach (var doc in docs) dataTable.Rows.Add(new string[] { $"{doc.Id}", $"{doc.SpecializationId}", $"{doc.Name}" });
                     break;
                 case "Certificate":
+                    List<Certificate> cerfs = _dataBase.GetListOfCerfs();
                     createColumnsForCertificates();
+                    foreach (var cerf in cerfs) dataTable.Rows.Add(new string[] { $"{cerf.Id}", $"{cerf.DoctorId}", $"{cerf.Description}", $"{cerf.Date}" });
                     break;
                 case "Specialization":
+                    List<Specialization> specs = _dataBase.GetListOfSpecs();
                     createColumnsForSpecializations();
+                    foreach (var spec in specs) dataTable.Rows.Add(new string[] { $"{spec.Id}", $"{spec.Name}" });
                     break;
                 default:
                     MessageBox.Show("Uncorrect Table Name");
                     break;
             }
-
         }
 
         private void createColumnsForDoctor()
@@ -158,7 +149,7 @@ namespace Lab6_DataBase
             name.Name = "Name";
             name.Width = 100;
 
-            dataGridView1.Columns.AddRange(new DataGridViewTextBoxColumn[] { docId, specId, name });
+            dataTable.Columns.AddRange(new DataGridViewTextBoxColumn[] { docId, specId, name });
         }
 
         private void createColumnsForCertificates()
@@ -177,7 +168,7 @@ namespace Lab6_DataBase
             date.Name = "Date";
             date.Width = 100;
 
-            dataGridView1.Columns.AddRange(new DataGridViewTextBoxColumn[] { cerfId, docId, description, date });
+            dataTable.Columns.AddRange(new DataGridViewTextBoxColumn[] { cerfId, docId, description, date });
         }
 
         private void createColumnsForSpecializations()
@@ -190,18 +181,21 @@ namespace Lab6_DataBase
             name.Name = "Name";
             name.Width = 100;
 
-            dataGridView1.Columns.AddRange(new DataGridViewTextBoxColumn[] { specId, name });
+            dataTable.Columns.AddRange(new DataGridViewTextBoxColumn[] { specId, name });
+        }
+
+        private void FillRowsWithDoctors(List<Doctor> docs)
+        {
+            foreach (var doc in docs)
+            {
+                dataTable.Rows.Add(new string[] { $"{doc.Id}", $"{doc.SpecializationId}", $"{doc.Name}" });
+            }
         }
 
         private void setupComboBox()
         {
             tables_names_cb.Items.Clear();
             tables_names_cb.Items.AddRange(new string[] { "Doctor", "Certificate", "Specialization" });
-        }
-
-        private void setupTable()
-        {
-
         }
     }
 }
