@@ -1,3 +1,5 @@
 In: Out: Start program.
 Open files
-Error! Can't open file.
+Start reading.
+Error! Uncorrect data!
+Close files.

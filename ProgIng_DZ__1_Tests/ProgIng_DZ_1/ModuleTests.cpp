@@ -14,7 +14,7 @@ void WriteInFront(FILE* file, const char* str);
 void ErrorCathed(int* counter, const char* str);
 
 
-int main()
+int main2()
 {
     setlocale(LC_ALL, "RUS");
 
@@ -31,7 +31,7 @@ int Test_WriteInFile()
 
     FILE* file = nullptr;
 
-    int erFile = fopen_s(&file, "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ__1_Tests/x64/Release/Files/Test3.txt", "w+");
+    int erFile = fopen_s(&file, "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ__1_Tests/x64/ReleaseModulTests/Files/TestRead.txt", "w+");
 
     if (erFile != 0)
         return -1;
@@ -155,20 +155,21 @@ int Test_ReadFromFile()
     int erCounter = 0;
     FILE* file = NULL;
 
-    int erFile = fopen_s(&file, "D:/myProgects/repLab/BMSTU_labs_sem_3/ProgIng_DZ__1_Tests/x64/Release/Files/Test2.txt", "w+");
+    int erFile = fopen_s(&file, "D:/ForBMSTU/BMSTU_labs_sem_3/ProgIng_DZ__1_Tests/x64/ReleaseModulTests/Files/TestWrite.txt", "w+");
     char string[100];
     string[99] = '\0';
 
     if (erFile != 0)
         return -1;
     int rc = 0;
+    int er = 0;
 
     printf("\nStart Test: ReadFromFile\n\n");
 
 
     printf("Test Class: Symbol in binary\n");
     WriteInFront(file, "10а1001р1010");
-    if (ReadFromFile(file, string) != -1)
+    if (ReadFromFile(file, string, &er) != -1)
         ErrorCathed(&erCounter, "Func: ReadFromFile, Class: Symbol in binary");
     else
         printf("\tTest passed!\n");
@@ -176,28 +177,28 @@ int Test_ReadFromFile()
 
     printf("Test Class: Symbol \',\' in binary\n");
     WriteInFront(file, "1001001101101,1101100");
-    if (ReadFromFile(file, string) != -1)
+    if (ReadFromFile(file, string, &er) != -1)
         ErrorCathed(&erCounter, "Func: ReadFromFile, Class: Symbol \',\' in binary");
     else
         printf("\tTest passed!\n");
 
     printf("Test Class: Not binary in binary\n");
     WriteInFront(file, "5336633456");
-    if (ReadFromFile(file, string) != -1)
+    if (ReadFromFile(file, string, &er) != -1)
         ErrorCathed(&erCounter, "Func: ReadFromFile, Class: Not binary in binary");
     else
         printf("\tTest passed!\n");
 
     printf("Test Class: Space in binary\n");
     WriteInFront(file, "1010011011100  110100100");
-    if (ReadFromFile(file, string) != -1)
+    if (ReadFromFile(file, string, &er) != -1)
         ErrorCathed(&erCounter, "Func: ReadFromFile, Class: Space in binary");
     else
         printf("\tTest passed!\n");
 
     printf("Test Class: Good binary 1\n");
     WriteInFront(file, "110001");
-    if (ReadFromFile(file, string) != 0)
+    if (ReadFromFile(file, string, &er) != 0)
         ErrorCathed(&erCounter, "Func: ReadFromFile, Class: Good binary 1");
     else
         printf("\tTest passed!\n");
@@ -208,9 +209,9 @@ int Test_ReadFromFile()
 
 void WriteInFront(FILE* file, const char* str)
 {
-    rewind(file);
+    //rewind(file);
     fprintf(file, "%s%c", str, '\n');
-    rewind(file);
+    //rewind(file);
 }
 
 void ErrorCathed(int* counter, const char* str)

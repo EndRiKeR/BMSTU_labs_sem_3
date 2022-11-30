@@ -1,6 +1,6 @@
 #include "BinToSix.h"
 
-int main2()
+int main()
 {
     setlocale(LC_ALL, "RUS");
 
@@ -28,6 +28,8 @@ int mainProgram(const char* _inFilePath, const char* _outFilePath)
     int i = 0;
     int rc = 0;
     int addRc = 0;
+
+    int er = 0;
 
     FILE* filePtr2 = NULL;
     FILE* filePtr16 = NULL;
@@ -66,7 +68,7 @@ int mainProgram(const char* _inFilePath, const char* _outFilePath)
             else
             {
                 i += 1;
-                rc = ReadFromFile(filePtr2, num2);
+                rc = ReadFromFile(filePtr2, num2, &er);
                 //printf("Debug Log: Read String = %s;\n", num2);
 
                 if (rc != 0) {
@@ -91,7 +93,7 @@ int mainProgram(const char* _inFilePath, const char* _outFilePath)
     }
 }
 
-int ReadFromFile(FILE* filePtr2, char* num2)
+int ReadFromFile(FILE* filePtr2, char* num2, int* er)
 {
     assert(filePtr2);
     assert(num2);
@@ -117,6 +119,9 @@ int ReadFromFile(FILE* filePtr2, char* num2)
             break;
         }
     }
+
+    *er = len;
+
     return rc;
 }
 

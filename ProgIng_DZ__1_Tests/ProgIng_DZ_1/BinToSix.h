@@ -13,7 +13,7 @@
 #define _NO_CRT_STDIO_INLINE
 #define _countof(array) (sizeof(array) / sizeof(array[0]))
 
-int ReadFromFile(FILE*, char* num2);
+int ReadFromFile(FILE*, char* num2, int * er);
 void TranslateNumberSystem(char* num2, char* num16);
 int WriteInFile(FILE* filePtr16, char* num16);
 char FromDoubleToSixteen(const char* tetra);

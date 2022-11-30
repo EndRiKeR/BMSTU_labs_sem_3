@@ -1,6 +1,7 @@
-﻿  ProgIng_DZ_1.cpp
-D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\ProgIng_DZ_1.cpp(11,1): warning C4005: _countof: изменение макроопределения
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\stdlib.h(27): message : см. предыдущее определение "_countof"
-D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\ProgIng_DZ_1.cpp(119,27): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\ProgIng_DZ_1.cpp(163,30): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\ProgIng_DZ_1.cpp(109): warning C4715: mainProgram: значение возвращается не при всех путях выполнения
+﻿  FuncTest.cpp
+D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\BinToSix.h(14,1): warning C4005: _countof: изменение макроопределения
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\stdlib.h(27,1): message : см. предыдущее определение "_countof"
+D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\FuncTest.cpp(151): warning C4715: Test_TranslateNumberSystem: значение возвращается не при всех путях выполнения
+D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\FuncTest.cpp(87): warning C4715: Test_WriteInFile: значение возвращается не при всех путях выполнения
+D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\ProgIng_DZ_1\FuncTest.cpp(207): warning C4715: Test_ReadFromFile: значение возвращается не при всех путях выполнения
+  ProgIng_DZ_1.vcxproj -> D:\ForBMSTU\BMSTU_labs_sem_3\ProgIng_DZ__1_Tests\x64\Debug\ProgIng_DZ_1.exe
