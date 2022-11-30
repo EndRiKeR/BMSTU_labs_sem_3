@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "z6y62VvJarJ6N/L0hclf9MP+7vZng5gVyGyikfLxBlpRPpSmyTue9u9iIS2XF78b58/wNisYWO71/eKNEJMxZQ==",
+  "dgSpecHash": "tvgynY3FyerFJ8wkweQajjRi6ABTw3CuXtL7e9ANoljZy0LEBlgrEn8Z9Cf0bOb7XCE5S786Aszyzorvec4S6Q==",
   "success": true,
-  "projectFilePath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Presentation\\DataBaseModels\\DataBaseModels.csproj",
+  "projectFilePath": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\Presentation\\DataBaseModels\\DataBaseModels.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\solom\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.0\\microsoft.entityframeworkcore.7.0.0.nupkg.sha512",
     "C:\\Users\\solom\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.0\\microsoft.entityframeworkcore.abstractions.7.0.0.nupkg.sha512",

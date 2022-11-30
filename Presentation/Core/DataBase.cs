@@ -29,28 +29,28 @@ namespace Core
             {
                 Specialization[] specs =
                 {
-                    new Specialization(1, "Терапевт"),
-                    new Specialization(2, "Психиатр"),
-                    new Specialization(3, "Хирург")
+                    new Specialization("Терапевт"),
+                    new Specialization("Психиатр"),
+                    new Specialization("Хирург")
                 };
 
 
                 Doctor[] docs =
                 {
-                    new Doctor ( 1, 3, "Рома" ),
-                    new Doctor ( 2, 1, "Петя" ),
-                    new Doctor(3, 2, "Вова"),
-                    new Doctor(4, 3, "Коля"),
-                    new Doctor(5, 3, "Поля")
+                    new Doctor (specs[2], "Рома" ),
+                    new Doctor (specs[0], "Петя" ),
+                    new Doctor(specs[1], "Вова"),
+                    new Doctor(specs[2], "Коля"),
+                    new Doctor(specs[2], "Поля")
                 };
 
                 Certificate[] cers =
                 {
-                    new Certificate(1, 1, "Молодец", new DateTime()),
-                    new Certificate(2, 3, "Умничка", new DateTime()),
-                    new Certificate(3, 3, "Бусенька", new DateTime()),
-                    new Certificate(4, 4, "Просто хороший человек", new DateTime()),
-                    new Certificate(5, 2, "Крутой", new DateTime())
+                    new Certificate(docs[0], "Молодец", new DateTime()),
+                    new Certificate(docs[2], "Умничка", new DateTime()),
+                    new Certificate(docs[2], "Бусенька", new DateTime()),
+                    new Certificate(docs[3], "Просто хороший человек", new DateTime()),
+                    new Certificate(docs[1], "Крутой", new DateTime())
                 };
 
                 db.Specializations.AddRange(specs);

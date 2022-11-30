@@ -21,10 +21,6 @@ namespace Lab6_DataBase
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-
-            var context = new Context();
-            var dataBaseWorker = new DataBase();
-            dataBaseWorker.InitializeWithTestData();
         }
     }
 }

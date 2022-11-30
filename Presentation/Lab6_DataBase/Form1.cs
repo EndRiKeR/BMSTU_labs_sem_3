@@ -17,38 +17,39 @@ namespace Lab6_DataBase
     public partial class Form1 : Form
     {
         DataBase _dataBase = new DataBase();
+
         CertificateForm _cerfForm = new CertificateForm();
         DoctorForm _docForm = new DoctorForm();
         SpecializationForm _specForm = new SpecializationForm();
 
-        /*List<int> _countOfDocs = new List<int>();
-        List<int> _countOfCerf = new List<int>();
-        List<int> _countOfSpec = new List<int>();*/
-
-        int _curId = 0;
-        string _curTable = "";
         Moves _move = Moves.None;
-
-
-
-        Limits limits = new Limits();
 
         public Form1()
         {
             InitializeComponent();
 
+            //впервые инициализируем базу
+            var context = new Context();
+
+            //Заполняем ее тест данными
+            _dataBase.InitializeWithTestData();
+
+            //Добавляем в эвенты реакции на всякое
             _docForm.EndEvent += OkInDoc;
 
-            limits = _dataBase.GetIdLimits();
+            setupComboBox();
 
         }
 
         private void ButtonPressed(object sender, EventArgs e)
         {
-            try
+            int i = dataGridView1.SelectedCells.Count;
+            if (dataGridView1.SelectedCells.Count != 1)
             {
-                _curId = Convert.ToInt16(id_catcher_txt.Text);
-                _curTable = tables_names_cb.Text;
+                MessageBox.Show("Выбрано больше одной ячейки таблицы или ни одной");
+            }
+            else
+            {
                 switch (((Button)sender).Text)
                 {
                     case "Add":
@@ -63,10 +64,6 @@ namespace Lab6_DataBase
                 }
 
                 DoMove();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Uncorrect ID Format");
             }
             
             
@@ -115,6 +112,94 @@ namespace Lab6_DataBase
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tables_names_cb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //получить данные из бд
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+
+            switch (tables_names_cb.Text)
+            {
+                case "Doctor":
+                    createColumnsForDoctor();
+                    break;
+                case "Certificate":
+                    createColumnsForCertificates();
+                    break;
+                case "Specialization":
+                    createColumnsForSpecializations();
+                    break;
+                default:
+                    MessageBox.Show("Uncorrect Table Name");
+                    break;
+            }
+
+        }
+
+        private void createColumnsForDoctor()
+        {
+            DataGridViewTextBoxColumn docId = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn specId = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn name = new DataGridViewTextBoxColumn();
+
+            docId.Name = "DocId";
+            docId.Width = 100;
+            specId.Name = "SpecId";
+            specId.Width = 100;
+            name.Name = "Name";
+            name.Width = 100;
+
+            dataGridView1.Columns.AddRange(new DataGridViewTextBoxColumn[] { docId, specId, name });
+        }
+
+        private void createColumnsForCertificates()
+        {
+            DataGridViewTextBoxColumn cerfId = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn docId = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn description = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn date = new DataGridViewTextBoxColumn();
+
+            cerfId.Name = "CerfId";
+            cerfId.Width = 100;
+            docId.Name = "DocId";
+            docId.Width = 100;
+            description.Name = "Description";
+            description.Width = 100;
+            date.Name = "Date";
+            date.Width = 100;
+
+            dataGridView1.Columns.AddRange(new DataGridViewTextBoxColumn[] { cerfId, docId, description, date });
+        }
+
+        private void createColumnsForSpecializations()
+        {
+            DataGridViewTextBoxColumn specId = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn name = new DataGridViewTextBoxColumn();
+
+            specId.Name = "SpecId";
+            specId.Width = 100;
+            name.Name = "Name";
+            name.Width = 100;
+
+            dataGridView1.Columns.AddRange(new DataGridViewTextBoxColumn[] { specId, name });
+        }
+
+        private void setupComboBox()
+        {
+            tables_names_cb.Items.Clear();
+            tables_names_cb.Items.AddRange(new string[] { "Doctor", "Certificate", "Specialization" });
+        }
+
+        private void setupTable()
         {
 
         }

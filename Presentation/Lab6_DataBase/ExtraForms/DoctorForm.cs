@@ -61,10 +61,10 @@ namespace Presentation
 
         public Doctor GetData()
         {
-            if (_changesSaved)
-                return new Doctor(Convert.ToInt32(docForm_docId_txt.Text),
-                                Convert.ToInt32(docForm_specId_txt.Text),
-                                docForm_docName_txt.Text);
+            //if (_changesSaved)
+                //return new Doctor(Convert.ToInt32(docForm_docId_txt.Text),
+                               // new Specialization(Convert.ToInt32(docForm_specId_txt.Text)),
+                               // docForm_docName_txt.Text);
 
             return _oldDoc;
 
