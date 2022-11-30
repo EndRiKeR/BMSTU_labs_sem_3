@@ -7,18 +7,20 @@ using System.Threading.Tasks;
 
 namespace DataBaseModels.Entity
 {
+    //Навигационное поле
+    //В теории, табличка должна понять, принять и зафигачить туда
+    //только PK Доктора - 13:03
+    // public Doctor DoctorId { get; set; }
+    // Внешний ключ = <Имя навигационки> + <Название РК у сущности>
+    //DoctorId xor DocId
+    //public int DoсId { get; set; } 
+    // НЕОБЯЗАТЕЛЕН, ТК ЕСТЬ НАВИГАЦИОНКА
+
     [PrimaryKey("Id")]
     public class Certificate
     {
         public int Id { get; set; }
-        //Навигационное поле
-        //В теории, табличка должна понять, принять и зафигачить туда
-        //только PK Доктора - 13:03
         public Doctor DoctorId { get; set; } // DoctorId => Doctor
-        // Внешний ключ = <Имя навигационки> + <Название РК у сущности>
-        //DoctorId xor DocId
-        //public int DoсId { get; set; } 
-        // НЕОБЯЗАТЕЛЕН, ТК ЕСТЬ НАВИГАЦИОНКА
         public string Description { get; set; }
         public DateTime Date { get; set; }
 

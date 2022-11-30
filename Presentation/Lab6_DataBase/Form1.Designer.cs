@@ -58,6 +58,7 @@
             this.add_btn.TabIndex = 1;
             this.add_btn.Text = "Add";
             this.add_btn.UseVisualStyleBackColor = true;
+            this.add_btn.Click += new System.EventHandler(this.ButtonPressed);
             // 
             // change_btn
             // 
@@ -68,6 +69,7 @@
             this.change_btn.TabIndex = 2;
             this.change_btn.Text = "Change";
             this.change_btn.UseVisualStyleBackColor = true;
+            this.change_btn.Click += new System.EventHandler(this.ButtonPressed);
             // 
             // del_btn
             // 
@@ -78,6 +80,7 @@
             this.del_btn.TabIndex = 3;
             this.del_btn.Text = "Delete";
             this.del_btn.UseVisualStyleBackColor = true;
+            this.del_btn.Click += new System.EventHandler(this.ButtonPressed);
             // 
             // tables_names_cb
             // 
@@ -108,9 +111,13 @@
             // 
             // dataTable
             // 
+            this.dataTable.AllowUserToAddRows = false;
+            this.dataTable.AllowUserToDeleteRows = false;
             this.dataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataTable.Location = new System.Drawing.Point(12, 12);
+            this.dataTable.MultiSelect = false;
             this.dataTable.Name = "dataTable";
+            this.dataTable.ReadOnly = true;
             this.dataTable.RowTemplate.Height = 25;
             this.dataTable.Size = new System.Drawing.Size(482, 258);
             this.dataTable.TabIndex = 12;

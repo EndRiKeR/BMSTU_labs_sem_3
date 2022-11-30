@@ -20,6 +20,11 @@ namespace DataBaseContext
             //DbModel = model;
         }
 
+        public void ClearDatabase()
+        {
+            Database.EnsureDeleted();
+        }
+
         // Как я понял, это метод настройки подключения.
         // Я использую подключение через длиииииинную строку параметров.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

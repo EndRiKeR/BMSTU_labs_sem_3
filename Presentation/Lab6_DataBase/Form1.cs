@@ -11,6 +11,7 @@ using Core;
 using DataBaseContext;
 using DataBaseModels.Entity;
 using Presentation;
+using Presentation.Enums;
 
 namespace Lab6_DataBase
 {
@@ -23,13 +24,17 @@ namespace Lab6_DataBase
         SpecializationForm _specForm = new SpecializationForm();
 
         Moves _move = Moves.None;
+        Tables _table = Tables.None;
 
         public Form1()
         {
             InitializeComponent();
 
             //впервые инициализируем базу
-            var context = new Context();
+            using (var context = new Context())
+            {
+                context.ClearDatabase();
+            }
 
             //Заполняем ее тест данными
             _dataBase.InitializeWithTestData();
@@ -45,45 +50,97 @@ namespace Lab6_DataBase
 
         private void ButtonPressed(object sender, EventArgs e)
         {
-            int i = dataTable.SelectedCells.Count;
-            if (dataTable.SelectedCells.Count != 1)
+            if ((dataTable.SelectedCells.Count != 1) && (dataTable.Rows.Count > 0))
             {
                 MessageBox.Show("Выбрано больше одной ячейки таблицы или ни одной");
             }
             else
             {
+                int id = 0;
+
+                if (dataTable.Rows.Count > 0)
+                    id = Convert.ToInt32(dataTable.Rows[dataTable.CurrentCell.RowIndex].Cells[0].Value);
+
+                switch (tables_names_cb.Text)
+                {
+                    case "Doctor":
+                        _table = Tables.Doctors;
+                        break;
+                    case "Certificate":
+                        _table = Tables.Certificates;
+                        break;
+                    case "Specialization":
+                        _table = Tables.Specializations;
+                        break;
+                    default:
+                        _table = Tables.None;
+                        break;
+                }
+
                 switch (((Button)sender).Text)
                 {
                     case "Add":
                         _move = Moves.Add;
+                        WorkWithEntity(_move, id);
                         break;
                     case "Change":
                         _move = Moves.Change;
+                        WorkWithEntity(_move, id);
                         break;
                     case "Delete":
                         _move = Moves.Del;
+                        WorkWithEntity(_move, id);
                         break;
                 }
-
-                DoMove();
             }
-            
-            
         }
 
-        private void DoMove()
+        private void SetupDocForm()
         {
-            
+            _docForm = new DoctorForm();
+            _docForm.EndEvent += OkInDoc;
         }
 
-        private Limits SetupNowLimits()
+        private void SetupCerfForm()
         {
-            return _dataBase.GetIdLimits();
+            _cerfForm = new CertificateForm();
+            _cerfForm.EndEvent += OkInCerf;
         }
 
-        private void add_doc_btn_Click(object sender, EventArgs e)
+        private void WorkWithEntity(Moves move, int id)
         {
-            _docForm.SetupAndStart(Moves.Add, SetupNowLimits());
+
+            if (move != Moves.None)
+                EnableButtons(false);
+
+            switch (_table)
+            {
+                case Tables.Doctors:
+                    SetupDocForm();
+                    _docForm.SetupAndStart(move, id);
+                    break;
+                case Tables.Specializations:
+                    //_docForm.SetupAndStart(move, id);
+                    break;
+                case Tables.Certificates:
+                    SetupCerfForm();
+                    _cerfForm.SetupAndStart(move, id);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void EnableButtons(bool enable)
+        {
+            add_btn.Enabled = enable;
+            change_btn.Enabled = enable;
+            del_btn.Enabled = enable;
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            EnableButtons(true);
         }
 
         private void OkInDoc(Moves move)
@@ -99,13 +156,38 @@ namespace Lab6_DataBase
                 case Moves.Del:
                     _dataBase.DeleteDoctor(_docForm.GetData().Id);
                     break;
+                default:
+                    break;
             }
+
+            EnableButtons(true);
+            updateTable();
+        }
+
+        private void OkInCerf(Moves move)
+        {
+            switch (move)
+            {
+                case Moves.Add:
+                    _dataBase.AddToCertificates(_cerfForm.GetData());
+                    break;
+                case Moves.Change:
+                    _dataBase.ChangeCertificates(_cerfForm.GetData());
+                    break;
+                case Moves.Del:
+                    _dataBase.DeleteCertificate(_cerfForm.GetData().Id);
+                    break;
+                default:
+                    break;
+            }
+
+            EnableButtons(true);
+            updateTable();
         }
 
         private void tables_names_cb_SelectedIndexChanged(object sender, EventArgs e)
         {
             updateTable();
-
         }
 
         private void updateTable()
@@ -118,21 +200,34 @@ namespace Lab6_DataBase
                 case "Doctor":
                     List<Doctor> docs = _dataBase.GetListOfDocs();
                     createColumnsForDoctor();
+                    docs.Sort((x, y) => x.Id.CompareTo(y.Id));
                     foreach (var doc in docs) dataTable.Rows.Add(new string[] { $"{doc.Id}", $"{doc.SpecializationId}", $"{doc.Name}" });
                     break;
                 case "Certificate":
                     List<Certificate> cerfs = _dataBase.GetListOfCerfs();
                     createColumnsForCertificates();
+                    cerfs.Sort((x, y) => x.Id.CompareTo(y.Id));
                     foreach (var cerf in cerfs) dataTable.Rows.Add(new string[] { $"{cerf.Id}", $"{cerf.DoctorId}", $"{cerf.Description}", $"{cerf.Date}" });
                     break;
                 case "Specialization":
                     List<Specialization> specs = _dataBase.GetListOfSpecs();
                     createColumnsForSpecializations();
+                    specs.Sort((x, y) => x.Id.CompareTo(y.Id));
                     foreach (var spec in specs) dataTable.Rows.Add(new string[] { $"{spec.Id}", $"{spec.Name}" });
                     break;
                 default:
                     MessageBox.Show("Uncorrect Table Name");
                     break;
+            }
+
+            if (dataTable.Rows.Count == 0)
+            {
+                change_btn.Enabled = false;
+                del_btn.Enabled = false;
+            }
+            else
+            {
+                EnableButtons(true);
             }
         }
 

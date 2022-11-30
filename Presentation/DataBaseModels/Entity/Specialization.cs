@@ -12,13 +12,14 @@ namespace DataBaseModels.Entity
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public List<Doctor> doctors { get; set; }
 
         public Specialization() { }
         public Specialization(string name)
         {
             Name = name;
         }
-        public override string ToString() => $"Specialization {Id}: {Name}";
+        public override string ToString() => $"{Id}: ({Name})";
 
     }
 }

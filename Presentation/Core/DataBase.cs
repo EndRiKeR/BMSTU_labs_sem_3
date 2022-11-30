@@ -10,19 +10,6 @@ namespace Core
 {
     public class DataBase
     {
-        public Limits GetIdLimits()
-        {
-            Limits limits;
-
-            using (Context db = new Context())
-            {
-                limits = new Limits(db.Doctors.Select(x => x.Id).ToList(),
-                                    db.Certificates.Select(x => x.Id).ToList(),
-                                    db.Specializations.Select(x => x.Id).ToList());
-            }
-
-            return limits;
-        }
 
         public void InitializeWithTestData()
         {
@@ -69,6 +56,10 @@ namespace Core
 
             using (Context db = new Context())
             {
+                //прогружаем столбец
+                db.Specializations.ToList();
+
+                //забираем данные
                 docs = db.Doctors.ToList();
             }
 
@@ -81,6 +72,10 @@ namespace Core
 
             using (Context db = new Context())
             {
+                //прогружаем столбец
+                db.Doctors.ToList();
+
+                //забираем данные
                 cerf = db.Certificates.ToList();
             }
 
@@ -104,7 +99,8 @@ namespace Core
         {
             using (Context db = new Context())
             {
-                db.Doctors.Add(doc);
+                var specs = db.Specializations.ToList();
+                db.Doctors.Add(new Doctor(specs.FirstOrDefault(x => doc.SpecializationId.Id == x.Id), doc.Name));
 
                 db.SaveChanges();
             }
@@ -124,7 +120,8 @@ namespace Core
         {
             using (Context db = new Context())
             {
-                db.Certificates.Add(cerf);
+                var docs = db.Doctors.ToList();
+                db.Certificates.Add(new Certificate(docs.FirstOrDefault(x => cerf.DoctorId.Id == x.Id), cerf.Description, cerf.Date.ToUniversalTime()));
 
                 db.SaveChanges();
             }
@@ -134,10 +131,15 @@ namespace Core
         {
             using (Context db = new Context())
             {
-                var docs = db.Doctors.Where(x => x.Id == newDoc.Id).ToList();
+                var specs = db.Specializations.ToList();
+                var doc = db.Doctors.FirstOrDefault(x => x.Id == newDoc.Id);
 
-                if (docs.Count == 1) //ERROR!!!!!
-                    docs[0] = newDoc;
+                if (doc != null)
+                {
+                    doc.Name = newDoc.Name;
+                    doc.SpecializationId = specs.FirstOrDefault(x => newDoc.SpecializationId.Id == x.Id);
+                }
+                    
 
                 db.SaveChanges();
             }
@@ -156,14 +158,19 @@ namespace Core
             }
         }
 
-        public void ChangeCertificates(int id, Certificate newCerf)
+        public void ChangeCertificates(Certificate newCerf)
         {
             using (Context db = new Context())
             {
-                var cerfs = db.Certificates.Where(x => x.Id == id).ToList();
+                var docs = db.Doctors.ToList();
+                var cerf = db.Certificates.FirstOrDefault(x => x.Id == newCerf.Id);
 
-                if (cerfs.Count == 1)
-                    cerfs[0] = newCerf;
+                if (cerf != null)
+                {
+                    cerf.DoctorId = docs.FirstOrDefault(x => x.Id == newCerf.Id);
+                    cerf.Description = newCerf.Description;
+                    cerf.Date = newCerf.Date.ToUniversalTime();
+                }
 
                 db.SaveChanges();
             }
@@ -173,8 +180,11 @@ namespace Core
         {
             using (Context db = new Context())
             {
-                var deleteList = db.Doctors.Where(x => x.Id == id).ToList();
-                db.Doctors.RemoveRange(deleteList);
+                var delete = db.Doctors.FirstOrDefault(x => x.Id == id);
+                db.Doctors.Remove(delete);
+
+                var deleteList = db.Certificates.Where(x => x.DoctorId.Id == id);
+                db.Certificates.RemoveRange(deleteList);
 
                 db.SaveChanges();
             }
@@ -195,8 +205,8 @@ namespace Core
         {
             using (Context db = new Context())
             {
-                var deleteList = db.Certificates.Where(x => x.Id == id).ToList();
-                db.Certificates.RemoveRange(deleteList);
+                var delete = db.Certificates.FirstOrDefault(x => x.Id == id);
+                db.Certificates.Remove(delete);
 
                 db.SaveChanges();
             }
@@ -221,12 +231,25 @@ namespace Core
             Doctor doc;
             using (Context db = new Context())
             {
+                var tmp = db.Specializations.ToArray();
                 doc = db.Doctors.Find(id);
             }
 
             return doc;
         }
-        
+
+        public Certificate GetCertificate(int id)
+        {
+            Certificate cerf;
+            using (Context db = new Context())
+            {
+                var tmp = db.Doctors.ToArray();
+                cerf = db.Certificates.Find(id);
+            }
+
+            return cerf;
+        }
+
 
     }
 }
