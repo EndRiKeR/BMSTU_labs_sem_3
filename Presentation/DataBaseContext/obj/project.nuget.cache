@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7CC8P3IrmTbryS5qJ8MiU+SGKL7fgrw57PSy6Wi8Vunsnlnjx48o3zqkCJFXEPUsHQjuPetUAvIP2b5IJMNChw==",
+  "dgSpecHash": "qNNj7FKaiyJ2UeMU+3NXZDscMBQqV4POl2mm15gMbEmoamlfngOCd8pyNa4L3f/8GMBsygV52p7ShKq1AWBd2g==",
   "success": true,
-  "projectFilePath": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\Presentation\\DataBaseContext\\DataBaseContext.csproj",
+  "projectFilePath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Presentation\\DataBaseContext\\DataBaseContext.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\solom\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\solom\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.0\\microsoft.entityframeworkcore.7.0.0.nupkg.sha512",

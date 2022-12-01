@@ -720,11 +720,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\Presentation\\DataBaseModels\\DataBaseModels.csproj",
+      "projectUniqueName": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Presentation\\DataBaseModels\\DataBaseModels.csproj",
       "projectName": "DataBaseModels",
-      "projectPath": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\Presentation\\DataBaseModels\\DataBaseModels.csproj",
+      "projectPath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Presentation\\DataBaseModels\\DataBaseModels.csproj",
       "packagesPath": "C:\\Users\\solom\\.nuget\\packages\\",
-      "outputPath": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\Presentation\\DataBaseModels\\obj\\",
+      "outputPath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Presentation\\DataBaseModels\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\solom\\AppData\\Roaming\\NuGet\\NuGet.Config",

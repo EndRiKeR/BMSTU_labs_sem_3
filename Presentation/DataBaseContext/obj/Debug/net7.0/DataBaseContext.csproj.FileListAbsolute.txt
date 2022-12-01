@@ -30,3 +30,5 @@ D:\ForBMSTU\BMSTU_labs_sem_3\Presentation\DataBaseContext\obj\Debug\net7.0\DataB
 D:\ForBMSTU\BMSTU_labs_sem_3\Presentation\DataBaseContext\obj\Debug\net7.0\ref\DataBaseContext.dll
 D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\bin\Debug\net7.0\DataBaseContext.runtimeconfig.json
 D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\DataBaseContext\obj\Debug\net7.0\DataBaseContext.genruntimeconfig.cache
+D:\ForBMSTU\BMSTU_labs_sem_3\Presentation\DataBaseContext\bin\Debug\net7.0\DataBaseContext.runtimeconfig.json
+D:\ForBMSTU\BMSTU_labs_sem_3\Presentation\DataBaseContext\obj\Debug\net7.0\DataBaseContext.genruntimeconfig.cache

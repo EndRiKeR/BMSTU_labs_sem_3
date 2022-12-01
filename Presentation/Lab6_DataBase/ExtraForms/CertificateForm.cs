@@ -92,17 +92,30 @@ namespace Presentation
 
             _docsId = _db.GetListOfDocs();
 
+            if (_docsId.Count() == 0)
+            {
+                EndEvent?.Invoke(Moves.None);
+                throw new Exception("Нельзя создать сертификат, тк не существует ни одного врача!");
+            }
+
             if (_docsId.Count() > 0)
+            {
                 cerfForm_docId_udn.Maximum = _docsId.Max(x => x.Id);
+                cerfForm_docId_udn.Minimum = _docsId.Min(x => x.Id);
+            }
             else
+            {
                 cerfForm_docId_udn.Maximum = 0;
+                cerfForm_docId_udn.Minimum = 0;
+            }
+                
         }
 
         public Certificate GetData()
         {
             if (_changesSaved)
             {
-                Certificate cerf = new Certificate(_docsId.FirstOrDefault(x => x.Id == cerfForm_docId_udn.Value), cerfForm_descr_txt.Text, cerfForm_calendar.TodayDate);
+                Certificate cerf = new Certificate(_docsId.FirstOrDefault(x => x.Id == cerfForm_docId_udn.Value), cerfForm_descr_txt.Text, cerfForm_calendar.Value);
                 if (_move != Moves.Add)
                 {
                     cerf.Id = _oldCertificate.Id;

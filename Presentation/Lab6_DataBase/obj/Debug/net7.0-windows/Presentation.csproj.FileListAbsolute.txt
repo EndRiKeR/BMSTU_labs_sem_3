@@ -88,3 +88,7 @@ D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Lab6_DataBase\bin\Debug\net7.
 D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Lab6_DataBase\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyModel.dll
 D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Lab6_DataBase\bin\Debug\net7.0-windows\Mono.TextTemplating.dll
 D:\myProgects\repLab\BMSTU_labs_sem_3\Presentation\Lab6_DataBase\obj\Debug\net7.0-windows\Lab6_DataBase.Form1.resources
+D:\ForBMSTU\BMSTU_labs_sem_3\Presentation\Lab6_DataBase\bin\Debug\net7.0-windows\Humanizer.dll
+D:\ForBMSTU\BMSTU_labs_sem_3\Presentation\Lab6_DataBase\bin\Debug\net7.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+D:\ForBMSTU\BMSTU_labs_sem_3\Presentation\Lab6_DataBase\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyModel.dll
+D:\ForBMSTU\BMSTU_labs_sem_3\Presentation\Lab6_DataBase\bin\Debug\net7.0-windows\Mono.TextTemplating.dll

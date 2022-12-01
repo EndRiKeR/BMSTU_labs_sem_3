@@ -759,11 +759,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\Presentation\\Core\\Core.csproj",
+      "projectUniqueName": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Presentation\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\Presentation\\Core\\Core.csproj",
+      "projectPath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Presentation\\Core\\Core.csproj",
       "packagesPath": "C:\\Users\\solom\\.nuget\\packages\\",
-      "outputPath": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\Presentation\\Core\\obj\\",
+      "outputPath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Presentation\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\solom\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -780,11 +780,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\Presentation\\DataBaseContext\\DataBaseContext.csproj": {
-              "projectPath": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\Presentation\\DataBaseContext\\DataBaseContext.csproj"
+            "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Presentation\\DataBaseContext\\DataBaseContext.csproj": {
+              "projectPath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Presentation\\DataBaseContext\\DataBaseContext.csproj"
             },
-            "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\Presentation\\DataBaseModels\\DataBaseModels.csproj": {
-              "projectPath": "D:\\myProgects\\repLab\\BMSTU_labs_sem_3\\Presentation\\DataBaseModels\\DataBaseModels.csproj"
+            "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Presentation\\DataBaseModels\\DataBaseModels.csproj": {
+              "projectPath": "D:\\ForBMSTU\\BMSTU_labs_sem_3\\Presentation\\DataBaseModels\\DataBaseModels.csproj"
             }
           }
         }

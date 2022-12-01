@@ -123,23 +123,31 @@ namespace Lab6_DataBase
             if (move != Moves.None)
                 EnableButtons(false);
 
-            switch (_table)
+            try
             {
-                case Tables.Doctors:
-                    SetupDocForm();
-                    _docForm.SetupAndStart(move, id);
-                    break;
-                case Tables.Specializations:
-                    SetupSpecForm();
-                    _specForm.SetupAndStart(move, id);
-                    break;
-                case Tables.Certificates:
-                    SetupCerfForm();
-                    _cerfForm.SetupAndStart(move, id);
-                    break;
-                default:
-                    break;
+                switch (_table)
+                {
+                    case Tables.Doctors:
+                        SetupDocForm();
+                        _docForm.SetupAndStart(move, id);
+                        break;
+                    case Tables.Specializations:
+                        SetupSpecForm();
+                        _specForm.SetupAndStart(move, id);
+                        break;
+                    case Tables.Certificates:
+                        SetupCerfForm();
+                        _cerfForm.SetupAndStart(move, id);
+                        break;
+                    default:
+                        break;
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
 
         private void EnableButtons(bool enable)
@@ -340,6 +348,12 @@ namespace Lab6_DataBase
 
         private void docInSpec_btn_Click(object sender, EventArgs e)
         {
+            if (dataTable.Rows.Count <= 0)
+            {
+                MessageBox.Show("Я не могу дать ответ на вопрос, если данных банально НЕТ!");
+                return;
+            }
+
             int id = 0;
 
             if (dataTable.Rows.Count > 0)
@@ -350,6 +364,12 @@ namespace Lab6_DataBase
 
         private void SpecByCerf_Click(object sender, EventArgs e)
         {
+            if (dataTable.Rows.Count <= 0)
+            {
+                MessageBox.Show("Я не могу дать ответ на вопрос, если данных банально НЕТ!");
+                return;
+            }
+
             int id = 0;
 
             if (dataTable.Rows.Count > 0)
@@ -360,6 +380,12 @@ namespace Lab6_DataBase
 
         private void lastCerfForDoc_btn_Click(object sender, EventArgs e)
         {
+            if (dataTable.Rows.Count <= 0)
+            {
+                MessageBox.Show("Я не могу дать ответ на вопрос, если данных банально НЕТ!");
+                return;
+            }
+
             int id = 0;
 
             if (dataTable.Rows.Count > 0)

@@ -94,10 +94,22 @@ namespace Presentation
 
             _specsId = _db.GetListOfSpecs();
 
+            if (_specsId.Count() == 0)
+            {
+                EndEvent?.Invoke(Moves.None);
+                throw new Exception("Нельзя создать врача, тк не существует ни одной специальности для него!");
+            }
+
             if (_specsId.Count() > 0)
+            {
                 docForm_specId_udn.Maximum = _specsId.Max(x => x.Id);
+                docForm_specId_udn.Minimum = _specsId.Min(x => x.Id);
+            }
             else
+            {
                 docForm_specId_udn.Maximum = 0;
+                docForm_specId_udn.Minimum = 0;
+            }
         }
 
         public Doctor GetData()
