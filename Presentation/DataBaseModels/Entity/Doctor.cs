@@ -33,6 +33,7 @@ namespace DataBaseModels.Entity
         public Specialization SpecializationId { get; set; }
         [MaxLength(50)]
         public string Name { get; set; }
+        public int Pay { get; set; }
         public List<Certificate> certificates { get; set; } = new();
 
         public Doctor() { }
@@ -41,7 +42,15 @@ namespace DataBaseModels.Entity
         {
             SpecializationId = specializationId;
             Name = name;
+            Pay = 0;
         }
+        public Doctor(Specialization specializationId, string name, int pay)
+        {
+            SpecializationId = specializationId;
+            Name = name;
+            Pay = pay;
+        }
+
 
         public override string ToString() => $"{Id}: ({Name})";
     }

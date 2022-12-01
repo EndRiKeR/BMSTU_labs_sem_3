@@ -20,7 +20,7 @@ namespace DataBaseModels.Entity
     public class Certificate
     {
         public int Id { get; set; }
-        public Doctor DoctorId { get; set; } // DoctorId => Doctor
+        public Doctor DoctorId { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }
 

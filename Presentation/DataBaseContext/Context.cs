@@ -29,7 +29,7 @@ namespace DataBaseContext
         // Я использую подключение через длиииииинную строку параметров.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=DbV1_normalMapping;Username=postgres;Password=Uthfym5144172");
+            optionsBuilder.UseNpgsql(new PathDictionary().paths["basePath"]);
             optionsBuilder.LogTo(message => System.Diagnostics.Debug.WriteLine(message));
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -40,6 +40,7 @@ namespace DataBaseContext
             //и он может быть использован как РК
             //установка ограничений - modelBuilder.Entity<Doctor>().ToTable(t => t.HasCheckConstraint("Age", "Age > 0 AND Age < 120"));
             base.OnModelCreating(modelBuilder);
+            
             //
         }
 

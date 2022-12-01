@@ -15,6 +15,11 @@ using Presentation.Enums;
 
 namespace Lab6_DataBase
 {
+    // Ljk,fdbnm gjkt dhfxe - ЗП - поле врача
+    // И посчитаем среднюю стоимость врачей данной специализации
+    //
+    //
+
     public partial class Form1 : Form
     {
         DataBase _dataBase = new DataBase();
@@ -30,6 +35,8 @@ namespace Lab6_DataBase
         {
             InitializeComponent();
 
+            EnableButtons(false);
+
             //впервые инициализируем базу
             using (var context = new Context())
             {
@@ -37,19 +44,28 @@ namespace Lab6_DataBase
             }
 
             //Заполняем ее тест данными
-            _dataBase.InitializeWithTestData();
+            InitDbWithTestData();
 
             //Добавляем в эвенты реакции на всякое
             _docForm.EndEvent += OkInDoc;
 
             //Инициализация объектов формы
             setupComboBox();
-            updateTable();
+            
 
             //Доп вопросы
             EnableQuestButtons(false);
             lastCerfForDoc_btn.Enabled = true;
 
+
+        }
+
+        public async void InitDbWithTestData()
+        {
+            await _dataBase.InitializeWithTestData();
+
+            EnableButtons(true);
+            updateTable();
         }
 
         private void ButtonPressed(object sender, EventArgs e)
@@ -157,18 +173,18 @@ namespace Lab6_DataBase
             del_btn.Enabled = enable;
         }
 
-        private void OkInDoc(Moves move)
+        private async void OkInDoc(Moves move)
         {
             switch (move)
             {
                 case Moves.Add:
-                    _dataBase.AddToDoctors(_docForm.GetData());
+                    await _dataBase.AddToDoctors(_docForm.GetData());
                     break;
                 case Moves.Change:
-                    _dataBase.ChangeDoctor(_docForm.GetData());
+                    await _dataBase.ChangeDoctor(_docForm.GetData());
                     break;
                 case Moves.Del:
-                    _dataBase.DeleteDoctor(_docForm.GetData().Id);
+                    await _dataBase.DeleteDoctor(_docForm.GetData().Id);
                     break;
                 default:
                     break;
@@ -178,18 +194,18 @@ namespace Lab6_DataBase
             updateTable();
         }
 
-        private void OkInCerf(Moves move)
+        private async void OkInCerf(Moves move)
         {
             switch (move)
             {
                 case Moves.Add:
-                    _dataBase.AddToCertificates(_cerfForm.GetData());
+                    await _dataBase.AddToCertificates(_cerfForm.GetData());
                     break;
                 case Moves.Change:
-                    _dataBase.ChangeCertificates(_cerfForm.GetData());
+                    await _dataBase.ChangeCertificates(_cerfForm.GetData());
                     break;
                 case Moves.Del:
-                    _dataBase.DeleteCertificate(_cerfForm.GetData().Id);
+                    await _dataBase.DeleteCertificate(_cerfForm.GetData().Id);
                     break;
                 default:
                     break;
@@ -199,18 +215,18 @@ namespace Lab6_DataBase
             updateTable();
         }
 
-        private void OkInSpec(Moves move)
+        private async void OkInSpec(Moves move)
         {
             switch (move)
             {
                 case Moves.Add:
-                    _dataBase.AddToSpecializations(_specForm.GetData());
+                    await _dataBase.AddToSpecializations(_specForm.GetData());
                     break;
                 case Moves.Change:
-                    _dataBase.ChangeSpecialization(_specForm.GetData());
+                    await _dataBase.ChangeSpecialization(_specForm.GetData());
                     break;
                 case Moves.Del:
-                    _dataBase.DeleteSpecialization(_specForm.GetData().Id);
+                    await _dataBase.DeleteSpecialization(_specForm.GetData().Id);
                     break;
                 default:
                     break;
@@ -236,6 +252,7 @@ namespace Lab6_DataBase
                     break;
                 case "Specialization":
                     docInSpec_btn.Enabled = true;
+                    lastCheck_btn.Enabled = true;
                     break;
                 default:
                     MessageBox.Show("Uncorrect Table Name");
@@ -255,7 +272,7 @@ namespace Lab6_DataBase
                     List<Doctor> docs = _dataBase.GetListOfDocs();
                     createColumnsForDoctor();
                     docs.Sort((x, y) => x.Id.CompareTo(y.Id));
-                    foreach (var doc in docs) dataTable.Rows.Add(new string[] { $"{doc.Id}", $"{doc.SpecializationId}", $"{doc.Name}" });
+                    foreach (var doc in docs) dataTable.Rows.Add(new string[] { $"{doc.Id}", $"{doc.SpecializationId}", $"{doc.Name}", $"{doc.Pay}"});
                     break;
                 case "Certificate":
                     List<Certificate> cerfs = _dataBase.GetListOfCerfs();
@@ -290,6 +307,7 @@ namespace Lab6_DataBase
             DataGridViewTextBoxColumn docId = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn specId = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn name = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn pay = new DataGridViewTextBoxColumn();
 
             docId.Name = "DocId";
             docId.Width = 100;
@@ -297,8 +315,10 @@ namespace Lab6_DataBase
             specId.Width = 100;
             name.Name = "Name";
             name.Width = 100;
+            pay.Name = "Pay";
+            pay.Width = 100;
 
-            dataTable.Columns.AddRange(new DataGridViewTextBoxColumn[] { docId, specId, name });
+            dataTable.Columns.AddRange(new DataGridViewTextBoxColumn[] { docId, specId, name, pay });
         }
 
         private void createColumnsForCertificates()
@@ -344,6 +364,7 @@ namespace Lab6_DataBase
             docInSpec_btn.Enabled = enable;
             SpecByCerf.Enabled = enable;
             lastCerfForDoc_btn.Enabled = enable;
+            lastCheck_btn.Enabled = enable;
         }
 
         private void docInSpec_btn_Click(object sender, EventArgs e)
@@ -391,7 +412,33 @@ namespace Lab6_DataBase
             if (dataTable.Rows.Count > 0)
                 id = Convert.ToInt32(dataTable.Rows[dataTable.CurrentCell.RowIndex].Cells[0].Value);
 
-            MessageBox.Show($"{_dataBase.WhenWasArrivedLastCerfForDoc(id)} - дата последнего сертификата врача {_dataBase.GetDoctor(id)}");
+            DateTime dt = _dataBase.WhenWasArrivedLastCerfForDoc(id);
+            if (dt.Date != new DateTime().Date)
+                MessageBox.Show($"{dt} - дата последнего сертификата врача {_dataBase.GetDoctor(id)}");
+            else
+                MessageBox.Show("У данного врача нет сертификатов =(");
         }
+
+        private void lastCHECK(object sender, EventArgs e)
+        {
+            if (dataTable.Rows.Count <= 0)
+            {
+                MessageBox.Show("Я не могу дать ответ на вопрос, если данных банально НЕТ!");
+                return;
+            }
+
+            int id = 0;
+
+            if (dataTable.Rows.Count > 0)
+                id = Convert.ToInt32(dataTable.Rows[dataTable.CurrentCell.RowIndex].Cells[0].Value);
+
+            double res = _dataBase.DoctorPayment(id);
+            if (res != 0)
+                MessageBox.Show($"Среднее - {res}");
+            else
+                MessageBox.Show("Ytn dhfxtq - ytn ltyzr =(");
+        }
+
+
     }
 }

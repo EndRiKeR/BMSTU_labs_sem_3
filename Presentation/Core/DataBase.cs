@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 using DataBaseContext;
 using DataBaseModels.Entity;
 
@@ -12,7 +14,7 @@ namespace Core
     public class DataBase
     {
 
-        public void InitializeWithTestData()
+        public async Task InitializeWithTestData()
         {
             using (Context db = new Context())
             {
@@ -26,11 +28,11 @@ namespace Core
 
                 Doctor[] docs =
                 {
-                    new Doctor (specs[2], "Рома" ),
-                    new Doctor (specs[0], "Петя" ),
-                    new Doctor(specs[1], "Вова"),
-                    new Doctor(specs[2], "Коля"),
-                    new Doctor(specs[2], "Поля")
+                    new Doctor (specs[2], "Рома", 100 ),
+                    new Doctor (specs[0], "Петя", 200 ),
+                    new Doctor(specs[1], "Вова", 300),
+                    new Doctor(specs[2], "Коля", 400),
+                    new Doctor(specs[2], "Поля", 500)
                 };
 
                 Certificate[] cers =
@@ -46,7 +48,7 @@ namespace Core
                 db.Doctors.AddRange(docs);
                 db.Certificates.AddRange(cers);
 
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         
         }
@@ -96,39 +98,39 @@ namespace Core
         }
 
 
-        public void AddToDoctors(Doctor doc)
+        public async Task AddToDoctors(Doctor doc)
         {
             using (Context db = new Context())
             {
                 var specs = db.Specializations.ToList();
                 db.Doctors.Add(new Doctor(specs.FirstOrDefault(x => doc.SpecializationId.Id == x.Id), doc.Name));
 
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         }
 
-        public void AddToSpecializations(Specialization spec)
+        public async Task AddToSpecializations(Specialization spec)
         {
             using (Context db = new Context())
             {
                 db.Specializations.Add(spec);
 
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         }
 
-        public void AddToCertificates(Certificate cerf)
+        public async Task AddToCertificates(Certificate cerf)
         {
             using (Context db = new Context())
             {
                 var docs = db.Doctors.ToList();
                 db.Certificates.Add(new Certificate(docs.FirstOrDefault(x => cerf.DoctorId.Id == x.Id), cerf.Description, cerf.Date.ToUniversalTime()));
 
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         }
 
-        public void ChangeDoctor(Doctor newDoc)
+        public async Task ChangeDoctor(Doctor newDoc)
         {
             using (Context db = new Context())
             {
@@ -142,11 +144,11 @@ namespace Core
                 }
                     
 
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         }
 
-        public void ChangeSpecialization(Specialization newSpec)
+        public async Task ChangeSpecialization(Specialization newSpec)
         {
             using (Context db = new Context())
             {
@@ -155,11 +157,12 @@ namespace Core
                 if (spec != null)
                     spec.Name = newSpec.Name;
 
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
+           
         }
 
-        public void ChangeCertificates(Certificate newCerf)
+        public async Task ChangeCertificates(Certificate newCerf)
         {
             using (Context db = new Context())
             {
@@ -173,11 +176,11 @@ namespace Core
                     cerf.Date = newCerf.Date.ToUniversalTime();
                 }
 
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         }
 
-        public void DeleteDoctor(int id)
+        public async Task DeleteDoctor(int id)
         {
             using (Context db = new Context())
             {
@@ -187,11 +190,11 @@ namespace Core
                 var delete = db.Doctors.FirstOrDefault(x => x.Id == id);
                 db.Doctors.Remove(delete);
 
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         }
 
-        public void DeleteSpecialization(int id)
+        public async Task DeleteSpecialization(int id)
         {
             using (Context db = new Context())
             {
@@ -204,18 +207,18 @@ namespace Core
                 db.Doctors.RemoveRange(deleteDocs);
                 db.Certificates.RemoveRange(deleteCerf);
 
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         }
 
-        public void DeleteCertificate(int id)
+        public async Task DeleteCertificate(int id)
         {
             using (Context db = new Context())
             {
                 var delete = db.Certificates.FirstOrDefault(x => x.Id == id);
                 db.Certificates.Remove(delete);
 
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         }
 
@@ -309,7 +312,34 @@ namespace Core
                 var docs = db.Doctors.ToList();
                 var cerf = db.Certificates.ToList();
 
-                result = cerf.Where(x => x.DoctorId.Id == id).Max(x => x.Date);
+                if (cerf.Where(x => x.DoctorId.Id == id).ToList().Count > 0)
+                    result = cerf.Where(x => x.DoctorId.Id == id).Max(x => x.Date);
+
+            }
+
+            return result;
+        }
+
+        public double DoctorPayment(int id)
+        {
+            double result = 0.0;
+
+            using (Context db = new Context())
+            {
+                var spec = db.Specializations;
+                if (spec != null)
+                {
+                    var docs = db.Doctors.Where(x => x.SpecializationId.Id == id).ToList();
+
+                    var pays = docs.Select(x => x.Pay);
+
+                    foreach (var pay in pays)
+                    {
+                        result += pay;
+                    }
+
+                    result = result / pays.Count();
+                }
             }
 
             return result;
