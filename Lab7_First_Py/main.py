@@ -12,7 +12,13 @@ def test_reader_work() -> None:
     sortStr = sorter.Sorter()
     #filePath = worker.create_empty_file("test")
     #worker.write_in_file('Files/In.txt', ["File for test", "Yes, sure", "Created"])
-    dataFromFile = worker.read_from_file('Files/In.txt')
+    dataFromFile = worker.read_from_file('фжвлодапмжолфвтяжаплшфвзпокрзфщшпзшщруф')
+    if (dataFromFile == None):
+        print('CHECK')
+    
+    if (dataFromFile != None):
+        print("BAD CHECK")
+
     for line in dataFromFile:
         print(line)
 
@@ -29,12 +35,16 @@ def main() -> None:
 
     data = console.take_data_from_console()
     dataFromFile = worker.read_from_file(data.read)
-    dataFromFile = sortStr.startSort(dataFromFile, data.mode)
-    worker.write_in_file(data.write, dataFromFile)
+
+    if (dataFromFile != None):
+        dataFromFile = sortStr.startSort(dataFromFile, data.mode)
+        worker.write_in_file(data.write, dataFromFile)
+    else:
+        print("Wrong path for Read file")
 
 if __name__ == '__main__':
-    #main()
-    test_reader_work()
+    main()
+    # test_reader_work()
 
 
 
