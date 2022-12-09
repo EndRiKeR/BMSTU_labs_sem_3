@@ -3,7 +3,8 @@ import random
 from riker_moduls import reader
 from riker_moduls import consoleWorker
 
-# & "C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python39_64/python.exe" d:/myProgects/repLab/BMSTU_labs_sem_3/Lab7_First_Py/main.py -r Lab7_First_Py/Files/In.txt -w Lab7_First_Py/Files/Out.txt -s up
+#PC: & "C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python39_64/python.exe" d:/myProgects/repLab/BMSTU_labs_sem_3/Lab7_First_Py/main.py -r Lab7_First_Py/Files/In.txt -w Lab7_First_Py/Files/Out.txt -s up
+#Lap: & C:/Users/solom/AppData/Local/Programs/Python/Python311/python.exe d:/ForBMSTU/BMSTU_labs_sem_3/Lab7_First_Py/main.py
 
 def test_reader_work() -> None:
     worker = reader.Reader()
