@@ -4,19 +4,18 @@ import random
 class Sorter:
     def __init__(self) -> None:
         pass
-    
-    def sort(self, data : list[str], sortMode : str) -> list[str]:
-        match sortMode:
-            case['up']:
-                data = self.sortByCompare(data)
-            case['down']:
-                data = self.sortByCompare(data, True)
-            case['lenUp']:
-                data = self.sortByLen(data)
-            case['lenDown']:
-                data = self.sortByLen(data, True)
-            case['rand']:
-                data = self.sortByRandom(data)
+
+    def startSort(self, data : list[str], sortMode : str) -> list[str]:
+        if sortMode == 'up':
+            data = self.sortByCompare(data)
+        elif sortMode == 'down':
+            data = self.sortByCompare(data, True)
+        elif sortMode == 'lenUp':
+            data = self.sortByLen(data)
+        elif sortMode == 'lenDown':
+            data = self.sortByLen(data, True)
+        elif sortMode == 'rand':
+            data = self.sortByRandom(data)
         
         return data
 
@@ -34,9 +33,9 @@ class Sorter:
     def sortByLen(self, data : list[str], reverse = False) -> list[str]:
         lenData = [len(row) for row in data]
 
-        for i in range(0, len(data)):
-            for j in range(i + 1, len(data)):
-                if (lenData[i] > lenData[j]):
+        for i in range(0, len(lenData)):
+            for j in range(i + 1, len(lenData)):
+                if (lenData[i] > lenData[j] and not reverse):
                     lenData = replaceObjects(lenData, i, j)
                     data = replaceObjects(data, i, j)
                 elif (lenData[i] < lenData [j] and reverse):
