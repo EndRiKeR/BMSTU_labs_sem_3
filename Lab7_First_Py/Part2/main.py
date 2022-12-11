@@ -1,51 +1,29 @@
 import telebot
+import math
 
+from requests import get
 from random import Random
 from telebot import types
+from dataBase import *
+from pyowm import OWM
 
+
+# Создание и запуск бота
 token = '5656785394:AAHFoIc1hJboEP3R7DTZF-xqU9NQ_J54LcE'
 bot = telebot.TeleBot(token)
+rand = Random()
 
-jokes = ['''Студент на экзамене по немецкому языку.\nЭкзаминатор: Составьте прдложение не немецком языке: "Лягушка скачет по болоту". \n Студент: Айн момент! Дер лягушка по болоту дер шлеп, дер шлеп, дер шлеп!''',
-'''Преподаватель на лекции:
-Как вставить элемент в массив?
-Здесь все как в жизни: сначала раздвигаешь, потом вставляешь.
-Препод на семиаре:
-Вы еще не раздвинули, а уже вставляете.
-@Тассов
-''',
-'''    Идет по лесу грустный заяц. На встречу ему медведь.
-Спрашивает - ты чего такой грустный?
-Заяц отвечает - волк мне прохода не дает, издевается постоянно.
-Медведь - следующий раз, когда волк к тебе полезет, ты спроси его - "где твоя панама?".
-Заяц - хорошо!
-    Встречает волк зайца в лесу и начинает его доставать.
-Заяц спрашивает - волк, а где твоя панама?
-Волк - нет у меня никакой панамы.
-Тут медведь подходит сзади с канализационным люком, бьет волка со словами - "вот твоя панама".
-Волк - в больнице, заяц доволен. Проходит время, выписался волк, снова начал гонять зайца.
-Заяц вновь к медведю - что мне делать?
-Медведь - как встретишь волка, спроси - где твои часы.
-Идет заяц по лесу, его догоняет волк, начал приставать.
-Заяц спрашивает - волк, а где твои часы?
-Волк радостно показывая руку - да вот мои часы!
-Тут медведь вылазит из засады со словами - а вот твоя панама!''',
-'Если бы сторож зоопарка не любил подходить к клетке с парой уссурийских тигров и злорадно орать: "Ага!", то, возможно, животные могли бы размножаться и в неволе',
-'''Казнь. Палач занес топор. Подсудимый поднимает голову и
-спрашивает:
-- Какой сегодня день?
-- Понедельник.
-- Ну, блин, и начинается неделька.''',
-'''Босс знакомится с новым шофером:
-- Как ваша фамилия ?
-- Меня зовут Лёша ...
-- Меня интересует ваша фамилия , потому , что я привык обращаться к шоферам по фамилии!
-- Я думаю, что вам будет не удобно меня по фамилии называть...
-- Меня не интересует, что ты думаешь !
-- Моя фамилия - Вжопузаорехами...
-- Поехали, Вжопузаорехами''',
-'Штирлиц попал в глубокую яму и чудом из нее вылез. "Чудес не бывает", - подумал Штирлиц и на всякий случай залез обратно.']
 
+# Получение погоды на завтра
+owm = OWM('d5cac4e6f4c1cf038e73e9c68ac0b96a')
+mgr = owm.weather_manager()
+observation = mgr.weather_at_place('Moscow, tomorrow')
+weather = observation.weather
+temps = weather.temperature("celsius")
+temp = temps['temp']
+
+
+#Основные команды
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     markup = types.ReplyKeyboardMarkup(row_width= 3)
@@ -62,31 +40,46 @@ def send_welcome(message):
 
 @bot.message_handler(commands=['help'])
 def send_help(message):
-    bot.send_message(message.chat.id, 'Бог поможет!')
+    bot.send_message(message.chat.id, rand.choice(helpAnswers))
 
 @bot.message_handler(commands=['joke'])
 def send_joke(message):
-    rand = Random()
     joke = rand.choice(jokes)
     bot.send_message(message.chat.id, joke)
 
+@bot.message_handler(commands=['weather'])
+def send_weather(message):
+    bot.send_message(message.chat.id, f"Погода на завтра в Москве: {round(temp, 0)}")
+
+
+#Доп функции
+@bot.message_handler(commands=['stickers'])
+def send_stickers(message):
+    for stick in stikersId:
+        bot.send_sticker(message.chat.id, stick)
+
+@bot.message_handler(commands=['jokes'])
+def send_jokes(message):
+    for joke in jokes:
+        bot.send_message(message.chat.id, joke)
+
+
+#Реакции на текст и другие файлы
 @bot.message_handler(content_types=['text'])
 def send_reflect(message):
     message.text = message.text.lower()
     if (message.text.find('дел') != -1):
-        bot.send_message(message.chat.id, "В целом все ок!")
+        bot.send_message(message.chat.id, rand.choice(howareuAnswers))
     elif (message.text.find('прив') != -1):
-        bot.send_message(message.chat.id, "Прив)")
+        bot.send_message(message.chat.id, rand.choice(welcomeAnswers))
     else:
-        bot.send_message(message.chat.id, "Ничего не понял, но очень интересно.")
+        bot.send_message(message.chat.id, rand.choice(understandAnswers))
 
 @bot.message_handler(content_types=['audio', 'document', 'photo', 'sticker', 'voice',])
 def send_stiker(message):
-    bot.send_message(message.chat.id, "Получил документ.")
+    sticker = rand.choice(stikersId)
+    bot.send_sticker(message.chat.id, sticker)
 
 
+#Запуск бота
 bot.infinity_polling()
-
-# TODO: Добавить разнообразные ответы на "Привет" и "Как дела?"
-# TODO: Отвечать на фото, видео, аудио и картинки стикерами
-# TODO: Добавить прогноз погоды
