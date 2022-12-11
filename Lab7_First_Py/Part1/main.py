@@ -36,11 +36,11 @@ def main() -> None:
     data = console.take_data_from_console()
     dataFromFile = worker.read_from_file(data.read)
 
-    if (dataFromFile != None):
+    if (dataFromFile != []):
         dataFromFile = sortStr.startSort(dataFromFile, data.mode)
         worker.write_in_file(data.write, dataFromFile)
     else:
-        print("Wrong path for Read file")
+        print("Wrong path for Read file or Empty File")
 
 if __name__ == '__main__':
     main()

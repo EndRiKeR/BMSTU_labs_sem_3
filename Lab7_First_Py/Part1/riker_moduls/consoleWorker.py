@@ -8,7 +8,7 @@ class ConsoleWorker:
         self.parser.add_argument('--write', '-w', default = 'Files/Out.txt', required = True)
         self.parser.add_argument('--mode', '-m', default = 'up', choices = ['up', 'down', 'lenUp', 'lenDown', 'rand'], required = True)
 
-    def take_data_from_console(self) -> list[str]:
+    def take_data_from_console(self):
         args = self.parser.parse_args(consoleData[1:])
         print(args)
         return args
