@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Core",
+    "\\Core\\bin",
+    "\\Core\\bin\\Debug",
+    "\\Core\\bin\\Debug\\net7.0",
+    "\\DataBaseContext",
+    "\\DataBaseModels"
+  ],
+  "SelectedNode": "\\DataBaseContext",
+  "PreviewInSolutionExplorer": false
+}
