@@ -16,6 +16,8 @@ class Sorter:
             data = self.sortByLen(data, True)
         elif sortMode == 'rand':
             data = self.sortByRandom(data)
+        elif sortMode == 'randStr':
+            data = self.sortChars(data)
         
         return data
 
@@ -48,6 +50,14 @@ class Sorter:
     def sortByRandom(self, data : list[str]) -> list[str]:
         rand = random.Random()
         rand.shuffle(data)
+
+        return data
+
+    def sortChars(self, data : list[str]) -> list[str]:
+        rand = random.Random()
+        for i in range(0, len(data)):
+            data[i] = ''.join(rand.sample(data[i], len(data[i])))
+            
 
         return data
 

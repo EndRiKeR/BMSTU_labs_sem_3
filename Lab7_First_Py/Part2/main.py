@@ -72,6 +72,10 @@ def send_reflect(message):
         bot.send_message(message.chat.id, rand.choice(howareuAnswers))
     elif (message.text.find('прив') != -1):
         bot.send_message(message.chat.id, rand.choice(welcomeAnswers))
+    elif (message.text.find('погод') != -1):
+        send_weather(message)
+    elif (message.text.find('анекдот') != -1):
+        bot.send_message(message.chat.id, rand.choice(jokes))
     else:
         bot.send_message(message.chat.id, rand.choice(understandAnswers))
 

@@ -49,7 +49,9 @@ stikersId = ['CAACAgIAAxkBAAEGyIhjlfkgs1TawgvdjBwwp8TyNoZjHQACawAD3lViD4RL5hGo6g
 'CAACAgEAAxkBAAEGyoBjli0-7jr9avrBVbJQKrrQSTGgbAAC4QIAAnTnKwIEnpXSOHhPBSsE',
 'CAACAgEAAxkBAAEGyoJjli1d23mzjIE7sBSDltEWk8f2OAAC6gIAAnTnKwKV-vozFpxNXisE',
 'CAACAgEAAxkBAAEGyoRjli1f4ogej7Vsqj4FqRQej-irHgAC0gIAAnTnKwIbvHBCcCfnaCsE',
-'CAACAgEAAxkBAAEGyoZjli1iHJ8PSrHJ26ikdbrPkaaTowAC6AIAAnTnKwL5nYvcckNBFisE']
+'CAACAgEAAxkBAAEGyoZjli1iHJ8PSrHJ26ikdbrPkaaTowAC6AIAAnTnKwL5nYvcckNBFisE',
+'CAACAgIAAxkBAAEGzcljl0IJUfE-USDAWvyW3AkZpDf8kgACFxQAAsLqSEspwXkiV57iSCsE',
+'CAACAgIAAxkBAAEGzctjl0ISpdOGuzgKhFQ2XPAiuzJ5VgACcBUAAlOLSUvLIV6z9OspEysE']
 
 welcomeAnswers = ['И тебе привет!', "Рад тебя слышать)", 'Охайо', "=Аригато=", "Здравствуй, герой! Тридевятое королевство ждет тебя!", "Приветики-пистолетики", "Хай!!!", "Добрый, солнце)"]
 understandAnswers = ['Моя. Твоя. Не. Понимать.', "Сорян - разраб еще студент, так что я не смогу все понять, что ты говоришь.", "Давай по-новой Миша, все фигня.", "Чаво?", "Так, я взял ручку, повторика...",
