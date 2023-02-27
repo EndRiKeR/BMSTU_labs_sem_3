@@ -1,0 +1,107 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "DataBaseContext/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "DataBaseModels": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DataBaseContext.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataBaseContext.dll": {}
+        }
+      },
+      "DataBaseModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/DataBaseModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataBaseModels.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DataBaseContext/1.0.0": {
+      "type": "project",
+      "path": "../DataBaseModel/DataBaseContext.csproj",
+      "msbuildProject": "../DataBaseModel/DataBaseContext.csproj"
+    },
+    "DataBaseModels/1.0.0": {
+      "type": "project",
+      "path": "../DataBaseModels/DataBaseModels.csproj",
+      "msbuildProject": "../DataBaseModels/DataBaseModels.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "DataBaseContext >= 1.0.0",
+      "DataBaseModels >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\solom\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\myProgects\\Бауманка\\ЯПП_Экзамен_Примеры\\MindUnderfind_Backend\\DataBase\\DataBaseAPI.csproj",
+      "projectName": "DataBaseAPI",
+      "projectPath": "D:\\myProgects\\Бауманка\\ЯПП_Экзамен_Примеры\\MindUnderfind_Backend\\DataBase\\DataBaseAPI.csproj",
+      "packagesPath": "C:\\Users\\solom\\.nuget\\packages\\",
+      "outputPath": "D:\\myProgects\\Бауманка\\ЯПП_Экзамен_Примеры\\MindUnderfind_Backend\\DataBase\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\solom\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "D:\\myProgects\\Бауманка\\ЯПП_Экзамен_Примеры\\MindUnderfind_Backend\\DataBaseModels\\DataBaseModels.csproj": {
+              "projectPath": "D:\\myProgects\\Бауманка\\ЯПП_Экзамен_Примеры\\MindUnderfind_Backend\\DataBaseModels\\DataBaseModels.csproj"
+            },
+            "D:\\myProgects\\Бауманка\\ЯПП_Экзамен_Примеры\\MindUnderfind_Backend\\DataBaseModel\\DataBaseContext.csproj": {
+              "projectPath": "D:\\myProgects\\Бауманка\\ЯПП_Экзамен_Примеры\\MindUnderfind_Backend\\DataBaseModel\\DataBaseContext.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
